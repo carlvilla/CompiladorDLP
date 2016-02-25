@@ -12,7 +12,7 @@ import main.*;
 %left '+' '-'
 %left '*' '/'
 %left ','
-%right '<' '>' '&' '|' '='
+%right '<' '>' '=' '&' '|'
 %left '!'
 
 
@@ -40,15 +40,26 @@ parametros: parametro
 			|
 			;
 	
-parametro: 'IDENT' ':' tipo
+parametro: 'IDENT' ':' tipoPrimitivo
 		 | parametro ',' parametro
 
-tipo: 'IDENT'
-	|'INT'
+tipo: tipoPrimitivo
+	| 'IDENT'
+	;
+
+tipoPrimitivo: 'INT'
 	| 'REAL'
 	| 'CHAR'
-	| '[' 'LITERALINT' ']' tipo
 	;
+
+array: dimensiones tipo;
+		
+dimensiones: dimension
+			| dimensiones dimension
+			;
+			 
+dimension: '[' 'LITERALINT' ']'
+		;
 	 
 struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';'
 	  ;
@@ -61,6 +72,7 @@ definiciones: definicion
 			;
 			
 definicion: 'IDENT' ':' tipo ';'
+			| 'IDENT' ':' array ';'
 			;
 			
 sentencias: sentencias sentencia
@@ -68,12 +80,16 @@ sentencias: sentencias sentencia
 			;
 			
 sentencia: 'VAR' definicion
-		| 'READ' expresion ';'
+		| 'READ' 'IDENT' ';'
+		| 'READ' 'IDENT' accesos ';'
 		| 'PRINT' expresion ';'
 		| 'WHILE' '(' expresion ')' '{' sentencias '}'
 		| 'IF' '(' expresion ')' '{' sentencias '}' 
 		| 'IF' '(' expresion ')' '{' sentencias '}' 'ELSE' '{' sentencias '}' 
-		|  expresion '=' expresion ';'
+		| 'IDENT' '=' expresion ';'
+		| 'IDENT' accesos '=' expresion ';'
+		| 'IDENT' '=' 'LITERALCHAR' ';'
+		| 'CAST' '<' tipoPrimitivo '>' '(' expresion ')'
 		| 'RETURN' expresion ';'
 		| 'RETURN' ';'
 		| invocacionMetodo ';'
@@ -81,7 +97,6 @@ sentencia: 'VAR' definicion
 		
 expresion: 'LITERALINT'
 		| 'LITERALREAL'
-		| 'LITERALCHAR'
 		| 'IDENT'
 		| expresion '+' expresion
 		| expresion '-' expresion
@@ -92,11 +107,11 @@ expresion: 'LITERALINT'
 		| expresion '<' '=' expresion
 		| expresion '>' '=' expresion
 		| expresion '=' '=' expresion
+		| expresion '=' expresion
 		| expresion '!' '=' expresion
 		| expresion '&' '&' expresion
 		| expresion '|' '|' expresion
 		| '!' expresion
-		| 'CAST' '<' tipo '>' '(' expresion ')'
 		| '(' expresion ')'
 		| 'IDENT' accesos
 		| invocacionMetodo
@@ -117,7 +132,8 @@ valores: valor
 			;
 	
 valor: expresion
-	 | valor ',' valor
+		 | 'CAST' '<' tipoPrimitivo '>' '(' expresion ')'
+		 | valor ',' valor
 
 				
 

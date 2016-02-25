@@ -12,7 +12,7 @@ import main.*;
 %left '+' '-'
 %left '*' '/'
 %left ','
-%right '<' '>' '&' '|' '='
+%right '<' '>' '=' '&' '|'
 %left '!'
 
 
@@ -40,7 +40,7 @@ parametros: parametro
 			|
 			;
 	
-parametro: 'IDENT' ':' tipo
+parametro: 'IDENT' ':' tipoPrimitivo
 		 | parametro ',' parametro
 
 tipo: 'IDENT'
@@ -61,6 +61,7 @@ definiciones: definicion
 			;
 			
 definicion: 'IDENT' ':' tipo ';'
+			| 'IDENT' ':' array ';'
 			;
 			
 sentencias: sentencias sentencia
@@ -74,6 +75,9 @@ sentencia: 'VAR' definicion
 		| 'IF' '(' expresion ')' '{' sentencias '}' 
 		| 'IF' '(' expresion ')' '{' sentencias '}' 'ELSE' '{' sentencias '}' 
 		|  expresion '=' expresion ';'
+		| 'IDENT' accesos '=' expresion ';'
+		| 'IDENT' '=' 'LITERALCHAR' ';'
+		| 'CAST' '<' tipo '>' '(' expresion ')'
 		| 'RETURN' expresion ';'
 		| 'RETURN' ';'
 		| invocacionMetodo ';'
@@ -81,7 +85,6 @@ sentencia: 'VAR' definicion
 		
 expresion: 'LITERALINT'
 		| 'LITERALREAL'
-		| 'LITERALCHAR'
 		| 'IDENT'
 		| expresion '+' expresion
 		| expresion '-' expresion
@@ -96,7 +99,6 @@ expresion: 'LITERALINT'
 		| expresion '&' '&' expresion
 		| expresion '|' '|' expresion
 		| '!' expresion
-		| 'CAST' '<' tipo '>' '(' expresion ')'
 		| '(' expresion ')'
 		| 'IDENT' accesos
 		| invocacionMetodo
@@ -117,7 +119,8 @@ valores: valor
 			;
 	
 valor: expresion
-	 | valor ',' valor
+		 | 'CAST' '<' tipo '>' '(' expresion ')'
+		 | valor ',' valor
 
 				
 

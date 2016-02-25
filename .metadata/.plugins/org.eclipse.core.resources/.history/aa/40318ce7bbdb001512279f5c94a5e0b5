@@ -74,6 +74,7 @@ sentencia: 'VAR' definicion
 		| 'IF' '(' expresion ')' '{' sentencias '}' 
 		| 'IF' '(' expresion ')' '{' sentencias '}' 'ELSE' '{' sentencias '}' 
 		|  expresion '=' expresion ';'
+		| 'CAST' '<' tipo '>' '(' expresion ')'
 		| 'RETURN' expresion ';'
 		| 'RETURN' ';'
 		| invocacionMetodo ';'
@@ -96,7 +97,6 @@ expresion: 'LITERALINT'
 		| expresion '&' '&' expresion
 		| expresion '|' '|' expresion
 		| '!' expresion
-		| 'CAST' '<' tipo '>' '(' expresion ')'
 		| '(' expresion ')'
 		| 'IDENT' accesos
 		| invocacionMetodo
@@ -117,7 +117,8 @@ valores: valor
 			;
 	
 valor: expresion
-	 | valor ',' valor
+		 | 'CAST' '<' tipo '>' '(' expresion ')'
+		 | valor ',' valor
 
 				
 
