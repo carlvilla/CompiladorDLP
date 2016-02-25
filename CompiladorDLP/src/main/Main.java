@@ -59,7 +59,7 @@ public class Main {
 
 		// 3. Fase de Generación de Código
 		File sourceFile = new File(sourceName);
-		Writer out = new FileWriter(new File(sourceFile.getParent(), "salida.txt"));
+		Writer out = new FileWriter(new File(sourceFile.getParent(), "hipoteca.txt"));
 
 		GeneracionDeCodigo generador = new GeneracionDeCodigo();
 		generador.genera(sourceFile.getName(), raiz, out);

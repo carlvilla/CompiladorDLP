@@ -12,7 +12,7 @@ import main.*;
 %left '+' '-'
 %left '*' '/'
 %left ','
-%right '<' '>' '>=' '<=' '=' '&' '|'
+%right '<' '>' '=' '&' '|'
 %left '!'
 
 
@@ -58,7 +58,7 @@ dimensiones: dimension
 			| dimensiones dimension
 			;
 			 
-dimension: '[' expresion ']'
+dimension: '[' 'LITERALINT' ']'
 		;
 	 
 struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';'
