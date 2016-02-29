@@ -2,31 +2,31 @@ CATEGORIES
 elemento, sentencia, expresion, tipo
 
 NODES
-programa -> elemento*
+programa -> elemento*;
 
-funcion:elemento -> string parametro* tipo sentencia*
-struct:elemento -> string definicion*
-atributo:elemento -> definicion
+funcion:elemento -> string parametro* tipo sentencia*;
+struct:elemento -> string definicion*;
+atributo:elemento -> definicion;
 
 definicion -> string tipo;
 parametro -> string tipo;
 
-if:sentencia -> expresion sentencia* sentencia*;
+if:sentencia -> condic:expresion cierto:sentencia* falso:sentencia*;
 read:sentencia -> expresion;
 return:sentencia -> expresion;
 print:sentencia -> expresion;
 while:sentencia -> expresion sentencia*;
 invocar:sentencia -> string expresion*;
 
-expresionBinaria:expresion -> expresion string expresion;
+expresionBinaria:expresion -> left:expresion string right:expresion;
 litent:expresion -> string;
 litchar:expresion -> string;
 litreal:expresion -> string;
 var:expresion -> string;
 cast:expresion -> tipo expresion;
 
-int:tipo -> ;
-real:tipo -> ;
-char:tipo -> ;
-ident:tipo -> ;
+tipoint:tipo -> ;
+tiporeal:tipo -> ;
+tipochar:tipo -> ;
+tipoident:tipo -> ;
 array:tipo -> litent tipo;
