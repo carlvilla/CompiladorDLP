@@ -1,107 +1,204 @@
-package visitor;
+// package <nombre paquete>;
 
 import ast.*;
-import java.util.*;
 
 /*
-DefaultVisitor. Implementación base del visitor para ser derivada por nuevos visitor.
-	No modificar esta clase. Para crear nuevos visitor usar el fichero "_PlantillaParaVisitors.txt".
-	DefaultVisitor ofrece una implementación por defecto de cada nodo que se limita a visitar los nodos hijos.
+Plantilla para Visitors.
+Para crear un nuevo Visitor cortar y pegar este código y ya se tendrá un visitor que compila y 
+que al ejecutarlo recorrerá todo el árbol (sin hacer nada aún en él).
+Solo quedará añadir a cada método visit aquello adicional que tenga que realizar sobre su nodo del AST.
 */
-public class DefaultVisitor implements Visitor {
+
+public class <nombre clase> extends DefaultVisitor {
+
+	// ---------------------------------------------------------
+	// Tareas a realizar en cada método visit:
+	//
+	// Si en algún método visit NO SE QUIERE HACER NADA más que recorrer los hijos entonces se puede 
+	// borrar (dicho método se heredará de DefaultVisitor con el código de recorrido).
+	//
+	// Lo siguiente es para cuando se quiera AÑADIR alguna funcionalidad adicional a un visit:
+	//
+	// - El código que aparece en cada método visit es aquel que recorre los hijos. Es el mismo código
+	//		que está implementado en el padre (DefaultVisitor). Por tanto la llamada a 'super.visit' y el
+	//		resto del código del método hacen lo mismo (por ello 'super.visit' está comentado).
+	//
+	// - Lo HABITUAL será borrar todo el código de recorrido dejando solo la llamada a 'super.visit'. De esta
+	//		manera cada método visit se puede centrar en la tarea que tiene que realizar sobre su nodo del AST.
+	//
+	// - La razón de que aparezca el código de recorrido de los hijos es por si se necesita realizar alguna
+	//		tarea DURANTE el mismo (por ejemplo ir comprobando su tipo). En este caso ya se tiene implementado
+	//		dicho recorrido y solo habrá que incrustar las acciones adicionales en el mismo. En este caso
+	//		la llamada a 'super.visit' deberá ser borrada.
+	// ---------------------------------------------------------
+
 
 	//	class Programa { List<Elemento> elemento; }
 	public Object visit(Programa node, Object param) {
-		visitChildren(node.getElemento(), param);
+
+		// super.visit(node, param);
+
+		if (node.getElemento() != null)
+			for (Elemento child : node.getElemento())
+				child.accept(this, param);
+
 		return null;
 	}
 
 	//	class Funcion { String string;  List<Parametro> parametro;  Tipo tipo;  List<Sentencia> sentencia; }
 	public Object visit(Funcion node, Object param) {
-		visitChildren(node.getParametro(), param);
+
+		// super.visit(node, param);
+
+		if (node.getParametro() != null)
+			for (Parametro child : node.getParametro())
+				child.accept(this, param);
+
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
-		visitChildren(node.getSentencia(), param);
+
+		if (node.getSentencia() != null)
+			for (Sentencia child : node.getSentencia())
+				child.accept(this, param);
+
 		return null;
 	}
 
 	//	class Struct { String string;  List<Definicion> definicion; }
 	public Object visit(Struct node, Object param) {
-		visitChildren(node.getDefinicion(), param);
+
+		// super.visit(node, param);
+
+		if (node.getDefinicion() != null)
+			for (Definicion child : node.getDefinicion())
+				child.accept(this, param);
+
 		return null;
 	}
 
 	//	class Atributo { Definicion definicion; }
 	public Object visit(Atributo node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getDefinicion() != null)
 			node.getDefinicion().accept(this, param);
+
 		return null;
 	}
 
 	//	class Definicion { String string;  Tipo tipo; }
 	public Object visit(Definicion node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
+
 		return null;
 	}
 
 	//	class Parametro { String string;  Tipo tipo; }
 	public Object visit(Parametro node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
+
 		return null;
 	}
 
 	//	class If { Expresion condic;  List<Sentencia> cierto;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getCondic() != null)
 			node.getCondic().accept(this, param);
-		visitChildren(node.getCierto(), param);
-		visitChildren(node.getFalso(), param);
+
+		if (node.getCierto() != null)
+			for (Sentencia child : node.getCierto())
+				child.accept(this, param);
+
+		if (node.getFalso() != null)
+			for (Sentencia child : node.getFalso())
+				child.accept(this, param);
+
 		return null;
 	}
 
 	//	class Read { Expresion expresion; }
 	public Object visit(Read node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
+
 		return null;
 	}
 
 	//	class Return { Expresion expresion; }
 	public Object visit(Return node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
+
 		return null;
 	}
 
 	//	class Print { Expresion expresion; }
 	public Object visit(Print node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
+
 		return null;
 	}
 
 	//	class While { Expresion expresion;  List<Sentencia> sentencia; }
 	public Object visit(While node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
-		visitChildren(node.getSentencia(), param);
+
+		if (node.getSentencia() != null)
+			for (Sentencia child : node.getSentencia())
+				child.accept(this, param);
+
 		return null;
 	}
 
 	//	class Invocar { String string;  List<Expresion> expresion; }
 	public Object visit(Invocar node, Object param) {
-		visitChildren(node.getExpresion(), param);
+
+		// super.visit(node, param);
+
+		if (node.getExpresion() != null)
+			for (Expresion child : node.getExpresion())
+				child.accept(this, param);
+
 		return null;
 	}
 
 	//	class ExpresionBinaria { Expresion left;  String string;  Expresion right; }
 	public Object visit(ExpresionBinaria node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getLeft() != null)
 			node.getLeft().accept(this, param);
+
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
+
 		return null;
 	}
 
@@ -127,10 +224,15 @@ public class DefaultVisitor implements Visitor {
 
 	//	class Cast { Tipo tipo;  Expresion expresion; }
 	public Object visit(Cast node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
+
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
+
 		return null;
 	}
 
@@ -156,17 +258,15 @@ public class DefaultVisitor implements Visitor {
 
 	//	class Array { Litent litent;  Tipo tipo; }
 	public Object visit(Array node, Object param) {
+
+		// super.visit(node, param);
+
 		if (node.getLitent() != null)
 			node.getLitent().accept(this, param);
+
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
+
 		return null;
-	}
-	
-	// Método auxiliar -----------------------------
-	protected void visitChildren(List<? extends AST> children, Object param) {
-		if (children != null)
-			for (AST child : children)
-				child.accept(this, param);
 	}
 }
