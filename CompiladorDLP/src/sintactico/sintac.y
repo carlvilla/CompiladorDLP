@@ -12,10 +12,8 @@ import main.*;
 %left '+' '-'
 %left '*' '/'
 %left ','
-%right '<' '>' '&' '|' '='
+%left '<' '>' '&' '|' '=' '[' '.'
 %left '!'
-
-
 
 %%
 
@@ -33,16 +31,16 @@ elemento: funcion
 		| atributo
 		;
 			
-funcion: 'IDENT' '(' parametros ')' ':' tipo '{' sentencias '}'
-		| 'IDENT' '(' parametros ')' '{' sentencias '}'
+funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{' sentencias '}'
+		| 'IDENT' '(' parametrosOpt ')' '{' sentencias '}'
 		;
 
-parametros: parametro
+parametrosOpt: parametros
 			|
 			;
 	
-parametro: 'IDENT' ':' tipo
-		 | parametro ',' parametro
+parametros: 'IDENT' ':' tipo
+		 | parametros ',' 'IDENT' ':' tipo
 
 tipo: 'IDENT'
 	|'INT'
@@ -99,26 +97,20 @@ expresion: 'LITERALINT'
 		| '!' expresion
 		| 'CAST' '<' tipo '>' '(' expresion ')'
 		| '(' expresion ')'
-		| 'IDENT' accesos
+		| expresion '[' expresion ']'
+		| expresion '.' 'IDENT'
 		| invocacionMetodo
 		;
 		
-accesos: acceso
-		| accesos acceso
+invocacionMetodo: 'IDENT' '(' valoresOpt ')'
+
+
+valoresOpt: valores
+		|
 		;
-		
-acceso:  '.' 'IDENT'
-		| '[' expresion ']'
-
-invocacionMetodo: 'IDENT' '(' valores ')'
-
-
-valores: valor
-			|
-			;
 	
-valor: expresion
-	 | valor ',' valor
+valores: expresion
+	 | valores ',' expresion
 
 				
 
