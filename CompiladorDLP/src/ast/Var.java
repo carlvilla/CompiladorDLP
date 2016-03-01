@@ -2,25 +2,25 @@ package ast;
 
 import visitor.*;
 
-//	var:expresion -> string:String ;
+//	var:expresion -> nombre:String ;
 
 public class Var extends AbstractExpresion {
 
-	public Var(String string) {
-		this.string = string;
+	public Var(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public Var(Object string) {
-		this.string = (string instanceof Token) ? ((Token)string).getLexeme() : (String) string;
+	public Var(Object nombre) {
+		this.nombre = (nombre instanceof Token) ? ((Token)nombre).getLexeme() : (String) nombre;
 
-		searchForPositions(string);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(nombre);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public String getString() {
-		return string;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setString(String string) {
-		this.string = string;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	@Override
@@ -28,6 +28,6 @@ public class Var extends AbstractExpresion {
 		return v.visit(this, param);
 	}
 
-	private String string;
+	private String nombre;
 }
 

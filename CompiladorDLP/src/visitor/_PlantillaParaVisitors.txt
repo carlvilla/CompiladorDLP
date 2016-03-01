@@ -202,22 +202,22 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Litent { String string; }
+	//	class Litent { String valor; }
 	public Object visit(Litent node, Object param) {
 		return null;
 	}
 
-	//	class Litchar { String string; }
+	//	class Litchar { String valor; }
 	public Object visit(Litchar node, Object param) {
 		return null;
 	}
 
-	//	class Litreal { String string; }
+	//	class Litreal { String valor; }
 	public Object visit(Litreal node, Object param) {
 		return null;
 	}
 
-	//	class Var { String string; }
+	//	class Var { String nombre; }
 	public Object visit(Var node, Object param) {
 		return null;
 	}
@@ -232,6 +232,42 @@ public class <nombre clase> extends DefaultVisitor {
 
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
+
+		return null;
+	}
+
+	//	class Negacion { Expresion expresion; }
+	public Object visit(Negacion node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getExpresion() != null)
+			node.getExpresion().accept(this, param);
+
+		return null;
+	}
+
+	//	class AccesoArray { Expresion contenedor;  Expresion posicion; }
+	public Object visit(AccesoArray node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getContenedor() != null)
+			node.getContenedor().accept(this, param);
+
+		if (node.getPosicion() != null)
+			node.getPosicion().accept(this, param);
+
+		return null;
+	}
+
+	//	class AccesoStruct { Expresion contenedor;  String atributo; }
+	public Object visit(AccesoStruct node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getContenedor() != null)
+			node.getContenedor().accept(this, param);
 
 		return null;
 	}

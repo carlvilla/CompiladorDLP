@@ -19,98 +19,98 @@ import main.*;
 
 /* Añadir las reglas en esta sección ----------------------- */
 
-programa: elementos
+programa: elementos {raiz = new Programa($1);}
 		;
 
-elementos: elemento
-		| elementos elemento
+elementos: elemento {$$ = new ArrayList();}
+		| elementos elemento {$$ = $1; ((List)$1).add($2);}
 		;
 
-elemento: funcion
-		| struct
-		| atributo
+elemento: funcion {$$ = $1;}
+		| struct {$$ = $1;}
+		| atributo {$$ = $1;}
 		;
 			
-funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{' sentencias '}'
-		| 'IDENT' '(' parametrosOpt ')' '{' sentencias '}'
+funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{' sentencias '}' {$$ = new Funcion($1,$2,$3,$4);}
+		| 'IDENT' '(' parametrosOpt ')' '{' sentencias '}' {$$ = new Funcion($1,$2,null,$4);}
 		;
 
-parametrosOpt: parametros
+parametrosOpt: parametros {$$ = $1;}
 			|
 			;
 	
-parametros: 'IDENT' ':' tipo
-		 | parametros ',' 'IDENT' ':' tipo
+parametros: 'IDENT' ':' tipo {$$ = new Parametro($1,$3);}
+		 | parametros ',' 'IDENT' ':' tipo {$$ = $1; ((List<Parametro>)$1).add(new Parametro($3,$5));}
 
-tipo: 'IDENT'
-	|'INT'
-	| 'REAL'
-	| 'CHAR'
-	| '[' 'LITERALINT' ']' tipo
+tipo: 'IDENT' {$$ = new Tipoident();}
+	|'INT'	{$$ = new Tipoint();}
+	| 'REAL'	{$$ = new Tiporeal();}
+	| 'CHAR'	{$$ = new Tipochar();}
+	| '[' 'LITERALINT' ']' tipo	{$$ = new Array((Litent)$2,$4);}
 	;
 	 
-struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';'
+struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';' {$$=new Struct($2,$4);}
 	  ;
 
-atributo: 'VAR' definicion
+atributo: 'VAR' definicion {$$=new Atributo($2);}
 			;
 
-definiciones: definicion
+definiciones: definicion {$$ = $1;}
 			| definiciones  definicion
 			;
 			
-definicion: 'IDENT' ':' tipo ';'
+definicion: 'IDENT' ':' tipo ';' {$$ = new Definicion($1,$3);}
 			;
 			
-sentencias: sentencias sentencia
+sentencias: sentencias sentencia {$$ = $1; ((List)$1).add($2);}
 			|
 			;
 			
-sentencia: 'VAR' definicion
-		| 'READ' expresion ';'
-		| 'PRINT' expresion ';'
-		| 'WHILE' '(' expresion ')' '{' sentencias '}'
-		| 'IF' '(' expresion ')' '{' sentencias '}' 
-		| 'IF' '(' expresion ')' '{' sentencias '}' 'ELSE' '{' sentencias '}' 
-		|  expresion '=' expresion ';'
-		| 'RETURN' expresion ';'
-		| 'RETURN' ';'
-		| invocacionMetodo ';'
+sentencia: 'VAR' definicion  {$$ = $2;}
+		| 'READ' expresion ';' {$$ = new Read($2);}
+		| 'PRINT' expresion ';' {$$ = new Print($2);}
+		| 'WHILE' '(' expresion ')' '{' sentencias '}' {$$ = new While($3,$6);}
+		| 'IF' '(' expresion ')' '{' sentencias '}' {$$ = new If($3,$6,null);}
+		| 'IF' '(' expresion ')' '{' sentencias '}' 'ELSE' '{' sentencias '}' {$$ = new If($3,$6,$10);}
+		|  expresion '=' expresion ';' {$$ = new ExpresionBinaria($1,"=",$3);}
+		| 'RETURN' expresion ';' {$$ = new Return($2);}
+		| 'RETURN' ';' {$$ = new Return(null);}
+		| invocacionMetodo ';' {$$ = $1;}
 		;
 		
-expresion: 'LITERALINT'
-		| 'LITERALREAL'
-		| 'LITERALCHAR'
-		| 'IDENT'
-		| expresion '+' expresion
-		| expresion '-' expresion
-		| expresion '/' expresion
-		| expresion '*' expresion
-		| expresion '<' expresion
-		| expresion '>' expresion
-		| expresion '<' '=' expresion
-		| expresion '>' '=' expresion
-		| expresion '=' '=' expresion
-		| expresion '!' '=' expresion
-		| expresion '&' '&' expresion
-		| expresion '|' '|' expresion
-		| '!' expresion
-		| 'CAST' '<' tipo '>' '(' expresion ')'
-		| '(' expresion ')'
-		| expresion '[' expresion ']'
-		| expresion '.' 'IDENT'
-		| invocacionMetodo
+expresion: 'LITERALINT' {$$ = new Litent($1);}
+		| 'LITERALREAL' {$$ = new Litreal($1);}
+		| 'LITERALCHAR' {$$ = new Litchar($1);}
+		| 'IDENT' {$$ = new Var($1);}
+		| expresion '+' expresion {$$ = new ExpresionBinaria($1,"+",$3);}
+		| expresion '-' expresion {$$ = new ExpresionBinaria($1,"-",$3);}
+		| expresion '/' expresion {$$ = new ExpresionBinaria($1,"/",$3);}
+		| expresion '*' expresion {$$ = new ExpresionBinaria($1,"*",$3);}
+		| expresion '<' expresion {$$ = new ExpresionBinaria($1,"<",$3);}
+		| expresion '>' expresion {$$ = new ExpresionBinaria($1,">",$3);}
+		| expresion '<' '=' expresion {$$ = new ExpresionBinaria($1,"<=",$4);}
+		| expresion '>' '=' expresion {$$ = new ExpresionBinaria($1,">=",$4);}
+		| expresion '=' '=' expresion {$$ = new ExpresionBinaria($1,"==",$4);}
+		| expresion '!' '=' expresion {$$ = new ExpresionBinaria($1,"!=",$4);}
+		| expresion '&' '&' expresion {$$ = new ExpresionBinaria($1,"&&",$4);}
+		| expresion '|' '|' expresion {$$ = new ExpresionBinaria($1,"||",$4);}
+		| '!' expresion {$$ = new Negacion($2);}
+		| 'CAST' '<' tipo '>' '(' expresion ')' {$$=new Cast($3,$6);}
+		| '(' expresion ')' {$$ = $2;}
+		| expresion '[' expresion ']' {$$ = new AccesoArray($1,$3);}
+		| expresion '.' 'IDENT' {$$ = new AccesoStruct($1,$3);}
+		| invocacionMetodo {$$ = $1;}
 		;
 		
-invocacionMetodo: 'IDENT' '(' valoresOpt ')'
+invocacionMetodo: 'IDENT' '(' valoresOpt ')' {$$ = new Invocar($1,$3);}
 
 
-valoresOpt: valores
+valoresOpt: valores {$$ = $1;}
 		|
 		;
 	
-valores: expresion
-	 | valores ',' expresion
+valores: expresion {$$ = $1;}
+	 | valores ',' expresion {$$ = $1;((List<Expresion>)$1).add((Expresion)$3);}
 
 				
 

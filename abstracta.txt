@@ -19,11 +19,14 @@ while:sentencia -> expresion sentencia*;
 invocar:sentencia -> string expresion*;
 
 expresionBinaria:expresion -> left:expresion string right:expresion;
-litent:expresion -> string;
-litchar:expresion -> string;
-litreal:expresion -> string;
-var:expresion -> string;
+litent:expresion -> valor:string;
+litchar:expresion -> valor:string;
+litreal:expresion -> valor:string;
+var:expresion -> nombre:string;
 cast:expresion -> tipo expresion;
+negacion:expresion -> expresion;
+accesoArray:expresion -> contenedor:expresion posicion:expresion;
+accesoStruct:expresion -> contenedor:expresion atributo:string;
 
 tipoint:tipo -> ;
 tiporeal:tipo -> ;

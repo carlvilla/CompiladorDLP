@@ -236,35 +236,35 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Litent { String string; }
+	//	class Litent { String valor; }
 	public Object visit(Litent node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printCompact(indent, "Litent", node, "string", node.getString());
+		printCompact(indent, "Litent", node, "valor", node.getValor());
 		return null;
 	}
 
-	//	class Litchar { String string; }
+	//	class Litchar { String valor; }
 	public Object visit(Litchar node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printCompact(indent, "Litchar", node, "string", node.getString());
+		printCompact(indent, "Litchar", node, "valor", node.getValor());
 		return null;
 	}
 
-	//	class Litreal { String string; }
+	//	class Litreal { String valor; }
 	public Object visit(Litreal node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printCompact(indent, "Litreal", node, "string", node.getString());
+		printCompact(indent, "Litreal", node, "valor", node.getValor());
 		return null;
 	}
 
-	//	class Var { String string; }
+	//	class Var { String nombre; }
 	public Object visit(Var node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printCompact(indent, "Var", node, "string", node.getString());
+		printCompact(indent, "Var", node, "nombre", node.getNombre());
 		return null;
 	}
 
@@ -276,6 +276,38 @@ public class ASTPrinter extends DefaultVisitor {
 
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		visit(indent + 1, "expresion", "Expresion",node.getExpresion());
+		return null;
+	}
+
+	//	class Negacion { Expresion expresion; }
+	public Object visit(Negacion node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "Negacion", node, false);
+
+		visit(indent + 1, "expresion", "Expresion",node.getExpresion());
+		return null;
+	}
+
+	//	class AccesoArray { Expresion contenedor;  Expresion posicion; }
+	public Object visit(AccesoArray node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "AccesoArray", node, false);
+
+		visit(indent + 1, "contenedor", "Expresion",node.getContenedor());
+		visit(indent + 1, "posicion", "Expresion",node.getPosicion());
+		return null;
+	}
+
+	//	class AccesoStruct { Expresion contenedor;  String atributo; }
+	public Object visit(AccesoStruct node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "AccesoStruct", node, false);
+
+		visit(indent + 1, "contenedor", "Expresion",node.getContenedor());
+		print(indent + 1, "atributo", "String", node.getAtributo());
 		return null;
 	}
 

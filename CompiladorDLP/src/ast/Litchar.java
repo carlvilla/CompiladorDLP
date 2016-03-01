@@ -2,25 +2,25 @@ package ast;
 
 import visitor.*;
 
-//	litchar:expresion -> string:String ;
+//	litchar:expresion -> valor:String ;
 
 public class Litchar extends AbstractExpresion {
 
-	public Litchar(String string) {
-		this.string = string;
+	public Litchar(String valor) {
+		this.valor = valor;
 	}
 
-	public Litchar(Object string) {
-		this.string = (string instanceof Token) ? ((Token)string).getLexeme() : (String) string;
+	public Litchar(Object valor) {
+		this.valor = (valor instanceof Token) ? ((Token)valor).getLexeme() : (String) valor;
 
-		searchForPositions(string);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(valor);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public String getString() {
-		return string;
+	public String getValor() {
+		return valor;
 	}
-	public void setString(String string) {
-		this.string = string;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 	@Override
@@ -28,6 +28,6 @@ public class Litchar extends AbstractExpresion {
 		return v.visit(this, param);
 	}
 
-	private String string;
+	private String valor;
 }
 

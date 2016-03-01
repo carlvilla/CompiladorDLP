@@ -713,6 +713,235 @@ boolean doaction;
     switch(yyn)
       {
 //########## USER-SUPPLIED ACTIONS ##########
+case 1:
+//#line 22 "sintac.y"
+{raiz = new Programa(val_peek(0));}
+break;
+case 2:
+//#line 25 "sintac.y"
+{yyval = new ArrayList();}
+break;
+case 3:
+//#line 26 "sintac.y"
+{yyval = val_peek(1); ((List)val_peek(1)).add(val_peek(0));}
+break;
+case 4:
+//#line 29 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 5:
+//#line 30 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 6:
+//#line 31 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 7:
+//#line 34 "sintac.y"
+{yyval = new Funcion(val_peek(8),val_peek(7),val_peek(6),val_peek(5));}
+break;
+case 8:
+//#line 35 "sintac.y"
+{yyval = new Funcion(val_peek(6),val_peek(5),null,val_peek(3));}
+break;
+case 9:
+//#line 38 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 11:
+//#line 42 "sintac.y"
+{yyval = new Parametro(val_peek(2),val_peek(0));}
+break;
+case 12:
+//#line 43 "sintac.y"
+{yyval = val_peek(4); ((List<Parametro>)val_peek(4)).add(new Parametro(val_peek(2),val_peek(0)));}
+break;
+case 13:
+//#line 45 "sintac.y"
+{yyval = new Tipoident();}
+break;
+case 14:
+//#line 46 "sintac.y"
+{yyval = new Tipoint();}
+break;
+case 15:
+//#line 47 "sintac.y"
+{yyval = new Tiporeal();}
+break;
+case 16:
+//#line 48 "sintac.y"
+{yyval = new Tipochar();}
+break;
+case 17:
+//#line 49 "sintac.y"
+{yyval = new Array((Litent)val_peek(2),val_peek(0));}
+break;
+case 18:
+//#line 52 "sintac.y"
+{yyval=new Struct(val_peek(4),val_peek(2));}
+break;
+case 19:
+//#line 55 "sintac.y"
+{yyval=new Atributo(val_peek(0));}
+break;
+case 20:
+//#line 58 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 22:
+//#line 62 "sintac.y"
+{yyval = new Definicion(val_peek(3),val_peek(1));}
+break;
+case 23:
+//#line 65 "sintac.y"
+{yyval = val_peek(1); ((List)val_peek(1)).add(val_peek(0));}
+break;
+case 25:
+//#line 69 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 26:
+//#line 70 "sintac.y"
+{yyval = new Read(val_peek(1));}
+break;
+case 27:
+//#line 71 "sintac.y"
+{yyval = new Print(val_peek(1));}
+break;
+case 28:
+//#line 72 "sintac.y"
+{yyval = new While(val_peek(4),val_peek(1));}
+break;
+case 29:
+//#line 73 "sintac.y"
+{yyval = new If(val_peek(4),val_peek(1),null);}
+break;
+case 30:
+//#line 74 "sintac.y"
+{yyval = new If(val_peek(8),val_peek(5),val_peek(1));}
+break;
+case 31:
+//#line 75 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),"=",val_peek(1));}
+break;
+case 32:
+//#line 76 "sintac.y"
+{yyval = new Return(val_peek(1));}
+break;
+case 33:
+//#line 77 "sintac.y"
+{yyval = new Return(null);}
+break;
+case 34:
+//#line 78 "sintac.y"
+{yyval = val_peek(1);}
+break;
+case 35:
+//#line 81 "sintac.y"
+{yyval = new Litent(val_peek(0));}
+break;
+case 36:
+//#line 82 "sintac.y"
+{yyval = new Litreal(val_peek(0));}
+break;
+case 37:
+//#line 83 "sintac.y"
+{yyval = new Litchar(val_peek(0));}
+break;
+case 38:
+//#line 84 "sintac.y"
+{yyval = new Var(val_peek(0));}
+break;
+case 39:
+//#line 85 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(2),"+",val_peek(0));}
+break;
+case 40:
+//#line 86 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(2),"-",val_peek(0));}
+break;
+case 41:
+//#line 87 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(2),"/",val_peek(0));}
+break;
+case 42:
+//#line 88 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(2),"*",val_peek(0));}
+break;
+case 43:
+//#line 89 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(2),"<",val_peek(0));}
+break;
+case 44:
+//#line 90 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(2),">",val_peek(0));}
+break;
+case 45:
+//#line 91 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),"<=",val_peek(0));}
+break;
+case 46:
+//#line 92 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),">=",val_peek(0));}
+break;
+case 47:
+//#line 93 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),"==",val_peek(0));}
+break;
+case 48:
+//#line 94 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),"!=",val_peek(0));}
+break;
+case 49:
+//#line 95 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),"&&",val_peek(0));}
+break;
+case 50:
+//#line 96 "sintac.y"
+{yyval = new ExpresionBinaria(val_peek(3),"||",val_peek(0));}
+break;
+case 51:
+//#line 97 "sintac.y"
+{yyval = new Negacion(val_peek(0));}
+break;
+case 52:
+//#line 98 "sintac.y"
+{yyval=new Cast(val_peek(4),val_peek(1));}
+break;
+case 53:
+//#line 99 "sintac.y"
+{yyval = val_peek(1);}
+break;
+case 54:
+//#line 100 "sintac.y"
+{yyval = new AccesoArray(val_peek(3),val_peek(1));}
+break;
+case 55:
+//#line 101 "sintac.y"
+{yyval = new AccesoStruct(val_peek(2),val_peek(0));}
+break;
+case 56:
+//#line 102 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 57:
+//#line 105 "sintac.y"
+{yyval = new Invocar(val_peek(3),val_peek(1));}
+break;
+case 58:
+//#line 108 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 60:
+//#line 112 "sintac.y"
+{yyval = val_peek(0);}
+break;
+case 61:
+//#line 113 "sintac.y"
+{yyval = val_peek(2);((List<Expresion>)val_peek(2)).add((Expresion)val_peek(0));}
+break;
+//#line 881 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
