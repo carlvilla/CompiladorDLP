@@ -3,7 +3,7 @@ package sintactico;
 //Una vez hecho el sintáctico esta clase ya no es necesaria, ya que es
 //reemplazada por Parser.java
 
-public class Tokens {
+/*public class Tokens {
 	public static final int INT = 257;
 	public static final int REAL = 258;
 	public static final int CHAR = 259;
@@ -22,4 +22,4 @@ public class Tokens {
 	static final int VAR = 272;
 	static final int READ = 273;
 	static final int CAST = 274;
-}
+}*/

@@ -54,6 +54,13 @@ cast	{ return Parser.CAST; }
 if		{ return Parser.IF;}
 else	{ return Parser.ELSE;} 
 
+"<=" 								{return Parser.MENORIGUAL;}
+">=" 								{return Parser.MAYORIGUAL;}
+"==" 								{return Parser.IGUAL;}
+"!=" 								{return Parser.DISTINTO;}
+"&&" 								{return Parser.AND;}
+"||" 								{return Parser.OR;}
+
 '[a-zA-Z0-9_Ò—]' | '\\n' 	{return Parser.LITERALCHAR;}
 [a-zA-ZÒ—][a-zA-Z0-9_Ò—]*	{ return Parser.IDENT; }
 [0-9]+						{ return Parser.LITERALINT; }

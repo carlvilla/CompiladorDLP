@@ -2,17 +2,17 @@ package ast;
 
 import visitor.*;
 
-//	negacion:expresion -> expresion:expresion ;
+//	expresionUnaria:expresion -> expresion:expresion ;
 
-public class Negacion extends AbstractExpresion {
+public class ExpresionUnaria extends AbstractExpresion {
 
-	public Negacion(Expresion expresion) {
+	public ExpresionUnaria(Expresion expresion) {
 		this.expresion = expresion;
 
 		searchForPositions(expresion);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public Negacion(Object expresion) {
+	public ExpresionUnaria(Object expresion) {
 		this.expresion = (Expresion) expresion;
 
 		searchForPositions(expresion);	// Obtener linea/columna a partir de los hijos

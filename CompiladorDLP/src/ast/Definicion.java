@@ -2,29 +2,29 @@ package ast;
 
 import visitor.*;
 
-//	definicion -> string:String  tipo:tipo ;
+//	definicion -> nombre:String  tipo:tipo ;
 
 public class Definicion extends AbstractTraceable implements AST {
 
-	public Definicion(String string, Tipo tipo) {
-		this.string = string;
+	public Definicion(String nombre, Tipo tipo) {
+		this.nombre = nombre;
 		this.tipo = tipo;
 
 		searchForPositions(tipo);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public Definicion(Object string, Object tipo) {
-		this.string = (string instanceof Token) ? ((Token)string).getLexeme() : (String) string;
+	public Definicion(Object nombre, Object tipo) {
+		this.nombre = (nombre instanceof Token) ? ((Token)nombre).getLexeme() : (String) nombre;
 		this.tipo = (Tipo) tipo;
 
-		searchForPositions(string, tipo);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(nombre, tipo);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public String getString() {
-		return string;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setString(String string) {
-		this.string = string;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Tipo getTipo() {
@@ -39,7 +39,7 @@ public class Definicion extends AbstractTraceable implements AST {
 		return v.visit(this, param);
 	}
 
-	private String string;
+	private String nombre;
 	private Tipo tipo;
 }
 

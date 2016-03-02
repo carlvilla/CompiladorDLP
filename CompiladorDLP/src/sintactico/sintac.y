@@ -11,8 +11,8 @@ import main.*;
 /* Precedencias aquí --------------------------------------- */
 %left '+' '-'
 %left '*' '/'
-%left ','
-%left '<' '>' '&' '|' '=' '[' '.'
+%left ',' '<' '>' '[' '.'
+%left 'MENORIGUAL' 'MAYORIGUAL' 'IGUAL' 'DISTINTO' 'AND' 'OR'
 %left '!'
 
 %%
@@ -22,7 +22,7 @@ import main.*;
 programa: elementos {raiz = new Programa($1);}
 		;
 
-elementos: elemento {$$ = new ArrayList();}
+elementos: elemento {$$ = new ArrayList<Elemento>().add((Elemento)$1);}
 		| elementos elemento {$$ = $1; ((List)$1).add($2);}
 		;
 
@@ -46,7 +46,7 @@ tipo: 'IDENT' {$$ = new Tipoident();}
 	|'INT'	{$$ = new Tipoint();}
 	| 'REAL'	{$$ = new Tiporeal();}
 	| 'CHAR'	{$$ = new Tipochar();}
-	| '[' 'LITERALINT' ']' tipo	{$$ = new Array((Litent)$2,$4);}
+	| '[' 'LITERALINT' ']' tipo	{$$ = new Array($2,$4);}
 	;
 	 
 struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';' {$$=new Struct($2,$4);}
@@ -63,7 +63,7 @@ definicion: 'IDENT' ':' tipo ';' {$$ = new Definicion($1,$3);}
 			;
 			
 sentencias: sentencias sentencia {$$ = $1; ((List)$1).add($2);}
-			|
+			|					{$$ = new ArrayList();}
 			;
 			
 sentencia: 'VAR' definicion  {$$ = $2;}
@@ -88,13 +88,13 @@ expresion: 'LITERALINT' {$$ = new Litent($1);}
 		| expresion '*' expresion {$$ = new ExpresionBinaria($1,"*",$3);}
 		| expresion '<' expresion {$$ = new ExpresionBinaria($1,"<",$3);}
 		| expresion '>' expresion {$$ = new ExpresionBinaria($1,">",$3);}
-		| expresion '<' '=' expresion {$$ = new ExpresionBinaria($1,"<=",$4);}
-		| expresion '>' '=' expresion {$$ = new ExpresionBinaria($1,">=",$4);}
-		| expresion '=' '=' expresion {$$ = new ExpresionBinaria($1,"==",$4);}
-		| expresion '!' '=' expresion {$$ = new ExpresionBinaria($1,"!=",$4);}
-		| expresion '&' '&' expresion {$$ = new ExpresionBinaria($1,"&&",$4);}
-		| expresion '|' '|' expresion {$$ = new ExpresionBinaria($1,"||",$4);}
-		| '!' expresion {$$ = new Negacion($2);}
+		| expresion 'MENORIGUAL' expresion {$$ = new ExpresionBinaria($1,"<=",$3);}
+		| expresion 'MAYORIGUAL' expresion {$$ = new ExpresionBinaria($1,">=",$3);}
+		| expresion 'IGUAL' expresion {$$ = new ExpresionBinaria($1,"==",$3);}
+		| expresion 'DISTINTO' expresion {$$ = new ExpresionBinaria($1,"!=",$3);}
+		| expresion 'AND' expresion {$$ = new ExpresionBinaria($1,"&&",$3);}
+		| expresion 'OR' expresion {$$ = new ExpresionBinaria($1,"||",$3);}
+		| '!' expresion {$$ = new ExpresionUnaria($2);}
 		| 'CAST' '<' tipo '>' '(' expresion ')' {$$=new Cast($3,$6);}
 		| '(' expresion ')' {$$ = $2;}
 		| expresion '[' expresion ']' {$$ = new AccesoArray($1,$3);}
@@ -106,7 +106,7 @@ invocacionMetodo: 'IDENT' '(' valoresOpt ')' {$$ = new Invocar($1,$3);}
 
 
 valoresOpt: valores {$$ = $1;}
-		|
+		|		{$$ = new ArrayList();}
 		;
 	
 valores: expresion {$$ = $1;}

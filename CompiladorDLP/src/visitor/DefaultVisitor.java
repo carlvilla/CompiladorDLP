@@ -38,7 +38,7 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Definicion { String string;  Tipo tipo; }
+	//	class Definicion { String nombre;  Tipo tipo; }
 	public Object visit(Definicion node, Object param) {
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
@@ -134,8 +134,8 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Negacion { Expresion expresion; }
-	public Object visit(Negacion node, Object param) {
+	//	class ExpresionUnaria { Expresion expresion; }
+	public Object visit(ExpresionUnaria node, Object param) {
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 		return null;
@@ -157,6 +157,15 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class Array { Litent litent;  Tipo tipo; }
+	public Object visit(Array node, Object param) {
+		if (node.getLitent() != null)
+			node.getLitent().accept(this, param);
+		if (node.getTipo() != null)
+			node.getTipo().accept(this, param);
+		return null;
+	}
+
 	//	class Tipoint {  }
 	public Object visit(Tipoint node, Object param) {
 		return null;
@@ -174,15 +183,6 @@ public class DefaultVisitor implements Visitor {
 
 	//	class Tipoident {  }
 	public Object visit(Tipoident node, Object param) {
-		return null;
-	}
-
-	//	class Array { Litent litent;  Tipo tipo; }
-	public Object visit(Array node, Object param) {
-		if (node.getLitent() != null)
-			node.getLitent().accept(this, param);
-		if (node.getTipo() != null)
-			node.getTipo().accept(this, param);
 		return null;
 	}
 	

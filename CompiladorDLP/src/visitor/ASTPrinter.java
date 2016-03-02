@@ -138,13 +138,13 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Definicion { String string;  Tipo tipo; }
+	//	class Definicion { String nombre;  Tipo tipo; }
 	public Object visit(Definicion node, Object param) {
 		int indent = ((Integer)param).intValue();
 
 		printName(indent, "Definicion", node, false);
 
-		print(indent + 1, "string", "String", node.getString());
+		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		return null;
 	}
@@ -279,11 +279,11 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Negacion { Expresion expresion; }
-	public Object visit(Negacion node, Object param) {
+	//	class ExpresionUnaria { Expresion expresion; }
+	public Object visit(ExpresionUnaria node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printName(indent, "Negacion", node, false);
+		printName(indent, "ExpresionUnaria", node, false);
 
 		visit(indent + 1, "expresion", "Expresion",node.getExpresion());
 		return null;
@@ -308,6 +308,17 @@ public class ASTPrinter extends DefaultVisitor {
 
 		visit(indent + 1, "contenedor", "Expresion",node.getContenedor());
 		print(indent + 1, "atributo", "String", node.getAtributo());
+		return null;
+	}
+
+	//	class Array { Litent litent;  Tipo tipo; }
+	public Object visit(Array node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "Array", node, false);
+
+		visit(indent + 1, "litent", "Litent",node.getLitent());
+		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		return null;
 	}
 
@@ -344,17 +355,6 @@ public class ASTPrinter extends DefaultVisitor {
 
 		printName(indent, "Tipoident", node, true);
 
-		return null;
-	}
-
-	//	class Array { Litent litent;  Tipo tipo; }
-	public Object visit(Array node, Object param) {
-		int indent = ((Integer)param).intValue();
-
-		printName(indent, "Array", node, false);
-
-		visit(indent + 1, "litent", "Litent",node.getLitent());
-		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		return null;
 	}
 

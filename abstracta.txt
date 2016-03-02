@@ -8,7 +8,7 @@ funcion:elemento -> string parametro* tipo sentencia*;
 struct:elemento -> string definicion*;
 atributo:elemento -> definicion;
 
-definicion -> string tipo;
+definicion -> nombre:string tipo:tipo;
 parametro -> string tipo;
 
 if:sentencia -> condic:expresion cierto:sentencia* falso:sentencia*;
@@ -24,12 +24,12 @@ litchar:expresion -> valor:string;
 litreal:expresion -> valor:string;
 var:expresion -> nombre:string;
 cast:expresion -> tipo expresion;
-negacion:expresion -> expresion;
+expresionUnaria:expresion -> expresion;
 accesoArray:expresion -> contenedor:expresion posicion:expresion;
 accesoStruct:expresion -> contenedor:expresion atributo:string;
 
+array:tipo -> litent tipo;
 tipoint:tipo -> ;
 tiporeal:tipo -> ;
 tipochar:tipo -> ;
 tipoident:tipo -> ;
-array:tipo -> litent tipo;

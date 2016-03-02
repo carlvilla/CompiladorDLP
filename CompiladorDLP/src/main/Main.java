@@ -43,7 +43,7 @@ public class Main {
 		Yylex lexico = new Yylex(new FileReader(sourceName), gestor);
 		
 		
-		Parser sintáctico = new Parser(lexico, gestor, false);
+		Parser sintáctico = new Parser(lexico, gestor, true);
 		sintáctico.parse();
 		
 
