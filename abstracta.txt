@@ -16,7 +16,7 @@ read:sentencia -> expresion;
 return:sentencia -> expresion;
 print:sentencia -> expresion;
 while:sentencia -> expresion sentencia*;
-invocar:sentencia:expresion -> string expresion*;
+invocar:sentencia,expresion -> string expresion*;
 
 expresionBinaria:expresion -> left:expresion string right:expresion;
 litent:expresion -> valor:int;

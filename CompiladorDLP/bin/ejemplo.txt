@@ -1,13 +1,13 @@
 /*
-NOTA. Este ejemplo pretende mostrar la sintaxis del lenguaje. No está pensado para ser compilado sin errores.
+NOTA. Este ejemplo pretende mostrar la sintaxis del lenguaje. No estÃ¡ pensado para ser compilado sin errores.
 
 - La sintaxis tiene que ser obligatoriamente la que se muestra en este ejemplo
 - Las declaraciones de funciones y variables globales pueden venir en cualquier orden.
-- Si la función no tiene valor de retorno no se pone nada entre los paréntesis de los parámetros y las llaves de las sentencias
-- Las funciones deben tener paréntesis aunque no tengan parámetros
-- Una función podrá declarar variables locales solo al inicio de su cuerpo. Por tanto no podrá haber declaración de variables locales en cualquier lugar de la función ni dentro de bloques anidados (por ejemplo el creado por un while)
+- Si la funciÃ³n no tiene valor de retorno no se pone nada entre los parï¿½ntesis de los parï¿½metros y las llaves de las sentencias
+- Las funciones deben tener parï¿½ntesis aunque no tengan parï¿½metros
+- Una funciÃ³n podrÃ¡ declarar variables locales solo al inicio de su cuerpo. Por tanto no podrÃ¡ haber declaraciÃ³n de variables locales en cualquier lugar de la funciï¿½n ni dentro de bloques anidados (por ejemplo el creado por un while)
 - No pueden aparecer expresiones como sentencias
-- Las llaves son obligatorias en el if/while aunque solo haya una sentencia dentro. También son obligatorios los paréntesis alrededor de la condición
+- Las llaves son obligatorias en el if/while aunque solo haya una sentencia dentro. TambiÃ©n son obligatorios los parï¿½ntesis alrededor de la condiciÃ³n
 */
 
 var a:int;

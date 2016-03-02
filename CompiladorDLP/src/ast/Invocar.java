@@ -3,9 +3,9 @@ package ast;
 import java.util.*;
 import visitor.*;
 
-//	invocar:sentencia -> string:String  expresion:expresion* ;
+//	invocar:sentencia, expresion -> string:String  expresion:expresion* ;
 
-public class Invocar extends AbstractSentencia {
+public class Invocar extends AbstractTraceable implements Sentencia, Expresion {
 
 	public Invocar(String string, List<Expresion> expresion) {
 		this.string = string;

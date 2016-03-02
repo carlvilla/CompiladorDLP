@@ -43,7 +43,7 @@ public class Main {
 		Yylex lexico = new Yylex(new FileReader(sourceName), gestor);
 		
 		
-		Parser sintáctico = new Parser(lexico, gestor, true);
+		Parser sintáctico = new Parser(lexico, gestor, false);
 		sintáctico.parse();
 		
 
@@ -59,7 +59,7 @@ public class Main {
 
 		// 3. Fase de Generación de Código
 		File sourceFile = new File(sourceName);
-		Writer out = new FileWriter(new File(sourceFile.getParent(), "ejemplo.txt"));
+		Writer out = new FileWriter(new File(sourceFile.getParent(), "ejemploSalida.txt"));
 
 		GeneracionDeCodigo generador = new GeneracionDeCodigo();
 		generador.genera(sourceFile.getName(), raiz, out);
