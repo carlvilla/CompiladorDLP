@@ -3,25 +3,25 @@ package ast;
 import java.util.*;
 import visitor.*;
 
-//	if:sentencia -> condic:expresion  cierto:sentencia*  falso:sentencia* ;
+//	if:sentencia -> condic:expresion  verdadero:sentencia*  falso:sentencia* ;
 
 public class If extends AbstractSentencia {
 
-	public If(Expresion condic, List<Sentencia> cierto, List<Sentencia> falso) {
+	public If(Expresion condic, List<Sentencia> verdadero, List<Sentencia> falso) {
 		this.condic = condic;
-		this.cierto = cierto;
+		this.verdadero = verdadero;
 		this.falso = falso;
 
-		searchForPositions(condic, cierto, falso);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(condic, verdadero, falso);	// Obtener linea/columna a partir de los hijos
 	}
 
 	@SuppressWarnings("unchecked")
-	public If(Object condic, Object cierto, Object falso) {
+	public If(Object condic, Object verdadero, Object falso) {
 		this.condic = (Expresion) condic;
-		this.cierto = (List<Sentencia>) cierto;
+		this.verdadero = (List<Sentencia>) verdadero;
 		this.falso = (List<Sentencia>) falso;
 
-		searchForPositions(condic, cierto, falso);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(condic, verdadero, falso);	// Obtener linea/columna a partir de los hijos
 	}
 
 	public Expresion getCondic() {
@@ -31,11 +31,11 @@ public class If extends AbstractSentencia {
 		this.condic = condic;
 	}
 
-	public List<Sentencia> getCierto() {
-		return cierto;
+	public List<Sentencia> getVerdadero() {
+		return verdadero;
 	}
-	public void setCierto(List<Sentencia> cierto) {
-		this.cierto = cierto;
+	public void setVerdadero(List<Sentencia> verdadero) {
+		this.verdadero = verdadero;
 	}
 
 	public List<Sentencia> getFalso() {
@@ -51,7 +51,7 @@ public class If extends AbstractSentencia {
 	}
 
 	private Expresion condic;
-	private List<Sentencia> cierto;
+	private List<Sentencia> verdadero;
 	private List<Sentencia> falso;
 }
 

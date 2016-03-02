@@ -11,7 +11,7 @@ atributo:elemento -> definicion;
 definicion -> nombre:string tipo:tipo;
 parametro -> string tipo;
 
-if:sentencia -> condic:expresion cierto:sentencia* falso:sentencia*;
+if:sentencia -> condic:expresion verdadero:sentencia* falso:sentencia*;
 read:sentencia -> expresion;
 return:sentencia -> expresion;
 print:sentencia -> expresion;
@@ -32,4 +32,4 @@ array:tipo -> litent tipo;
 tipoint:tipo -> ;
 tiporeal:tipo -> ;
 tipochar:tipo -> ;
-tipoident:tipo -> ;
+tipoident:tipo -> tipo:string;

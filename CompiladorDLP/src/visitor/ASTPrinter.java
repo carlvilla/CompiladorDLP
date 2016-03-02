@@ -160,14 +160,14 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class If { Expresion condic;  List<Sentencia> cierto;  List<Sentencia> falso; }
+	//	class If { Expresion condic;  List<Sentencia> verdadero;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
 		int indent = ((Integer)param).intValue();
 
 		printName(indent, "If", node, false);
 
 		visit(indent + 1, "condic", "Expresion",node.getCondic());
-		visit(indent + 1, "cierto", "List<Sentencia>",node.getCierto());
+		visit(indent + 1, "verdadero", "List<Sentencia>",node.getVerdadero());
 		visit(indent + 1, "falso", "List<Sentencia>",node.getFalso());
 		return null;
 	}
@@ -351,12 +351,11 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Tipoident {  }
+	//	class Tipoident { String tipo; }
 	public Object visit(Tipoident node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printName(indent, "Tipoident", node, true);
-
+		printCompact(indent, "Tipoident", node, "tipo", node.getTipo());
 		return null;
 	}
 

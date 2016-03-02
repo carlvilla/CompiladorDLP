@@ -109,7 +109,7 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class If { Expresion condic;  List<Sentencia> cierto;  List<Sentencia> falso; }
+	//	class If { Expresion condic;  List<Sentencia> verdadero;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
 
 		// super.visit(node, param);
@@ -117,8 +117,8 @@ public class <nombre clase> extends DefaultVisitor {
 		if (node.getCondic() != null)
 			node.getCondic().accept(this, param);
 
-		if (node.getCierto() != null)
-			for (Sentencia child : node.getCierto())
+		if (node.getVerdadero() != null)
+			for (Sentencia child : node.getVerdadero())
 				child.accept(this, param);
 
 		if (node.getFalso() != null)
@@ -301,7 +301,7 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Tipoident {  }
+	//	class Tipoident { String tipo; }
 	public Object visit(Tipoident node, Object param) {
 		return null;
 	}

@@ -737,7 +737,7 @@ case 12:
 break;
 case 13:
 //#line 45 "sintac.y"
-{yyval = new Tipoident();}
+{yyval = new Tipoident(val_peek(0));}
 break;
 case 14:
 //#line 46 "sintac.y"

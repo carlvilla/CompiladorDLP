@@ -52,11 +52,11 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class If { Expresion condic;  List<Sentencia> cierto;  List<Sentencia> falso; }
+	//	class If { Expresion condic;  List<Sentencia> verdadero;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
 		if (node.getCondic() != null)
 			node.getCondic().accept(this, param);
-		visitChildren(node.getCierto(), param);
+		visitChildren(node.getVerdadero(), param);
 		visitChildren(node.getFalso(), param);
 		return null;
 	}
@@ -181,7 +181,7 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Tipoident {  }
+	//	class Tipoident { String tipo; }
 	public Object visit(Tipoident node, Object param) {
 		return null;
 	}

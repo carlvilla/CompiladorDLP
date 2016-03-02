@@ -42,7 +42,7 @@ parametrosOpt: parametros {$$ = $1;}
 parametros: 'IDENT' ':' tipo {List<Parametro> lista = new ArrayList<Parametro>();lista.add(new Parametro($1,$3));$$ = lista;}
 		 | parametros ',' 'IDENT' ':' tipo {$$ = $1; ((List<Parametro>)$1).add(new Parametro($3,$5));}
 
-tipo: 'IDENT' {$$ = new Tipoident();}
+tipo: 'IDENT' {$$ = new Tipoident($1);}
 	|'INT'	{$$ = new Tipoint();}
 	| 'REAL'	{$$ = new Tiporeal();}
 	| 'CHAR'	{$$ = new Tipochar();}
