@@ -202,7 +202,7 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Litent { String valor; }
+	//	class Litent { int valor; }
 	public Object visit(Litent node, Object param) {
 		return null;
 	}

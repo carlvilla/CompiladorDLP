@@ -236,11 +236,13 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Litent { String valor; }
+	//	class Litent { int valor; }
 	public Object visit(Litent node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printCompact(indent, "Litent", node, "valor", node.getValor());
+		printName(indent, "Litent", node, false);
+
+		print(indent + 1, "valor", "int", node.getValor());
 		return null;
 	}
 

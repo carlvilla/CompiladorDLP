@@ -16,10 +16,10 @@ read:sentencia -> expresion;
 return:sentencia -> expresion;
 print:sentencia -> expresion;
 while:sentencia -> expresion sentencia*;
-invocar:sentencia -> string expresion*;
+invocar:sentencia:expresion -> string expresion*;
 
 expresionBinaria:expresion -> left:expresion string right:expresion;
-litent:expresion -> valor:string;
+litent:expresion -> valor:int;
 litchar:expresion -> valor:string;
 litreal:expresion -> valor:string;
 var:expresion -> nombre:string;

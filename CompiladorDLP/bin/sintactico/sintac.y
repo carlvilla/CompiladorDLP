@@ -22,7 +22,7 @@ import main.*;
 programa: elementos {raiz = new Programa($1);}
 		;
 
-elementos: elemento {List<Elemento> lista = new ArrayList<Elemento>();lista.add((Elemento)$1);$$ = lista;}
+elementos:   {$$ = new ArrayList<Elemento>();}
 		| elementos elemento {$$ = $1; ((List)$1).add($2);}
 		;
 
@@ -31,22 +31,22 @@ elemento: funcion {$$ = $1;}
 		| atributo {$$ = $1;}
 		;
 			
-funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{' sentencias '}' {$$ = new Funcion($1,$2,$3,$4);}
-		| 'IDENT' '(' parametrosOpt ')' '{' sentencias '}' {$$ = new Funcion($1,$2,null,$4);}
+funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{' sentencias '}' {$$ = new Funcion($1,$3,$6,$8);}
+		| 'IDENT' '(' parametrosOpt ')' '{' sentencias '}' {$$ = new Funcion($1,$3,null,$6);}
 		;
 
 parametrosOpt: parametros {$$ = $1;}
-			|
+			|  {$$=null;}
 			;
 	
-parametros: 'IDENT' ':' tipo {$$ = new Parametro($1,$3);}
+parametros: 'IDENT' ':' tipo {List<Parametro> lista = new ArrayList<Parametro>();lista.add(new Parametro($1,$3));$$ = lista;}
 		 | parametros ',' 'IDENT' ':' tipo {$$ = $1; ((List<Parametro>)$1).add(new Parametro($3,$5));}
 
 tipo: 'IDENT' {$$ = new Tipoident();}
 	|'INT'	{$$ = new Tipoint();}
 	| 'REAL'	{$$ = new Tiporeal();}
 	| 'CHAR'	{$$ = new Tipochar();}
-	| '[' 'LITERALINT' ']' tipo	{$$ = new Array($2,$4);}
+	| '[' 'LITERALINT' ']' tipo	{$$ = new Array(new Litent((Integer.valueOf(((Token)$2).getLexeme()))),$4);}
 	;
 	 
 struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';' {$$=new Struct($2,$4);}
@@ -55,8 +55,8 @@ struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';' {$$=new Struct($2,$4);}
 atributo: 'VAR' definicion {$$=new Atributo($2);}
 			;
 
-definiciones: definicion {$$ = $1;}
-			| definiciones  definicion
+definiciones:  {$$ = new ArrayList();}
+			| definiciones  definicion {$$ = $1; ((List)$1).add($2);}
 			;
 			
 definicion: 'IDENT' ':' tipo ';' {$$ = new Definicion($1,$3);}
@@ -78,7 +78,7 @@ sentencia: 'VAR' definicion  {$$ = $2;}
 		| invocacionMetodo ';' {$$ = $1;}
 		;
 		
-expresion: 'LITERALINT' {$$ = new Litent($1);}
+expresion:'LITERALINT' {$$ = new Litent($1);} 
 		| 'LITERALREAL' {$$ = new Litreal($1);}
 		| 'LITERALCHAR' {$$ = new Litchar($1);}
 		| 'IDENT' {$$ = new Var($1);}
@@ -109,7 +109,7 @@ valoresOpt: valores {$$ = $1;}
 		|		{$$ = new ArrayList();}
 		;
 	
-valores: expresion {$$ = $1;}
+valores: expresion {List<Expresion> lista = new ArrayList<Expresion>();lista.add((Expresion)$1);$$ = lista;}
 	 | valores ',' expresion {$$ = $1;((List<Expresion>)$1).add((Expresion)$3);}
 
 				

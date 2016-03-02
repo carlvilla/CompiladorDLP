@@ -2,24 +2,24 @@ package ast;
 
 import visitor.*;
 
-//	litent:expresion -> valor:String ;
+//	litent:expresion -> valor:int ;
 
 public class Litent extends AbstractExpresion {
 
-	public Litent(String valor) {
+	public Litent(int valor) {
 		this.valor = valor;
 	}
 
 	public Litent(Object valor) {
-		this.valor = (valor instanceof Token) ? ((Token)valor).getLexeme() : (String) valor;
+		this.valor = (valor instanceof Token) ? Integer.parseInt(((Token)valor).getLexeme()) : (Integer) valor;
 
 		searchForPositions(valor);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public String getValor() {
+	public int getValor() {
 		return valor;
 	}
-	public void setValor(String valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 
@@ -28,6 +28,6 @@ public class Litent extends AbstractExpresion {
 		return v.visit(this, param);
 	}
 
-	private String valor;
+	private int valor;
 }
 

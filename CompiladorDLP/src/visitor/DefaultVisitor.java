@@ -105,7 +105,7 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Litent { String valor; }
+	//	class Litent { int valor; }
 	public Object visit(Litent node, Object param) {
 		return null;
 	}
