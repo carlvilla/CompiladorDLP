@@ -22,7 +22,7 @@ import main.*;
 programa: elementos {raiz = new Programa($1);}
 		;
 
-elementos: elemento {$$ = new ArrayList<Elemento>().add((Elemento)$1);}
+elementos: elemento {List<Elemento> lista = new ArrayList<Elemento>();lista.add((Elemento)$1);$$ = lista;}
 		| elementos elemento {$$ = $1; ((List)$1).add($2);}
 		;
 

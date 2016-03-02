@@ -693,7 +693,7 @@ case 1:
 break;
 case 2:
 //#line 25 "sintac.y"
-{yyval = new ArrayList<Elemento>().add((Elemento)val_peek(0));}
+{List<Elemento> lista = new ArrayList<Elemento>();lista.add((Elemento)val_peek(0));yyval = lista;}
 break;
 case 3:
 //#line 26 "sintac.y"
