@@ -16,11 +16,12 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Funcion { String string;  List<Parametro> parametro;  Tipo tipo;  List<Sentencia> sentencia; }
+	//	class Funcion { String string;  List<Parametro> parametro;  Tipo tipo;  List<Atributo> atributo;  List<Sentencia> sentencia; }
 	public Object visit(Funcion node, Object param) {
 		visitChildren(node.getParametro(), param);
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
+		visitChildren(node.getAtributo(), param);
 		visitChildren(node.getSentencia(), param);
 		return null;
 	}

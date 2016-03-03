@@ -4,7 +4,7 @@ elemento, sentencia, expresion, tipo
 NODES
 programa -> elemento*;
 
-funcion:elemento -> string parametro* tipo sentencia*;
+funcion:elemento -> string parametro* tipo atributo* sentencia*;
 struct:elemento -> string definicion*;
 atributo:elemento -> definicion;
 
@@ -18,7 +18,7 @@ print:sentencia -> expresion;
 while:sentencia -> expresion sentencia*;
 invocar:sentencia,expresion -> string expresion*;
 
-expresionBinaria:expresion -> left:expresion string right:expresion;
+expresionBinaria:expresion,sentencia -> left:expresion string right:expresion;
 litent:expresion -> valor:int;
 litchar:expresion -> valor:string;
 litreal:expresion -> valor:string;

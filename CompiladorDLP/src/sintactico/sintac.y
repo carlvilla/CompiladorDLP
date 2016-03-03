@@ -31,8 +31,12 @@ elemento: funcion {$$ = $1;}
 		| atributo {$$ = $1;}
 		;
 			
-funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{' sentencias '}' {$$ = new Funcion($1,$3,$6,$8);}
-		| 'IDENT' '(' parametrosOpt ')' '{' sentencias '}' {$$ = new Funcion($1,$3,null,$6);}
+funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{'  atributos sentencias '}' {$$ = new Funcion($1,$3,$6,$8,$9);}
+		| 'IDENT' '(' parametrosOpt ')' '{' atributos sentencias '}' {$$ = new Funcion($1,$3,null,$6,$7);}
+		;
+		
+atributos:	{$$ = new ArrayList<Atributo>();}
+		| atributos atributo {$$ = $1; ((List)$1).add($2);}
 		;
 
 parametrosOpt: parametros {$$ = $1;}
@@ -63,11 +67,10 @@ definicion: 'IDENT' ':' tipo ';' {$$ = new Definicion($1,$3);}
 			;
 			
 sentencias: sentencias sentencia {$$ = $1; ((List)$1).add($2);}
-			|					{$$ = new ArrayList();}
+			|					{$$ = new ArrayList<Sentencia>();}
 			;
 			
-sentencia: 'VAR' definicion  {$$ = $2;}
-		| 'READ' expresion ';' {$$ = new Read($2);}
+sentencia:'READ' expresion ';' {$$ = new Read($2);}
 		| 'PRINT' expresion ';' {$$ = new Print($2);}
 		| 'WHILE' '(' expresion ')' '{' sentencias '}' {$$ = new While($3,$6);}
 		| 'IF' '(' expresion ')' '{' sentencias '}' {$$ = new If($3,$6,null);}

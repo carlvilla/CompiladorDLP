@@ -3,27 +3,29 @@ package ast;
 import java.util.*;
 import visitor.*;
 
-//	funcion:elemento -> string:String  parametro:parametro*  tipo:tipo  sentencia:sentencia* ;
+//	funcion:elemento -> string:String  parametro:parametro*  tipo:tipo  atributo:atributo*  sentencia:sentencia* ;
 
 public class Funcion extends AbstractElemento {
 
-	public Funcion(String string, List<Parametro> parametro, Tipo tipo, List<Sentencia> sentencia) {
+	public Funcion(String string, List<Parametro> parametro, Tipo tipo, List<Atributo> atributo, List<Sentencia> sentencia) {
 		this.string = string;
 		this.parametro = parametro;
 		this.tipo = tipo;
+		this.atributo = atributo;
 		this.sentencia = sentencia;
 
-		searchForPositions(parametro, tipo, sentencia);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(parametro, tipo, atributo, sentencia);	// Obtener linea/columna a partir de los hijos
 	}
 
 	@SuppressWarnings("unchecked")
-	public Funcion(Object string, Object parametro, Object tipo, Object sentencia) {
+	public Funcion(Object string, Object parametro, Object tipo, Object atributo, Object sentencia) {
 		this.string = (string instanceof Token) ? ((Token)string).getLexeme() : (String) string;
 		this.parametro = (List<Parametro>) parametro;
 		this.tipo = (Tipo) tipo;
+		this.atributo = (List<Atributo>) atributo;
 		this.sentencia = (List<Sentencia>) sentencia;
 
-		searchForPositions(string, parametro, tipo, sentencia);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(string, parametro, tipo, atributo, sentencia);	// Obtener linea/columna a partir de los hijos
 	}
 
 	public String getString() {
@@ -47,6 +49,13 @@ public class Funcion extends AbstractElemento {
 		this.tipo = tipo;
 	}
 
+	public List<Atributo> getAtributo() {
+		return atributo;
+	}
+	public void setAtributo(List<Atributo> atributo) {
+		this.atributo = atributo;
+	}
+
 	public List<Sentencia> getSentencia() {
 		return sentencia;
 	}
@@ -62,6 +71,7 @@ public class Funcion extends AbstractElemento {
 	private String string;
 	private List<Parametro> parametro;
 	private Tipo tipo;
+	private List<Atributo> atributo;
 	private List<Sentencia> sentencia;
 }
 

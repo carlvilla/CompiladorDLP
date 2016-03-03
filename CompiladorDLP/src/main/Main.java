@@ -50,6 +50,10 @@ public class Main {
 		AST raiz = sintáctico.getAST();
 		if (raiz == null) // Hay errores o el AST no se ha implementado aún
 			return null;
+		
+		//Visitor
+		Visitor visitor = new PrintVisitor();
+		visitor.visit((Programa)raiz, null);
 
 		// 2. Fase de Análisis Semántico
 		AnalisisSemantico semántico = new AnalisisSemantico(gestor);
