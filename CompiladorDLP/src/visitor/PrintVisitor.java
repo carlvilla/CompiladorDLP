@@ -134,6 +134,7 @@ public class PrintVisitor extends DefaultVisitor {
 	public Object visit(If node, Object param) {
 
 		// super.visit(node, param);
+		System.out.println("if(");
 
 		if (node.getCondic() != null)
 			node.getCondic().accept(this, param);
