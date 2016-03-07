@@ -91,9 +91,10 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Invocar { String string;  List<Expresion> expresion; }
-	public Object visit(Invocar node, Object param) {
-		visitChildren(node.getExpresion(), param);
+	//	class InvocarSentencia { Invocar invocar; }
+	public Object visit(InvocarSentencia node, Object param) {
+		if (node.getInvocar() != null)
+			node.getInvocar().accept(this, param);
 		return null;
 	}
 
@@ -155,6 +156,19 @@ public class DefaultVisitor implements Visitor {
 	public Object visit(AccesoStruct node, Object param) {
 		if (node.getContenedor() != null)
 			node.getContenedor().accept(this, param);
+		return null;
+	}
+
+	//	class EntreParentesis { Expresion contenido; }
+	public Object visit(EntreParentesis node, Object param) {
+		if (node.getContenido() != null)
+			node.getContenido().accept(this, param);
+		return null;
+	}
+
+	//	class Invocar { String string;  List<Expresion> expresion; }
+	public Object visit(Invocar node, Object param) {
+		visitChildren(node.getExpresion(), param);
 		return null;
 	}
 

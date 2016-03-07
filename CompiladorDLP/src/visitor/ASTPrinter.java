@@ -214,14 +214,13 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Invocar { String string;  List<Expresion> expresion; }
-	public Object visit(Invocar node, Object param) {
+	//	class InvocarSentencia { Invocar invocar; }
+	public Object visit(InvocarSentencia node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printName(indent, "Invocar", node, false);
+		printName(indent, "InvocarSentencia", node, false);
 
-		print(indent + 1, "string", "String", node.getString());
-		visit(indent + 1, "expresion", "List<Expresion>",node.getExpresion());
+		visit(indent + 1, "invocar", "Invocar",node.getInvocar());
 		return null;
 	}
 
@@ -311,6 +310,27 @@ public class ASTPrinter extends DefaultVisitor {
 
 		visit(indent + 1, "contenedor", "Expresion",node.getContenedor());
 		print(indent + 1, "atributo", "String", node.getAtributo());
+		return null;
+	}
+
+	//	class EntreParentesis { Expresion contenido; }
+	public Object visit(EntreParentesis node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "EntreParentesis", node, false);
+
+		visit(indent + 1, "contenido", "Expresion",node.getContenido());
+		return null;
+	}
+
+	//	class Invocar { String string;  List<Expresion> expresion; }
+	public Object visit(Invocar node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "Invocar", node, false);
+
+		print(indent + 1, "string", "String", node.getString());
+		visit(indent + 1, "expresion", "List<Expresion>",node.getExpresion());
 		return null;
 	}
 

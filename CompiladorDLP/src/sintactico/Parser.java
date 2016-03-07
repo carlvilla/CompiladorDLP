@@ -834,7 +834,7 @@ case 34:
 break;
 case 35:
 //#line 81 "sintac.y"
-{yyval = val_peek(1);}
+{yyval = new InvocarSentencia(val_peek(1));}
 break;
 case 36:
 //#line 84 "sintac.y"
@@ -910,7 +910,7 @@ case 53:
 break;
 case 54:
 //#line 102 "sintac.y"
-{yyval = val_peek(1);}
+{yyval = new EntreParentesis(val_peek(1));}
 break;
 case 55:
 //#line 103 "sintac.y"

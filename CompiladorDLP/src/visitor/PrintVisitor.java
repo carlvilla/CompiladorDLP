@@ -52,9 +52,16 @@ public class PrintVisitor extends DefaultVisitor {
 		
 		System.out.print(node.getString()+"(");
 
-		if (node.getParametro() != null)
-			for (Parametro child : node.getParametro())
-				child.accept(this, param);
+		if (node.getParametro() != null){
+			int size = node.getParametro().size();
+			for (int i=0;i<size;i++){
+				node.getParametro().get(i).accept(this, param);
+				if(size > 1 && i < size - 1){
+					System.out.print(",");
+				}
+				
+			}
+		}
 		
 		System.out.print(")");
 
@@ -66,14 +73,16 @@ public class PrintVisitor extends DefaultVisitor {
 		System.out.println("{");
 		
 		if (node.getAtributo() != null)
-			for (Atributo child : node.getAtributo())
+			for (Atributo child : node.getAtributo()){
 				child.accept(this, param);
+			}
+				
 		
 
 		if (node.getSentencia() != null)
-			for (Sentencia child : node.getSentencia())
+			for (Sentencia child : node.getSentencia()){
 				child.accept(this, param);
-		
+			}
 		System.out.println("}");
 
 		return null;
@@ -87,8 +96,9 @@ public class PrintVisitor extends DefaultVisitor {
 		System.out.println("struct "+node.getString()+" {");
 
 		if (node.getDefinicion() != null)
-			for (Definicion child : node.getDefinicion())
+			for (Definicion child : node.getDefinicion()){
 				child.accept(this, param);
+			}
 		
 		System.out.println("};");
 
@@ -139,7 +149,7 @@ public class PrintVisitor extends DefaultVisitor {
 	public Object visit(If node, Object param) {
 
 		// super.visit(node, param);
-		System.out.println("if(");
+		System.out.print("if(");
 
 		if (node.getCondic() != null)
 			node.getCondic().accept(this, param);
@@ -147,16 +157,21 @@ public class PrintVisitor extends DefaultVisitor {
 		System.out.println("){");
 
 		if (node.getVerdadero() != null)
-			for (Sentencia child : node.getVerdadero())
+			for (Sentencia child : node.getVerdadero()){
 				child.accept(this, param);
-		
-		System.out.println("} else {");
-
-		if (node.getFalso() != null)
-			for (Sentencia child : node.getFalso())
-				child.accept(this, param);
+			}
 		
 		System.out.println("}");
+		
+		if (node.getFalso() != null){
+			System.out.println("else {");
+			for (Sentencia child : node.getFalso()){
+				child.accept(this, param);
+			}
+		
+		System.out.println("}");
+		
+		}
 
 		return null;
 	}
@@ -165,10 +180,12 @@ public class PrintVisitor extends DefaultVisitor {
 	public Object visit(Read node, Object param) {
 
 		// super.visit(node, param);
-		System.out.print("Read ");
+		System.out.print("read ");
 
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
+		
+		System.out.println(";");
 
 		return null;
 	}
@@ -183,7 +200,6 @@ public class PrintVisitor extends DefaultVisitor {
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 
-		
 		System.out.println(";");
 		
 		return null;
@@ -194,12 +210,13 @@ public class PrintVisitor extends DefaultVisitor {
 
 		// super.visit(node, param);
 		
-		System.out.println("Print ");
+		System.out.print("print ");
 
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 		
 		System.out.println(";");
+		
 
 		return null;
 	}
@@ -214,11 +231,12 @@ public class PrintVisitor extends DefaultVisitor {
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 		
-		System.out.print("){");
+		System.out.println("){");
 
 		if (node.getSentencia() != null)
-			for (Sentencia child : node.getSentencia())
+			for (Sentencia child : node.getSentencia()){
 				child.accept(this, param);
+			}
 		
 		System.out.println("}");
 
@@ -235,7 +253,20 @@ public class PrintVisitor extends DefaultVisitor {
 			for (Expresion child : node.getExpresion())
 				child.accept(this, param);
 		
-		System.out.println(");");
+		System.out.print(")");
+
+		return null;
+	}
+	
+	//	class InvocarSentencia { Invocar invocar; }
+	public Object visit(InvocarSentencia node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getInvocar() != null)
+			node.getInvocar().accept(this, param);
+		
+		System.out.println(";");
 
 		return null;
 	}
@@ -252,6 +283,11 @@ public class PrintVisitor extends DefaultVisitor {
 
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
+		
+		if(node.getString().equals("=")){
+			System.out.println(";");
+		}
+		
 
 		return null;
 	}
@@ -295,7 +331,7 @@ public class PrintVisitor extends DefaultVisitor {
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 		
-		System.out.println(");");
+		System.out.print(")");
 
 		return null;
 	}
@@ -383,6 +419,19 @@ public class PrintVisitor extends DefaultVisitor {
 	//	class Tipoident { String tipo; }
 	public Object visit(Tipoident node, Object param) {
 		System.out.print(node.getTipo());
+		return null;
+	}
+	
+	//	class EntreParentesis { Expresion contenido; }
+	public Object visit(EntreParentesis node, Object param) {
+
+		System.out.print("(");
+
+		if (node.getContenido() != null)
+			node.getContenido().accept(this, param);
+		
+		System.out.print(")");
+
 		return null;
 	}
 }

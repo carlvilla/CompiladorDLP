@@ -16,7 +16,7 @@ read:sentencia -> expresion;
 return:sentencia -> expresion;
 print:sentencia -> expresion;
 while:sentencia -> expresion sentencia*;
-invocar:sentencia,expresion -> string expresion*;
+invocarSentencia:sentencia -> invocar;
 
 expresionBinaria:expresion,sentencia -> left:expresion string right:expresion;
 litent:expresion -> valor:int;
@@ -27,6 +27,9 @@ cast:expresion -> tipo expresion;
 expresionUnaria:expresion -> expresion;
 accesoArray:expresion -> contenedor:expresion posicion:expresion;
 accesoStruct:expresion -> contenedor:expresion atributo:string;
+entreParentesis:expresion -> contenido:expresion;
+
+invocar:sentencia,expresion -> string expresion*;
 
 array:tipo -> litent tipo;
 tipoint:tipo -> ;

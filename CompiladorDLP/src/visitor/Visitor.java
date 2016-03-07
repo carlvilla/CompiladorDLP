@@ -14,7 +14,7 @@ public interface Visitor {
 	public Object visit(Return node, Object param);
 	public Object visit(Print node, Object param);
 	public Object visit(While node, Object param);
-	public Object visit(Invocar node, Object param);
+	public Object visit(InvocarSentencia node, Object param);
 	public Object visit(ExpresionBinaria node, Object param);
 	public Object visit(Litent node, Object param);
 	public Object visit(Litchar node, Object param);
@@ -24,6 +24,8 @@ public interface Visitor {
 	public Object visit(ExpresionUnaria node, Object param);
 	public Object visit(AccesoArray node, Object param);
 	public Object visit(AccesoStruct node, Object param);
+	public Object visit(EntreParentesis node, Object param);
+	public Object visit(Invocar node, Object param);
 	public Object visit(Array node, Object param);
 	public Object visit(Tipoint node, Object param);
 	public Object visit(Tiporeal node, Object param);
