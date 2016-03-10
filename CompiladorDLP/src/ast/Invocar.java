@@ -43,5 +43,16 @@ public class Invocar extends AbstractTraceable implements Sentencia, Expresion {
 
 	private String string;
 	private List<Expresion> expresion;
+	
+	public void setDefinicion(Funcion definicion) {
+		this.defFuncion = definicion;
+	
+	}
+	
+	public Funcion getDefinicion() {
+		return defFuncion;
+	}
+	
+	Funcion defFuncion;
 }
 

@@ -20,9 +20,54 @@ public class Identificacion extends DefaultVisitor {
 	 * Si se ha usado VGen solo hay que copiarlos de la clase 'visitor/_PlantillaParaVisitors.txt'.
 	 */
 
-	// public Object visit(Programa prog, Object param) {
-	// ...
-	// }
+	//Funciones
+	
+	 public Object visit(Funcion funcion, Object param) {
+			 
+		Funcion definicion = funciones.get(funcion.getString());
+		predicado(definicion == null, "Funcion ya definida: " + funcion.getString(), funcion.getStart());
+		funciones.put(funcion.getString(),funcion);
+		
+		super.visit(funcion, param);
+		 
+		 return null;
+	 }
+	 
+	 public Object visit(Invocar invocar, Object param) {
+				
+		Funcion definicion = funciones.get(invocar.getString());
+		predicado(definicion != null, "Funcion no definida: " + invocar.getString(), invocar.getStart());
+		invocar.setDefinicion(definicion); // Enlazar referencia con definición
+		
+		super.visit(invocar, param);
+			 
+		return null;
+	}
+	 
+	 //Structs
+	 
+	 public Object visit(Struct struct, Object param) {
+			
+		Struct definicion = structs.get(struct.getString());
+		predicado(definicion == null, "Struct ya definido: " + struct.getString(), struct.getStart());
+		structs.put(struct.getString(),struct);
+		
+		super.visit(struct, param);
+		 
+		 return null;
+	 }
+	 
+	 public Object visit(Tipoident identStruct, Object param) {
+				
+		Struct definicion = structs.get(identStruct.getTipo());
+		predicado(definicion != null, "Struct no definido: " + identStruct.getTipo(),identStruct.getStart());
+		identStruct.setDefinicion(definicion); // Enlazar referencia con definición
+		
+		return null;
+	}
+	 
+	 
+	 //Variables
 
 	
 	
@@ -49,4 +94,8 @@ public class Identificacion extends DefaultVisitor {
 
 
 	private GestorErrores gestorErrores;
+	
+	private Map<String, Funcion> funciones = new HashMap<String, Funcion>();
+	private Map<String, Struct> structs = new HashMap<String, Struct>();
+
 }

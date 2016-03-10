@@ -1,0 +1,33 @@
+//7 Errores
+struct Punto {
+	x:int;
+	y:int;
+};
+var b:int;
+
+main() {
+	d = b;
+	f(8);
+}
+
+var p:int;
+
+f(p:int) {
+	var p:int;
+}
+
+struct Punto {
+	x:float;
+	y:float;
+};
+
+struct Persona {
+	a: [20]Empresa;
+};
+
+
+f():float {
+
+}
+
+var b:char;

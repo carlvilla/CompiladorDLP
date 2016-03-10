@@ -14,6 +14,8 @@ import java.util.*;
  */
 public class ContextMap<S, D> {
 
+	//Esta clase se utiliza solo para las variables
+	
 	public ContextMap() {
 		set();
 	}
@@ -22,6 +24,7 @@ public class ContextMap<S, D> {
 		contextos.peek().put(nombre, def);
 	}
 
+	//Para las definiciones locales
 	public D getFromTop(S nombre) {
 		return contextos.peek().get(nombre);
 	}

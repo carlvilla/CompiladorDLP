@@ -29,5 +29,17 @@ public class Tipoident extends AbstractTipo {
 	}
 
 	private String tipo;
+
+	public void setDefinicion(Struct definicion) {
+		this.definicion = definicion;
+	}
+	
+	public Struct getDefinicion(){
+		return definicion;
+	}
+	
+	Struct definicion;
+	
+	
 }
 
