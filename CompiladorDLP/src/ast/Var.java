@@ -29,5 +29,19 @@ public class Var extends AbstractExpresion {
 	}
 
 	private String nombre;
+
+	public void setDefinicion(Definicion definicion) {
+		this.definicion = definicion;
+	}
+	
+	public Definicion getDefinicion() {
+		return definicion;		
+	}
+
+	Definicion definicion;
+
 }
+
+
+
 

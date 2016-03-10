@@ -24,13 +24,17 @@ public class Identificacion extends DefaultVisitor {
 	
 	 public Object visit(Funcion funcion, Object param) {
 			 
+		variables.set();
+		
 		Funcion definicion = funciones.get(funcion.getString());
 		predicado(definicion == null, "Funcion ya definida: " + funcion.getString(), funcion.getStart());
 		funciones.put(funcion.getString(),funcion);
 		
 		super.visit(funcion, param);
 		 
-		 return null;
+		variables.reset();
+		
+		return null;
 	 }
 	 
 	 public Object visit(Invocar invocar, Object param) {
@@ -47,6 +51,8 @@ public class Identificacion extends DefaultVisitor {
 	 //Structs
 	 
 	 public Object visit(Struct struct, Object param) {
+		 
+		variables.set();
 			
 		Struct definicion = structs.get(struct.getString());
 		predicado(definicion == null, "Struct ya definido: " + struct.getString(), struct.getStart());
@@ -54,6 +60,8 @@ public class Identificacion extends DefaultVisitor {
 		
 		super.visit(struct, param);
 		 
+		variables.reset();
+		
 		 return null;
 	 }
 	 
@@ -63,13 +71,48 @@ public class Identificacion extends DefaultVisitor {
 		predicado(definicion != null, "Struct no definido: " + identStruct.getTipo(),identStruct.getStart());
 		identStruct.setDefinicion(definicion); // Enlazar referencia con definición
 		
+		super.visit(identStruct, param);
+		
 		return null;
 	}
 	 
 	 
 	 //Variables
+	 
+		public Object visit(Definicion node, Object param) {
+			Definicion definicion = (Definicion) variables.getFromTop(node.getNombre());
+			predicado(definicion == null, "Variable ya definida: " + node.getNombre(), node.getStart());
+			variables.put(node.getNombre(), node);
+			
+			super.visit(node, param);
+			
+			return null;
+		}
 
-	
+
+		public Object visit(Var variable, Object param) {
+			Definicion definicion = (Definicion) variables.getFromAny(variable.getNombre());
+			predicado(definicion != null, "Variable no definida: " + variable.getNombre(), variable.getStart());
+			variable.setDefinicion(definicion); // Enlazar referencia con definición
+			return null;
+		}
+		
+	//Parametros
+		
+		//	class Parametro { String string;  Tipo tipo; }
+		public Object visit(Parametro node, Object param) {
+
+			Definicion definicionPar = new Definicion(node.getString(),node.getTipo());
+			Definicion definicion = (Definicion) variables.getFromTop(node.getString());
+			
+			predicado(definicion==null,"Parámetro ya definido: "+ node.getString(), node.getStart());
+			variables.put(node.getString(), definicionPar);
+			
+			super.visit(node, param);
+			
+			return null;
+		}
+
 	
 	
 	
@@ -97,5 +140,6 @@ public class Identificacion extends DefaultVisitor {
 	
 	private Map<String, Funcion> funciones = new HashMap<String, Funcion>();
 	private Map<String, Struct> structs = new HashMap<String, Struct>();
+	ContextMap variables = new ContextMap();
 
 }
