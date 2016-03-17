@@ -64,7 +64,7 @@ else	{ return Parser.ELSE;}
 '[a-zA-Z0-9_Ò—]' | '\\n' 	{return Parser.LITERALCHAR;}
 [a-zA-ZÒ—][a-zA-Z0-9_Ò—]*	{ return Parser.IDENT; }
 [0-9]+						{ return Parser.LITERALINT; }
-[0-9]+"."[0-9]*				{ return Parser.LITERALREAL; }
+[0-9]+"."[0-9]+				{ return Parser.LITERALREAL; }
 
 
 /* -- Se aconseja dejar estas reglas al final ----------------------------------------------- */
