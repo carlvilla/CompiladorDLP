@@ -31,4 +31,5 @@ public interface Visitor {
 	public Object visit(Tiporeal node, Object param);
 	public Object visit(Tipochar node, Object param);
 	public Object visit(Tipoident node, Object param);
+	public Object visit(ExpresionLogica expresionLogica, Object param);
 }

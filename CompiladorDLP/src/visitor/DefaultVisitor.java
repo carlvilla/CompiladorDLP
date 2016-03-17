@@ -75,6 +75,15 @@ public class DefaultVisitor implements Visitor {
 			node.getExpresion().accept(this, param);
 		return null;
 	}
+	
+	//	class ExpresionLogica { Expresion left;  String string;  Expresion right; }
+	public Object visit(ExpresionLogica node, Object param) {
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		if (node.getRight() != null)
+			node.getRight().accept(this, param);
+		return null;
+	}
 
 	//	class Print { Expresion expresion; }
 	public Object visit(Print node, Object param) {

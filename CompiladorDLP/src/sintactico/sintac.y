@@ -95,8 +95,8 @@ expresion:'LITERALINT' {$$ = new Litent($1);}
 		| expresion 'MAYORIGUAL' expresion {$$ = new ExpresionBinaria($1,">=",$3);}
 		| expresion 'IGUAL' expresion {$$ = new ExpresionBinaria($1,"==",$3);}
 		| expresion 'DISTINTO' expresion {$$ = new ExpresionBinaria($1,"!=",$3);}
-		| expresion 'AND' expresion {$$ = new ExpresionBinaria($1,"&&",$3);}
-		| expresion 'OR' expresion {$$ = new ExpresionBinaria($1,"||",$3);}
+		| expresion 'AND' expresion {$$ = new ExpresionLogica($1,"&&",$3);}
+		| expresion 'OR' expresion {$$ = new ExpresionLogica($1,"||",$3);}
 		| '!' expresion {$$ = new ExpresionUnaria($2);}
 		| 'CAST' '<' tipo '>' '(' expresion ')' {$$=new Cast($3,$6);}
 		| '(' expresion ')' {$$ = new EntreParentesis($2);}

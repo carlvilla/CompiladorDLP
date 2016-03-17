@@ -894,11 +894,11 @@ case 49:
 break;
 case 50:
 //#line 98 "sintac.y"
-{yyval = new ExpresionBinaria(val_peek(2),"&&",val_peek(0));}
+{yyval = new ExpresionLogica(val_peek(2),"&&",val_peek(0));}
 break;
 case 51:
 //#line 99 "sintac.y"
-{yyval = new ExpresionBinaria(val_peek(2),"||",val_peek(0));}
+{yyval = new ExpresionLogica(val_peek(2),"||",val_peek(0));}
 break;
 case 52:
 //#line 100 "sintac.y"

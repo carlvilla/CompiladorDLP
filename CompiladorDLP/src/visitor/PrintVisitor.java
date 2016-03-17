@@ -291,6 +291,22 @@ public class PrintVisitor extends DefaultVisitor {
 
 		return null;
 	}
+	
+	//	class ExpresionLogica { Expresion left;  String string;  Expresion right; }
+	public Object visit(ExpresionLogica node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+
+		System.out.print(" "+node.getString()+" ");
+		
+		if (node.getRight() != null)
+			node.getRight().accept(this, param);
+
+		return null;
+	}
 
 	//	class Litent { int valor; }
 	public Object visit(Litent node, Object param) {

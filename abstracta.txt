@@ -25,6 +25,7 @@ litreal:expresion -> valor:string;
 var:expresion -> nombre:string;
 cast:expresion -> tipo expresion;
 expresionUnaria:expresion -> expresion;
+expresionLogica:expresion -> left:expresion string right:expresion;
 accesoArray:expresion -> contenedor:expresion posicion:expresion;
 accesoStruct:expresion -> contenedor:expresion atributo:string;
 entreParentesis:expresion -> contenido:expresion;
