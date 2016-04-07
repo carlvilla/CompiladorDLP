@@ -22,14 +22,14 @@ public interface Visitor {
 	public Object visit(Var node, Object param);
 	public Object visit(Cast node, Object param);
 	public Object visit(ExpresionUnaria node, Object param);
+	public Object visit(ExpresionLogica node, Object param);
 	public Object visit(AccesoArray node, Object param);
 	public Object visit(AccesoStruct node, Object param);
 	public Object visit(EntreParentesis node, Object param);
-	public Object visit(Invocar node, Object param);
+	public Object visit(InvocarFuncion node, Object param);
 	public Object visit(Array node, Object param);
 	public Object visit(Tipoint node, Object param);
 	public Object visit(Tiporeal node, Object param);
 	public Object visit(Tipochar node, Object param);
 	public Object visit(Tipoident node, Object param);
-	public Object visit(ExpresionLogica expresionLogica, Object param);
 }

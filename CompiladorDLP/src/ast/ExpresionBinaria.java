@@ -51,5 +51,15 @@ public class ExpresionBinaria extends AbstractTraceable implements Expresion, Se
 	private Expresion left;
 	private String string;
 	private Expresion right;
+	
+	private Tipo tipo;
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 }
 

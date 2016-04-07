@@ -78,7 +78,7 @@ sentencia:'READ' expresion ';' {$$ = new Read($2);}
 		|  expresion '=' expresion ';' {$$ = new ExpresionBinaria($1,"=",$3);}
 		| 'RETURN' expresion ';' {$$ = new Return($2);}
 		| 'RETURN' ';' {$$ = new Return(null);}
-		| invocacionMetodo ';' {$$ = new InvocarSentencia($1);}
+		| 'IDENT' '(' valoresOpt ')' ';' {$$ = new InvocarSentencia($1,$3);}
 		;
 		
 expresion:'LITERALINT' {$$ = new Litent($1);} 
@@ -102,12 +102,9 @@ expresion:'LITERALINT' {$$ = new Litent($1);}
 		| '(' expresion ')' {$$ = new EntreParentesis($2);}
 		| expresion '[' expresion ']' {$$ = new AccesoArray($1,$3);}
 		| expresion '.' 'IDENT' {$$ = new AccesoStruct($1,$3);}
-		| invocacionMetodo {$$ = $1;}
+		| 'IDENT' '(' valoresOpt ')' {$$ = new InvocarFuncion($1,$3);}
 		;
 		
-invocacionMetodo: 'IDENT' '(' valoresOpt ')' {$$ = new Invocar($1,$3);}
-
-
 valoresOpt: valores {$$ = $1;}
 		|		{$$ = new ArrayList();}
 		;

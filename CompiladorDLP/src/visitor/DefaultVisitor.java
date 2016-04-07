@@ -75,15 +75,6 @@ public class DefaultVisitor implements Visitor {
 			node.getExpresion().accept(this, param);
 		return null;
 	}
-	
-	//	class ExpresionLogica { Expresion left;  String string;  Expresion right; }
-	public Object visit(ExpresionLogica node, Object param) {
-		if (node.getLeft() != null)
-			node.getLeft().accept(this, param);
-		if (node.getRight() != null)
-			node.getRight().accept(this, param);
-		return null;
-	}
 
 	//	class Print { Expresion expresion; }
 	public Object visit(Print node, Object param) {
@@ -100,10 +91,9 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class InvocarSentencia { Invocar invocar; }
+	//	class InvocarSentencia { String string;  List<Expresion> expresion; }
 	public Object visit(InvocarSentencia node, Object param) {
-		if (node.getInvocar() != null)
-			node.getInvocar().accept(this, param);
+		visitChildren(node.getExpresion(), param);
 		return null;
 	}
 
@@ -152,6 +142,15 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class ExpresionLogica { Expresion left;  String string;  Expresion right; }
+	public Object visit(ExpresionLogica node, Object param) {
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		if (node.getRight() != null)
+			node.getRight().accept(this, param);
+		return null;
+	}
+
 	//	class AccesoArray { Expresion contenedor;  Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
 		if (node.getContenedor() != null)
@@ -175,8 +174,8 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Invocar { String string;  List<Expresion> expresion; }
-	public Object visit(Invocar node, Object param) {
+	//	class InvocarFuncion { String string;  List<Expresion> expresion; }
+	public Object visit(InvocarFuncion node, Object param) {
 		visitChildren(node.getExpresion(), param);
 		return null;
 	}

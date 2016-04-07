@@ -37,17 +37,49 @@ public class Identificacion extends DefaultVisitor {
 		return null;
 	 }
 	 
-	 public Object visit(Invocar invocar, Object param) {
-				
-		Funcion definicion = funciones.get(invocar.getString());
-		predicado(definicion != null, "Funcion no definida: " + invocar.getString(), invocar.getStart());
-		invocar.setDefinicion(definicion); // Enlazar referencia con definición
-		
-		super.visit(invocar, param);
-			 
-		return null;
-	}
+		 
 	 
+		//	class InvocarSentencia { String string;  List<Expresion> expresion; }
+		public Object visit(InvocarSentencia node, Object param) {
+
+			// super.visit(node, param);
+			
+			Funcion definicion = funciones.get(node.getString());
+
+			predicado(definicion != null, "Funcion no definida: " + node.getString(), node.getStart());
+			node.setDefinicion(definicion); // Enlazar referencia con definición
+			
+			
+			if (node.getExpresion() != null)
+				for (Expresion child : node.getExpresion())
+					child.accept(this, param);
+
+			return null;
+		}
+	 
+	 
+	 
+	 
+	 
+//		class InvocarFuncion { String string;  List<Expresion> expresion; }
+		public Object visit(InvocarFuncion node, Object param) {
+
+			// super.visit(node, param);
+			
+			Funcion definicion = funciones.get(node.getString());
+			
+			predicado(definicion != null, "Funcion no definida: " + node.getString(), node.getStart());
+			node.setDefinicion(definicion); // Enlazar referencia con definición
+
+			if (node.getExpresion() != null)
+				for (Expresion child : node.getExpresion())
+					child.accept(this, param);
+
+			return null;
+		}
+
+	 
+
 	 //Structs
 	 
 	 public Object visit(Struct struct, Object param) {

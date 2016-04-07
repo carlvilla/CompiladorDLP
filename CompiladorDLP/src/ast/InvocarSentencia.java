@@ -1,28 +1,39 @@
 package ast;
 
+import java.util.*;
 import visitor.*;
 
-//	invocarSentencia:sentencia -> invocar:invocar ;
+//	invocarSentencia:sentencia -> string:String  expresion:expresion* ;
 
 public class InvocarSentencia extends AbstractSentencia {
 
-	public InvocarSentencia(Invocar invocar) {
-		this.invocar = invocar;
+	public InvocarSentencia(String string, List<Expresion> expresion) {
+		this.string = string;
+		this.expresion = expresion;
 
-		searchForPositions(invocar);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(expresion);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public InvocarSentencia(Object invocar) {
-		this.invocar = (Invocar) invocar;
+	@SuppressWarnings("unchecked")
+	public InvocarSentencia(Object string, Object expresion) {
+		this.string = (string instanceof Token) ? ((Token)string).getLexeme() : (String) string;
+		this.expresion = (List<Expresion>) expresion;
 
-		searchForPositions(invocar);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(string, expresion);	// Obtener linea/columna a partir de los hijos
 	}
 
-	public Invocar getInvocar() {
-		return invocar;
+	public String getString() {
+		return string;
 	}
-	public void setInvocar(Invocar invocar) {
-		this.invocar = invocar;
+	public void setString(String string) {
+		this.string = string;
+	}
+
+	public List<Expresion> getExpresion() {
+		return expresion;
+	}
+	public void setExpresion(List<Expresion> expresion) {
+		this.expresion = expresion;
 	}
 
 	@Override
@@ -30,6 +41,19 @@ public class InvocarSentencia extends AbstractSentencia {
 		return v.visit(this, param);
 	}
 
-	private Invocar invocar;
+	private String string;
+	private List<Expresion> expresion;
+	
+	
+	public void setDefinicion(Funcion definicion) {
+		this.defFuncion = definicion;
+	
+	}
+	
+	public Funcion getDefinicion() {
+		return defFuncion;
+	}
+	
+	Funcion defFuncion;
 }
 

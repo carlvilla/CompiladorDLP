@@ -180,13 +180,14 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class InvocarSentencia { Invocar invocar; }
+	//	class InvocarSentencia { String string;  List<Expresion> expresion; }
 	public Object visit(InvocarSentencia node, Object param) {
 
 		// super.visit(node, param);
 
-		if (node.getInvocar() != null)
-			node.getInvocar().accept(this, param);
+		if (node.getExpresion() != null)
+			for (Expresion child : node.getExpresion())
+				child.accept(this, param);
 
 		return null;
 	}
@@ -300,8 +301,8 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Invocar { String string;  List<Expresion> expresion; }
-	public Object visit(Invocar node, Object param) {
+	//	class InvocarFuncion { String string;  List<Expresion> expresion; }
+	public Object visit(InvocarFuncion node, Object param) {
 
 		// super.visit(node, param);
 

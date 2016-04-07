@@ -214,13 +214,14 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class InvocarSentencia { Invocar invocar; }
+	//	class InvocarSentencia { String string;  List<Expresion> expresion; }
 	public Object visit(InvocarSentencia node, Object param) {
 		int indent = ((Integer)param).intValue();
 
 		printName(indent, "InvocarSentencia", node, false);
 
-		visit(indent + 1, "invocar", "Invocar",node.getInvocar());
+		print(indent + 1, "string", "String", node.getString());
+		visit(indent + 1, "expresion", "List<Expresion>",node.getExpresion());
 		return null;
 	}
 
@@ -291,6 +292,18 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
+	//	class ExpresionLogica { Expresion left;  String string;  Expresion right; }
+	public Object visit(ExpresionLogica node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "ExpresionLogica", node, false);
+
+		visit(indent + 1, "left", "Expresion",node.getLeft());
+		print(indent + 1, "string", "String", node.getString());
+		visit(indent + 1, "right", "Expresion",node.getRight());
+		return null;
+	}
+
 	//	class AccesoArray { Expresion contenedor;  Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
 		int indent = ((Integer)param).intValue();
@@ -323,11 +336,11 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Invocar { String string;  List<Expresion> expresion; }
-	public Object visit(Invocar node, Object param) {
+	//	class InvocarFuncion { String string;  List<Expresion> expresion; }
+	public Object visit(InvocarFuncion node, Object param) {
 		int indent = ((Integer)param).intValue();
 
-		printName(indent, "Invocar", node, false);
+		printName(indent, "InvocarFuncion", node, false);
 
 		print(indent + 1, "string", "String", node.getString());
 		visit(indent + 1, "expresion", "List<Expresion>",node.getExpresion());
