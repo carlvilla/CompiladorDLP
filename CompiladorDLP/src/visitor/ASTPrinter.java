@@ -367,6 +367,15 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
+	//	class Tipovoid {  }
+	public Object visit(Tipovoid node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "Tipovoid", node, true);
+
+		return null;
+	}
+
 	//	class Tiporeal {  }
 	public Object visit(Tiporeal node, Object param) {
 		int indent = ((Integer)param).intValue();

@@ -44,6 +44,7 @@ import ast.Position;
 print	{ return Parser.PRINT; }
 read	{ return Parser.READ; }
 int		{ return Parser.INT; }
+void	{ return Parser.VOID; }
 float	{ return Parser.REAL; }
 char	{ return Parser.CHAR; }
 return	{ return Parser.RETURN; }

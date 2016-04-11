@@ -446,12 +446,19 @@ public class PrintVisitor extends DefaultVisitor {
 		System.out.print("char");
 		return null;
 	}
+	
+	// class Tipochar { }
+	public Object visit(Tipovoid node, Object param) {
+		System.out.print("void");
+		return null;
+	}
 
 	// class Tipoident { String tipo; }
 	public Object visit(Tipoident node, Object param) {
 		System.out.print(node.getTipo());
 		return null;
 	}
+	
 
 	// class EntreParentesis { Expresion contenido; }
 	public Object visit(EntreParentesis node, Object param) {

@@ -194,6 +194,11 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class Tipovoid {  }
+	public Object visit(Tipovoid node, Object param) {
+		return null;
+	}
+
 	//	class Tiporeal {  }
 	public Object visit(Tiporeal node, Object param) {
 		return null;

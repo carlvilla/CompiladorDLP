@@ -50,6 +50,7 @@ tipo: 'IDENT' {$$ = new Tipoident($1);}
 	|'INT'	{$$ = new Tipoint();}
 	| 'REAL'	{$$ = new Tiporeal();}
 	| 'CHAR'	{$$ = new Tipochar();}
+	| 'VOID'	{$$ = new Tipovoid();}
 	| '[' 'LITERALINT' ']' tipo	{$$ = new Array(new Litent((Integer.valueOf(((Token)$2).getLexeme()))),$4);}
 	;
 	 

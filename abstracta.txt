@@ -33,6 +33,7 @@ invocarFuncion:expresion -> string expresion*;
 
 array:tipo -> litent tipo;
 tipoint:tipo -> ;
+tipovoid:tipo -> ;
 tiporeal:tipo -> ;
 tipochar:tipo -> ;
 tipoident:tipo -> tipo:string;
