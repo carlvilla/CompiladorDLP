@@ -726,7 +726,7 @@ case 7:
 break;
 case 8:
 //#line 35 "sintac.y"
-{yyval = new Funcion(val_peek(7),val_peek(5),null,val_peek(2),val_peek(1));}
+{yyval = new Funcion(val_peek(7),val_peek(5),new Tipovoid(),val_peek(2),val_peek(1));}
 break;
 case 9:
 //#line 38 "sintac.y"

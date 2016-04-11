@@ -52,6 +52,7 @@ public class ExpresionBinaria extends AbstractTraceable implements Expresion, Se
 	private String string;
 	private Expresion right;
 	
+	private Boolean modificable;
 	private Funcion miFuncion;
 	
 	private Tipo tipo;
@@ -73,6 +74,17 @@ public class ExpresionBinaria extends AbstractTraceable implements Expresion, Se
 	@Override
 	public Funcion getMiFuncion() {
 		return miFuncion;
+	}
+
+	@Override
+	public void setModificable(Boolean modificable) {
+		this.modificable = modificable;
+		
+	}
+
+	@Override
+	public Boolean getModificable() {
+		return modificable;
 	}
 }
 

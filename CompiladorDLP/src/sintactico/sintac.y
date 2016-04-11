@@ -32,7 +32,7 @@ elemento: funcion {$$ = $1;}
 		;
 			
 funcion: 'IDENT' '(' parametrosOpt ')' ':' tipo '{'  atributos sentencias '}' {$$ = new Funcion($1,$3,$6,$8,$9);}
-		| 'IDENT' '(' parametrosOpt ')' '{' atributos sentencias '}' {$$ = new Funcion($1,$3,null,$6,$7);}
+		| 'IDENT' '(' parametrosOpt ')' '{' atributos sentencias '}' {$$ = new Funcion($1,$3,new Tipovoid(),$6,$7);}
 		;
 		
 atributos:	{$$ = new ArrayList<Atributo>();}

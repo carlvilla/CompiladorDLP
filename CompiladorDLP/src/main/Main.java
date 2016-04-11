@@ -22,7 +22,7 @@ import ast.*;
  * @version 1.1
  */
 public class Main {
-	public static final String programa = "src/identificacion.txt";	// Entrada a usar durante el desarrollo
+	public static final String programa = "src/Test Inferencia.txt";	// Entrada a usar durante el desarrollo
 
 	public static void main(String[] args) throws Exception {
 		GestorErrores gestor = new GestorErrores();
