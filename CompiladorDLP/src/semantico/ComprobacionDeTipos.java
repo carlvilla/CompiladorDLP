@@ -170,7 +170,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		else {
 
 			predicado(comprobarTipos(node.getExpresion().getTipo(), node.getMiFuncion().getTipo()),
-					"return:El tipo definido en la función del objeto devuelto "
+					"Return:El tipo definido en la función del objeto devuelto "
 							+ "no coincide con el tipo del objeto devuelto por el return",
 					node.getStart());
 
@@ -187,6 +187,9 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 
+		predicado(simple(node.getExpresion().getTipo()), "Print:El tipo de la expresión debe ser simple",
+				node.getStart());
+
 		return null;
 	}
 
@@ -202,6 +205,13 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			for (Sentencia child : node.getSentencia())
 				child.accept(this, param);
 
+		predicado(node.getExpresion().getTipo() instanceof Tipoint, "While:El tipo de la condición debe ser Tipoint",
+				node.getStart());
+
+		for (Sentencia sent : node.getSentencia()) {
+			sent.setMiFuncion(node.getMiFuncion());
+		}
+
 		return null;
 	}
 
@@ -214,6 +224,20 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			for (Expresion child : node.getExpresion())
 				child.accept(this, param);
 
+		predicado(node.getExpresion().size() == node.getDefinicion().getParametro().size(),
+				"Invocar Sentencia:El número de parámetros pasados a la función no "
+						+ "coincide con el número de parámetros que tiene definidos la función",
+				node.getStart());
+
+		for (int i = 0; i < node.getExpresion().size(); i++) {
+			predicado(
+					comprobarTipos(node.getExpresion().get(i).getTipo(),
+							node.getDefinicion().getParametro().get(i).getTipo()),
+					"Invocar Sentencia: Los tipos de los parámetros definidos en la invocación de "
+							+ "la función no coinciden con los definidos en la función",
+					node.getStart());
+		}
+
 		return null;
 	}
 
@@ -225,6 +249,23 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			for (Expresion child : node.getExpresion())
 				child.accept(this, param);
 
+		predicado(node.getExpresion().size() == node.getDefinicion().getParametro().size(),
+				"Invocar Funcion:El número de parámetros pasados a la función no "
+						+ "coincide con el número de parámetros que tiene definidos la función",
+				node.getStart());
+
+		for (int i = 0; i < node.getExpresion().size(); i++) {
+			predicado(
+					comprobarTipos(node.getExpresion().get(i).getTipo(),
+							node.getDefinicion().getParametro().get(i).getTipo()),
+					"Invocar Funcion: Los tipos de los parámetros definidos en la invocación de "
+							+ "la función no coinciden con los definidos en la función",
+					node.getStart());
+		
+		}
+		
+		node.setTipo(node.getDefinicion().getTipo());
+		
 		return null;
 	}
 
@@ -292,16 +333,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		node.setModificable(false);
 
 		return null;
-	}
-
-	private boolean simple(Tipo tipo) {
-		return tipo instanceof Tipochar || tipo instanceof Tipoint || tipo instanceof Tiporeal;
-	}
-
-	public boolean comprobarTipos(Tipo tipo1, Tipo tipo2) {
-
-		return tipo1.getClass().isInstance(tipo2.getClass());
-
 	}
 
 	// class ExpresionUnaria { Expresion expresion; }
@@ -460,6 +491,16 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	private void predicado(boolean condicion, String mensajeError, Position posicionError) {
 		if (!condicion)
 			gestorErrores.error("Comprobación de tipos", mensajeError, posicionError);
+	}
+
+	private boolean simple(Tipo tipo) {
+		return tipo instanceof Tipochar || tipo instanceof Tipoint || tipo instanceof Tiporeal;
+	}
+
+	public boolean comprobarTipos(Tipo tipo1, Tipo tipo2) {
+
+		return tipo1.getClass().isInstance(tipo2.getClass());
+
 	}
 
 	private GestorErrores gestorErrores;
