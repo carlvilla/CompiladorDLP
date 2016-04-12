@@ -72,7 +72,7 @@
 <span class="dots">·  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
 <span class="dots">·  ·  |  ·  </span>Return &rarr;                                        <span class="pos">38:12  38:14 </span><span class="sourceText">return </span><span class="posText">5.6</span><span class="sourceText">;    // Tipo de retorno no coincide</span>
 <span class="dots">·  ·  |  ·  |  </span>"5.6"  <span class="type">Litreal.valor</span>                         <span class="pos">38:12  38:14 </span><span class="sourceText">return </span><span class="posText">5.6</span><span class="sourceText">;    // Tipo de retorno no coincide</span>
-<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">41:1  42:7   </span><span class="sourceText"></span><span class="posText">j(a:int, b:float):float {</span><span class="sourceText"> ... </span><span class="posText">h(2</span><span class="sourceText">);    // Numero de argumentos incorrecto</span>
+<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">41:1  43:11  </span><span class="sourceText"></span><span class="posText">j(a:int, b:float):float {</span><span class="sourceText"> ... </span><span class="posText">return;</span><span class="sourceText"> // Debe haber un valor de retorno</span>
 <span class="dots">·  ·  |  </span>"<span class="value">j</span>"  
 <span class="dots">·  ·  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
 <span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">41:3  41:3   </span><span class="sourceText">j(</span><span class="posText">a</span><span class="sourceText">:int, b:float):float {</span>
@@ -89,7 +89,7 @@
 <span class="dots">·  ·  |  ·  |  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
 <span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">42:7  42:7   </span><span class="sourceText">h(</span><span class="posText">2</span><span class="sourceText">);    // Numero de argumentos incorrecto</span>
 <span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Return &rarr;                                        <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  </span>Return &rarr;                                        <span class="pos">43:11  43:11 </span><span class="sourceText">return</span><span class="posText">;</span><span class="sourceText"> // Debe haber un valor de retorno</span>
 <span class="dots">·  ·  |  ·  |  </span><span class="null">null</span>  expresion:<span class="type">Expresion</span>
 <span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">46:1  102:21 </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">print juan.nombre</span><span class="sourceText">; // Campo no definido</span>
 <span class="dots">·  ·  |  </span>"<span class="value">main</span>"  

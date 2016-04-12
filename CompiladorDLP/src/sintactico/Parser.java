@@ -834,7 +834,7 @@ case 34:
 break;
 case 35:
 //#line 81 "sintac.y"
-{yyval = new Return(null);}
+{yyval = new Return(val_peek(0));}
 break;
 case 36:
 //#line 82 "sintac.y"

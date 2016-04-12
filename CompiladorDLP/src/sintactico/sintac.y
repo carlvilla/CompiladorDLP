@@ -78,7 +78,7 @@ sentencia:'READ' expresion ';' {$$ = new Read($2);}
 		| 'IF' '(' expresion ')' '{' sentencias '}' 'ELSE' '{' sentencias '}' {$$ = new If($3,$6,$10);}
 		|  expresion '=' expresion ';' {$$ = new ExpresionBinaria($1,"=",$3);}
 		| 'RETURN' expresion ';' {$$ = new Return($2);}
-		| 'RETURN' ';' {$$ = new Return(null);}
+		| 'RETURN' ';' {$$ = new Return($2);}
 		| 'IDENT' '(' valoresOpt ')' ';' {$$ = new InvocarSentencia($1,$3);}
 		;
 		

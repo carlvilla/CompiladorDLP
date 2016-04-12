@@ -13,7 +13,11 @@ public class Return extends AbstractSentencia {
 	}
 
 	public Return(Object expresion) {
-		this.expresion = (Expresion) expresion;
+		
+		//Esta comprobación se utiliza para poder obtener la posición de un error
+		//en el caso de que esté implicado un return que no devuelve ninguna expresión
+		if(! (expresion instanceof Token))
+			this.expresion = (Expresion) expresion;
 
 		searchForPositions(expresion);	// Obtener linea/columna a partir de los hijos
 	}
