@@ -184,12 +184,13 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 	// class Print { Expresion expresion; }
 	public Object visit(Print node, Object param) {
-
-		// super.visit(node, param);
-
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 
+		//Si la expresión pasada es erronea no se puede determinar un tipo para esta,
+		//en tal caso el tipo de la expresión será nulo y ya se habrá mostrado el 
+		//error pertinente
+		if(node.getExpresion().getTipo()!=null)
 		predicado(simple(node.getExpresion().getTipo()), "Print:El tipo de la expresión debe ser simple",
 				node.getStart());
 
@@ -372,8 +373,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		predicado(simple(node.getExpresion().getTipo()), "Cast: El tipo del objeto a convertir debe ser simple", node.getStart());
 
-		predicado(!comprobarTipos(node.getTipo(), node.getExpresion().getTipo()),
-				"Cast: Los tipos no deben coincidir", node.getStart());
+		predicado(!node.getTipo().getClass().isInstance(node.getExpresion().getTipo()),
+				"Cast: Deben ser distintos tipos", node.getStart());
 
 		node.setModificable(false);
 
@@ -462,6 +463,9 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 					node.setTipo(def.getTipo());
 				}
 			}
+			
+			predicado(node.getTipo()!=null, "Acceso Struct:Campo no definido", node.getStart());
+			
 		}
 
 		return null;
