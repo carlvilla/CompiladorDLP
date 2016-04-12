@@ -742,7 +742,7 @@ case 11:
 break;
 case 12:
 //#line 43 "sintac.y"
-{yyval=null;}
+{yyval=new ArrayList<Parametro>();}
 break;
 case 13:
 //#line 46 "sintac.y"

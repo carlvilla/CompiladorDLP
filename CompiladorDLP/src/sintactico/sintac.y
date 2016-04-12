@@ -40,7 +40,7 @@ atributos:	{$$ = new ArrayList<Atributo>();}
 		;
 
 parametrosOpt: parametros {$$ = $1;}
-			|  {$$=null;}
+			|  {$$=new ArrayList<Parametro>();}
 			;
 	
 parametros: 'IDENT' ':' tipo {List<Parametro> lista = new ArrayList<Parametro>();lista.add(new Parametro($1,$3));$$ = lista;}

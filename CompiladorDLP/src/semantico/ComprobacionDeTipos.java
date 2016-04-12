@@ -37,17 +37,15 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		// super.visit(node, param);
 
-		
-		if(node.getParametro()!=null)	
-		for(Parametro parametro:node.getParametro()){
-			predicado(simple(parametro.getTipo()),
-					"Función:Los parámetros deben de ser de tipo simple", node.getStart());
-		}
+		if (node.getParametro() != null)
+			for (Parametro parametro : node.getParametro()) {
+				predicado(simple(parametro.getTipo()), "Función:Los parámetros deben de ser de tipo simple",
+						node.getStart());
+			}
 
 		predicado(simple(node.getTipo()) || node.getTipo() instanceof Tipovoid,
 				"Función:El tipo de retorno de la función debe ser simple o void", node.getStart());
-		
-		
+
 		if (node.getParametro() != null)
 			for (Parametro child : node.getParametro())
 				child.accept(this, param);
@@ -60,12 +58,11 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 				child.accept(this, param);
 
 		if (node.getSentencia() != null)
-			for (Sentencia child : node.getSentencia()){
+			for (Sentencia child : node.getSentencia()) {
 				child.setMiFuncion((Funcion) node);
 				child.accept(this, param);
 			}
-		
-	
+
 		return null;
 	}
 
@@ -118,27 +115,25 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	// falso; }
 	public Object visit(If node, Object param) {
 
-
-		predicado(node.getCondic().getTipo() instanceof Tipoint, "If:El tipo de la condición debe ser Tipoint",
-				node.getStart());
-		
 		if (node.getCondic() != null)
 			node.getCondic().accept(this, param);
 
 		if (node.getVerdadero() != null)
-			for (Sentencia child : node.getVerdadero()){
+			for (Sentencia child : node.getVerdadero()) {
 				child.setMiFuncion(node.getMiFuncion());
 				child.accept(this, param);
 			}
-				
+
 		if (node.getFalso() != null)
-			for (Sentencia child : node.getFalso()){
+			for (Sentencia child : node.getFalso()) {
 				child.setMiFuncion(node.getMiFuncion());
 				child.accept(this, param);
+
 			}
 
+		predicado(node.getCondic().getTipo() instanceof Tipoint, "If:El tipo de la condición debe ser Tipoint",
+				node.getStart());
 
-	
 		return null;
 	}
 
@@ -152,10 +147,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		predicado(simple(node.getExpresion().getTipo()), "Read:El tipo de la expresión debe ser simple",
 				node.getStart());
-		
-		predicado(node.getExpresion().getModificable(), "Read:La expresión debe ser modificable",
-				node.getStart());
 
+		predicado(node.getExpresion().getModificable(), "Read:La expresión debe ser modificable", node.getStart());
 
 		return null;
 	}
@@ -167,7 +160,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
-		
 
 		if (node.getMiFuncion().getTipo() instanceof Tipovoid) {
 
@@ -177,14 +169,16 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		}
 
 		else {
-			
-			predicado(node.getExpresion()!=null && comprobarTipos(node.getExpresion().getTipo(), node.getMiFuncion().getTipo()),
+
+			predicado(
+					node.getExpresion() != null
+							&& comprobarTipos(node.getExpresion().getTipo(), node.getMiFuncion().getTipo()),
 					"Return: El tipo definido en la función del objeto devuelto "
 							+ "no coincide con el tipo del objeto devuelto por el return",
 					node.getStart());
 
 		}
-		
+
 		return null;
 	}
 
@@ -205,18 +199,17 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	// class While { Expresion expresion; List<Sentencia> sentencia; }
 	public Object visit(While node, Object param) {
 
-		predicado(node.getExpresion().getTipo() instanceof Tipoint, "While:El tipo de la condición debe ser Tipoint",
-				node.getStart());
-
 		if (node.getExpresion() != null)
 			node.getExpresion().accept(this, param);
 
 		if (node.getSentencia() != null)
-			for (Sentencia child : node.getSentencia()){
+			for (Sentencia child : node.getSentencia()) {
 				child.setMiFuncion(node.getMiFuncion());
 				child.accept(this, param);
 			}
-	
+
+		predicado(node.getExpresion().getTipo() instanceof Tipoint, "While:El tipo de la condición debe ser Tipoint",
+				node.getStart());
 
 		return null;
 	}
@@ -229,35 +222,25 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getExpresion() != null)
 			for (Expresion child : node.getExpresion())
 				child.accept(this, param);
-		
-		
-		if(node.getDefinicion().getParametro() == null){
-			//Si no hay parámetros en la definición de la función
-			//no puede haber invocaciones a esa función con parámetros
-			
-			predicado(node.getExpresion().size()==0,
-					"Invocar Sentencia:La función no puede recibir ningún parámetro",
-					node.getStart());
-			
-		}
-		
-		else{
-		
+
 		predicado(node.getExpresion().size() == node.getDefinicion().getParametro().size(),
 				"Invocar Sentencia:El número de parámetros pasados a la función no "
 						+ "coincide con el número de parámetros que tiene definidos la función",
 				node.getStart());
-		if(node.getExpresion().size() == node.getDefinicion().getParametro().size())
-		for (int i = 0; i < node.getExpresion().size(); i++) {
-			predicado(
-					comprobarTipos(node.getExpresion().get(i).getTipo(),
-							node.getDefinicion().getParametro().get(i).getTipo()),
-					"Invocar Sentencia: Los tipos de los parámetros definidos en la invocación de "
-							+ "la función no coinciden con los definidos en la función",
-					node.getStart());
-		}
-		
-		}
+
+		if (node.getExpresion().size() == node.getDefinicion().getParametro().size())
+			for (int i = 0; i < node.getExpresion().size(); i++) {
+
+				Tipo invocacion = node.getExpresion().get(i).getTipo();
+				Tipo funcion = node.getDefinicion().getParametro().get(i).getTipo();
+
+				predicado(invocacion.getClass().isInstance(funcion),
+						"Invocar Sentencia: Los tipos de los parámetros definidos en la invocación de "
+								+ "la función no coinciden con los definidos en la función",
+						node.getStart());
+			}
+
+		// }
 
 		return null;
 	}
@@ -270,32 +253,32 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			for (Expresion child : node.getExpresion())
 				child.accept(this, param);
 
-		if(node.getDefinicion().getParametro()!=null){
+		// if(node.getDefinicion().getParametro()!=null){
 		predicado(node.getExpresion().size() == node.getDefinicion().getParametro().size(),
 				"Invocar Funcion:El número de parámetros pasados a la función no "
 						+ "coincide con el número de parámetros que tiene definidos la función",
 				node.getStart());
-		
-		for (int i = 0; i < node.getExpresion().size(); i++) {
-			predicado(
-					comprobarTipos(node.getExpresion().get(i).getTipo(),
-							node.getDefinicion().getParametro().get(i).getTipo()),
-					"Invocar Funcion: Los tipos de los parámetros definidos en la invocación de "
-							+ "la función no coinciden con los definidos en la función",
-					node.getStart());
-		
-			}
-		}
-		else{
-			predicado(node.getExpresion().size() == 0,
-					"Invocar Funcion:No se pueden pasar parámetros a una función que no tiene "
-							+ "ninguno definido",
-					node.getStart());
-		}
 
-		
+		if (node.getExpresion().size() == node.getDefinicion().getParametro().size())
+			for (int i = 0; i < node.getExpresion().size(); i++) {
+
+				Tipo invocacion = node.getExpresion().get(i).getTipo();
+				Tipo funcion = node.getDefinicion().getParametro().get(i).getTipo();
+
+				predicado(invocacion.getClass().isInstance(funcion),
+						"Invocar Sentencia: Los tipos de los parámetros definidos en la invocación de "
+								+ "la función no coinciden con los definidos en la función",
+						node.getStart());
+			}
+		// }
+		/*
+		 * else{ predicado(node.getExpresion().size() == 0,
+		 * "Invocar Funcion:No se pueden pasar parámetros a una función que no tiene "
+		 * + "ninguno definido", node.getStart()); }
+		 * 
+		 */
 		node.setTipo(node.getDefinicion().getTipo());
-		
+
 		return null;
 	}
 
@@ -311,36 +294,38 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
-		/*predicado(comprobarTipos(node.getLeft().getTipo(),node.getRight().getTipo()),
-				"Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
-						+ " no coinciden",
-				node.getStart());
-		*/
-		
-		if(!node.getString().equals("=")){
-			predicado(node.getLeft().getTipo() instanceof Tipoint || node.getLeft().getTipo() instanceof Tiporeal,
+		/*
+		 * predicado(comprobarTipos(node.getLeft().getTipo(),node.getRight().
+		 * getTipo()),
+		 * "Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
+		 * + " no coinciden", node.getStart());
+		 */
+
+		if (!node.getString().equals("=")) {
+			predicado((node.getLeft().getTipo() instanceof Tipoint || node.getLeft().getTipo() instanceof Tiporeal)
+					&& comprobarTipos(node.getLeft().getTipo(), node.getRight().getTipo()),
 					"Expresion Binaria: Las expresiones a la derecha e izquierda del operador"
-					+ " deben de ser tipoint o tiporeal en una operación aritmética",
+							+ " deben de ser tipoint o tiporeal en una operación aritmética",
 					node.getStart());
 		}
-		
-		else{
-			
-			predicado(comprobarTipos(node.getLeft().getTipo(),node.getRight().getTipo()),
-			"Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
-					+ " deben coincidir en una asignación",
-			node.getStart());
-	
-			
+
+		else {
+
 			predicado(node.getLeft().getModificable(),
 					"Expresion Binaria: En una asignación se tiene que poder modificar "
-					+ "el valor de la expresión de la izquierda"
-					,node.getStart());
+							+ "el valor de la expresión de la izquierda",
+					node.getStart());
+
+			predicado(comprobarTipos(node.getLeft().getTipo(), node.getRight().getTipo()),
+					"Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
+							+ " deben coincidir en una asignación",
+					node.getStart());
+
 		}
-		
+
 		node.setTipo(node.getLeft().getTipo());
 		node.setModificable(false);
-	
+
 		return null;
 	}
 
@@ -450,8 +435,9 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		predicado(node.getPosicion() instanceof Tipoint, "Acceso Array:El tipo de la posición debe ser Tipoint",
 				node.getStart());
+		if (node.getContenedor().getTipo() instanceof Array)
+			node.setTipo(((Array) node.getContenedor().getTipo()).getTipo());
 
-		node.setTipo(((Array) node.getContenedor().getTipo()).getTipo());
 		node.setModificable(false);
 
 		return null;
@@ -468,11 +454,13 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		predicado(node.getContenedor().getTipo() instanceof Tipoident,
 				"Acceso Struct:El tipo del contenedor debe ser Tipoident", node.getStart());
 
-		List<Definicion> definiciones = ((Tipoident) node.getContenedor()).getDefinicion().getDefinicion();
+		if (node.getContenedor() instanceof Tipoident) {
+			List<Definicion> definiciones = ((Tipoident) node.getContenedor()).getDefinicion().getDefinicion();
 
-		for (Definicion def : definiciones) {
-			if (def.getNombre().equals(node.getAtributo())) {
-				node.setTipo(def.getTipo());
+			for (Definicion def : definiciones) {
+				if (def.getNombre().equals(node.getAtributo())) {
+					node.setTipo(def.getTipo());
+				}
 			}
 		}
 
@@ -558,7 +546,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	}
 
 	public boolean comprobarTipos(Tipo tipo1, Tipo tipo2) {
-
 		return tipo1.getClass().isInstance(tipo2.getClass());
 
 	}
