@@ -317,6 +317,9 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 							+ "el valor de la expresión de la izquierda",
 					node.getStart());
 
+			//En el caso de que la expresión de la izquierda o derecha sea incorrecta y no se haya podido 
+			//resolver su tipo, este será nulo y ya se habrá lanzado el error pertinente
+			if(node.getLeft().getTipo()!=null && node.getRight().getTipo()!=null)
 			predicado(comprobarTipos(node.getLeft().getTipo(), node.getRight().getTipo()),
 					"Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
 							+ " deben coincidir en una asignación",
@@ -467,6 +470,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			predicado(node.getTipo()!=null, "Acceso Struct:Campo no definido", node.getStart());
 			
 		}
+		
+		node.setModificable(false);
 
 		return null;
 	}
@@ -480,6 +485,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			node.getContenido().accept(this, param);
 
 		node.setTipo(node.getContenido().getTipo());
+		node.setModificable(false);
 
 		return null;
 	}
