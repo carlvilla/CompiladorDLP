@@ -288,7 +288,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		// super.visit(node, param);
 
-		if (node.getLeft() != null)
+		if (node.getLeft() != null)	
 			node.getLeft().accept(this, param);
 
 		if (node.getRight() != null)
@@ -303,7 +303,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		if (!node.getString().equals("=")) {
 			predicado((node.getLeft().getTipo() instanceof Tipoint || node.getLeft().getTipo() instanceof Tiporeal)
-					&& comprobarTipos(node.getLeft().getTipo(), node.getRight().getTipo()),
+					&& node.getLeft().getTipo().getClass().isInstance(node.getRight().getTipo()),
 					"Expresion Binaria: Las expresiones a la derecha e izquierda del operador"
 							+ " deben de ser tipoint o tiporeal en una operación aritmética",
 					node.getStart());
@@ -370,10 +370,10 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		predicado(simple(node.getTipo()), "Cast: El tipo a convertir debe ser simple", node.getStart());
 
-		predicado(simple(node.getExpresion().getTipo()), "Cast: El tipo a convertir debe ser simple", node.getStart());
+		predicado(simple(node.getExpresion().getTipo()), "Cast: El tipo del objeto a convertir debe ser simple", node.getStart());
 
-		predicado(comprobarTipos(node.getTipo(), node.getExpresion().getTipo()),
-				"Error al hacer cast: Los tipos no coinciden", node.getStart());
+		predicado(!comprobarTipos(node.getTipo(), node.getExpresion().getTipo()),
+				"Cast: Los tipos no deben coincidir", node.getStart());
 
 		node.setModificable(false);
 
@@ -407,10 +407,10 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
-		predicado(comprobarTipos(node.getLeft().getTipo(), node.getRight().getTipo()),
+		predicado(node.getLeft().getTipo().getClass().isInstance(node.getRight().getTipo()),
 				"Expresion lógica:El tipo de los dos operandos debe ser igual", node.getStart());
 
-		predicado(comprobarTipos(node.getLeft().getTipo(), new Tipoint()),
+		predicado(node.getLeft().getTipo() instanceof Tipoint,
 				"Expresion lógica:El tipo de los operandos debe ser Tipoint", node.getStart());
 
 		node.setTipo(new Tipoint());
@@ -433,7 +433,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		predicado(node.getContenedor().getTipo() instanceof Array, "Acceso Array:El tipo del objeto debe ser Array",
 				node.getStart());
 
-		predicado(node.getPosicion() instanceof Tipoint, "Acceso Array:El tipo de la posición debe ser Tipoint",
+		predicado(node.getPosicion().getTipo() instanceof Tipoint, "Acceso Array:El tipo de la posición debe ser Tipoint",
 				node.getStart());
 		if (node.getContenedor().getTipo() instanceof Array)
 			node.setTipo(((Array) node.getContenedor().getTipo()).getTipo());
@@ -453,9 +453,9 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		predicado(node.getContenedor().getTipo() instanceof Tipoident,
 				"Acceso Struct:El tipo del contenedor debe ser Tipoident", node.getStart());
-
-		if (node.getContenedor() instanceof Tipoident) {
-			List<Definicion> definiciones = ((Tipoident) node.getContenedor()).getDefinicion().getDefinicion();
+ 
+		if (node.getContenedor().getTipo() instanceof Tipoident) {
+			List<Definicion> definiciones = ((Tipoident)(node.getContenedor().getTipo())).getDefinicion().getDefinicion();
 
 			for (Definicion def : definiciones) {
 				if (def.getNombre().equals(node.getAtributo())) {
