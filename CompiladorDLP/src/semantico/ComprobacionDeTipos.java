@@ -319,11 +319,16 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 			//En el caso de que la expresión de la izquierda o derecha sea incorrecta y no se haya podido 
 			//resolver su tipo, este será nulo y ya se habrá lanzado el error pertinente
-			if(node.getLeft().getTipo()!=null && node.getRight().getTipo()!=null)
+			if(node.getLeft().getTipo()!=null && node.getRight().getTipo()!=null){
 			predicado(comprobarTipos(node.getLeft().getTipo(), node.getRight().getTipo()),
 					"Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
 							+ " deben coincidir en una asignación",
 					node.getStart());
+			
+			predicado(simple(node.getLeft().getTipo()),
+					"Expresion Binaria:Valor de la izquierda debe ser simple",
+					node.getStart());		
+			}
 
 		}
 
@@ -556,7 +561,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	}
 
 	public boolean comprobarTipos(Tipo tipo1, Tipo tipo2) {
-		return tipo1.getClass().isInstance(tipo2.getClass());
+		return tipo1.getClass().isInstance(tipo2);
 
 	}
 
