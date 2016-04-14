@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.List;
+
 import visitor.*;
 
 //	var:expresion -> nombre:String ;
@@ -39,6 +41,9 @@ public class Var extends AbstractExpresion {
 	}
 
 	Definicion definicion;
+
+
+
 
 }
 

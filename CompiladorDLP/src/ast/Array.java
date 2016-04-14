@@ -38,8 +38,12 @@ public class Array extends AbstractTipo {
 	public Object accept(Visitor v, Object param) { 
 		return v.visit(this, param);
 	}
+	
+	public int getSize(){
+		return ((litent.getValor())*tipo.getSize());
+	}
 
-	private Litent litent;
+	private Litent litent; //Tamaño del array
 	private Tipo tipo;
 }
 

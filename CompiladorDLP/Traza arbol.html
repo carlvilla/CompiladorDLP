@@ -21,299 +21,101 @@
 <body><pre>
 [ASTPrinter] -------------------------------- line:col  line:col
 
-<span class="dots"></span>Programa &rarr;                                                  <span class="pos">21:8  102:21 </span><span class="sourceText">struct </span><span class="posText">Persona {</span><span class="sourceText"> ... </span><span class="posText">print juan.nombre</span><span class="sourceText">; // Campo no definido</span>
+<span class="dots"></span>Programa &rarr;                                                  <span class="pos">16:5  38:9   </span><span class="sourceText">var </span><span class="posText">a:char;    // Dir 0</span><span class="sourceText"> ... </span><span class="posText">var f</span><span class="sourceText">:float;     // BP-67 </span>
 <span class="dots">·  </span>elemento  <span class="type">List&lt;Elemento&gt;</span> = 
-<span class="dots">·  ·  </span>Struct &rarr;                                              <span class="pos">21:8  23:9   </span><span class="sourceText">struct </span><span class="posText">Persona {</span><span class="sourceText"> ... </span><span class="posText">meses</span><span class="sourceText">:[12] int;</span>
+<span class="dots">·  ·  </span>Atributo &rarr;                                            <span class="pos">16:5  16:5   </span><span class="sourceText">var </span><span class="posText">a</span><span class="sourceText">:char;    // Dir 0</span>
+<span class="dots">·  ·  |  </span>Definicion &rarr;                                       <span class="pos">16:5  16:5   </span><span class="sourceText">var </span><span class="posText">a</span><span class="sourceText">:char;    // Dir 0</span>
+<span class="dots">·  ·  |  ·  </span>"<span class="value">a</span>"  
+<span class="dots">·  ·  |  ·  </span><span class="value">Tipochar</span> &rarr;                                      <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  </span><span class="value">0</span>  <span class="type">int</span>
+<span class="dots">·  ·  </span>Struct &rarr;                                              <span class="pos">18:8  21:5   </span><span class="sourceText">struct </span><span class="posText">Persona {</span><span class="sourceText"> ... </span><span class="posText">a</span><span class="sourceText">:float;    // Dir 26 </span>
 <span class="dots">·  ·  |  </span>"<span class="value">Persona</span>"  
 <span class="dots">·  ·  |  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">22:5  22:8   </span><span class="sourceText"></span><span class="posText">edad</span><span class="sourceText">:int;</span>
+<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">19:5  19:8   </span><span class="sourceText"></span><span class="posText">edad</span><span class="sourceText">:int;    // Dir 0 </span>
 <span class="dots">·  ·  |  ·  |  </span>"<span class="value">edad</span>"  
 <span class="dots">·  ·  |  ·  |  </span><span class="value">Tipoint</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">23:5  23:9   </span><span class="sourceText"></span><span class="posText">meses</span><span class="sourceText">:[12] int;</span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">0</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">20:5  20:9   </span><span class="sourceText"></span><span class="posText">meses</span><span class="sourceText">:[12] int;    // Dir 2 </span>
 <span class="dots">·  ·  |  ·  |  </span>"<span class="value">meses</span>"  
 <span class="dots">·  ·  |  ·  |  </span>Array &rarr;                                      <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
 <span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
 <span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">12</span>  <span class="type">int</span>
 <span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tipoint</span> &rarr;                                 <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  </span>Atributo &rarr;                                            <span class="pos">26:5  26:16  </span><span class="sourceText">var </span><span class="posText">juan:Persona</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  </span>Definicion &rarr;                                       <span class="pos">26:5  26:16  </span><span class="sourceText">var </span><span class="posText">juan:Persona</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  </span>"<span class="value">juan</span>"  
-<span class="dots">·  ·  |  ·  </span>"Persona"  <span class="type">Tipoident.tipo</span>                       <span class="pos">26:10  26:16 </span><span class="sourceText">var juan:</span><span class="posText">Persona</span><span class="sourceText">;</span>
-<span class="dots">·  ·  </span>Atributo &rarr;                                            <span class="pos">27:5  27:17  </span><span class="sourceText">var </span><span class="posText">anton:Persona</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  </span>Definicion &rarr;                                       <span class="pos">27:5  27:17  </span><span class="sourceText">var </span><span class="posText">anton:Persona</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  </span>"<span class="value">anton</span>"  
-<span class="dots">·  ·  |  ·  </span>"Persona"  <span class="type">Tipoident.tipo</span>                       <span class="pos">27:11  27:17 </span><span class="sourceText">var anton:</span><span class="posText">Persona</span><span class="sourceText">;</span>
-<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">29:1  29:11  </span><span class="sourceText"></span><span class="posText">g():Persona</span><span class="sourceText"> {    // Error: Retorno de tipo no simple</span>
-<span class="dots">·  ·  |  </span>"<span class="value">g</span>"  
-<span class="dots">·  ·  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
-<span class="dots">·  ·  |  </span>"Persona"  <span class="type">Tipoident.tipo</span>                          <span class="pos">29:5  29:11  </span><span class="sourceText">g():</span><span class="posText">Persona</span><span class="sourceText"> {    // Error: Retorno de tipo no simple</span>
-<span class="dots">·  ·  |  </span>atributo  <span class="type">List&lt;Atributo&gt;</span> = 
-<span class="dots">·  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">33:1  34:13  </span><span class="sourceText"></span><span class="posText">f(a:[10] int) {    // Los parámetros deben de ser tipos primitivos</span><span class="sourceText"> ... </span><span class="posText">return 25</span><span class="sourceText">;    // El return no debe tener expresión en funciones void</span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">21:5  21:5   </span><span class="sourceText"></span><span class="posText">a</span><span class="sourceText">:float;    // Dir 26 </span>
+<span class="dots">·  ·  |  ·  |  </span>"<span class="value">a</span>"  
+<span class="dots">·  ·  |  ·  |  </span><span class="value">Tiporeal</span> &rarr;                                   <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">26</span>  <span class="type">int</span>
+<span class="dots">·  ·  </span>Atributo &rarr;                                            <span class="pos">24:5  24:5   </span><span class="sourceText">var </span><span class="posText">b</span><span class="sourceText">:float;    // Dir 1 </span>
+<span class="dots">·  ·  |  </span>Definicion &rarr;                                       <span class="pos">24:5  24:5   </span><span class="sourceText">var </span><span class="posText">b</span><span class="sourceText">:float;    // Dir 1 </span>
+<span class="dots">·  ·  |  ·  </span>"<span class="value">b</span>"  
+<span class="dots">·  ·  |  ·  </span><span class="value">Tiporeal</span> &rarr;                                      <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  </span><span class="value">1</span>  <span class="type">int</span>
+<span class="dots">·  ·  </span>Struct &rarr;                                              <span class="pos">26:8  28:10  </span><span class="sourceText">struct </span><span class="posText">Prueba {</span><span class="sourceText"> ... </span><span class="posText">campo2</span><span class="sourceText">: int; // Dir 2 </span>
+<span class="dots">·  ·  |  </span>"<span class="value">Prueba</span>"  
+<span class="dots">·  ·  |  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
+<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">27:5  27:10  </span><span class="sourceText"></span><span class="posText">campo1</span><span class="sourceText">: int; // Dir 0 </span>
+<span class="dots">·  ·  |  ·  |  </span>"<span class="value">campo1</span>"  
+<span class="dots">·  ·  |  ·  |  </span><span class="value">Tipoint</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">0</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Definicion &rarr;                                    <span class="pos">28:5  28:10  </span><span class="sourceText"></span><span class="posText">campo2</span><span class="sourceText">: int; // Dir 2 </span>
+<span class="dots">·  ·  |  ·  |  </span>"<span class="value">campo2</span>"  
+<span class="dots">·  ·  |  ·  |  </span><span class="value">Tipoint</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
+<span class="dots">·  ·  </span>Atributo &rarr;                                            <span class="pos">31:5  31:16  </span><span class="sourceText">var </span><span class="posText">c:[2]Persona</span><span class="sourceText">;    // Dir 5 </span>
+<span class="dots">·  ·  |  </span>Definicion &rarr;                                       <span class="pos">31:5  31:16  </span><span class="sourceText">var </span><span class="posText">c:[2]Persona</span><span class="sourceText">;    // Dir 5 </span>
+<span class="dots">·  ·  |  ·  </span>"<span class="value">c</span>"  
+<span class="dots">·  ·  |  ·  </span>Array &rarr;                                         <span class="pos">31:10  31:16 </span><span class="sourceText">var c:[2]</span><span class="posText">Persona</span><span class="sourceText">;    // Dir 5 </span>
+<span class="dots">·  ·  |  ·  |  </span>Litent &rarr;                                     <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">2</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  |  </span>"Persona"  <span class="type">Tipoident.tipo</span>                    <span class="pos">31:10  31:16 </span><span class="sourceText">var c:[2]</span><span class="posText">Persona</span><span class="sourceText">;    // Dir 5 </span>
+<span class="dots">·  ·  |  ·  </span><span class="value">5</span>  <span class="type">int</span>
+<span class="dots">·  ·  </span>Atributo &rarr;                                            <span class="pos">32:5  32:5   </span><span class="sourceText">var </span><span class="posText">d</span><span class="sourceText">:int;        // Dir 65 </span>
+<span class="dots">·  ·  |  </span>Definicion &rarr;                                       <span class="pos">32:5  32:5   </span><span class="sourceText">var </span><span class="posText">d</span><span class="sourceText">:int;        // Dir 65 </span>
+<span class="dots">·  ·  |  ·  </span>"<span class="value">d</span>"  
+<span class="dots">·  ·  |  ·  </span><span class="value">Tipoint</span> &rarr;                                       <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  </span><span class="value">65</span>  <span class="type">int</span>
+<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">34:1  38:9   </span><span class="sourceText"></span><span class="posText">f(a:int, b:float, h:char) { // a = BP+9, b = BP+5, h = BP+4 </span><span class="sourceText"> ... </span><span class="posText">var f</span><span class="sourceText">:float;     // BP-67 </span>
 <span class="dots">·  ·  |  </span>"<span class="value">f</span>"  
 <span class="dots">·  ·  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">33:3  33:3   </span><span class="sourceText">f(</span><span class="posText">a</span><span class="sourceText">:[10] int) {    // Los parámetros deben de ser tipos primitivos</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">a</span>"  
-<span class="dots">·  ·  |  ·  |  </span>Array &rarr;                                      <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">10</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tipoint</span> &rarr;                                 <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  </span><span class="value">Tipovoid</span> &rarr;                                         <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  </span>atributo  <span class="type">List&lt;Atributo&gt;</span> = 
-<span class="dots">·  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Return &rarr;                                        <span class="pos">34:12  34:13 </span><span class="sourceText">return </span><span class="posText">25</span><span class="sourceText">;    // El return no debe tener expresión en funciones void</span>
-<span class="dots">·  ·  |  ·  |  </span>Litent &rarr;                                     <span class="pos">34:12  34:13 </span><span class="sourceText">return </span><span class="posText">25</span><span class="sourceText">;    // El return no debe tener expresión en funciones void</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">25</span>  <span class="type">int</span>
-<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">37:1  38:14  </span><span class="sourceText"></span><span class="posText">h():int {</span><span class="sourceText"> ... </span><span class="posText">return 5.6</span><span class="sourceText">;    // Tipo de retorno no coincide</span>
-<span class="dots">·  ·  |  </span>"<span class="value">h</span>"  
-<span class="dots">·  ·  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
-<span class="dots">·  ·  |  </span><span class="value">Tipoint</span> &rarr;                                          <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  </span>atributo  <span class="type">List&lt;Atributo&gt;</span> = 
-<span class="dots">·  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Return &rarr;                                        <span class="pos">38:12  38:14 </span><span class="sourceText">return </span><span class="posText">5.6</span><span class="sourceText">;    // Tipo de retorno no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>"5.6"  <span class="type">Litreal.valor</span>                         <span class="pos">38:12  38:14 </span><span class="sourceText">return </span><span class="posText">5.6</span><span class="sourceText">;    // Tipo de retorno no coincide</span>
-<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">41:1  43:11  </span><span class="sourceText"></span><span class="posText">j(a:int, b:float):float {</span><span class="sourceText"> ... </span><span class="posText">return;</span><span class="sourceText"> // Debe haber un valor de retorno</span>
-<span class="dots">·  ·  |  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">41:3  41:3   </span><span class="sourceText">j(</span><span class="posText">a</span><span class="sourceText">:int, b:float):float {</span>
+<span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">34:3  34:3   </span><span class="sourceText">f(</span><span class="posText">a</span><span class="sourceText">:int, b:float, h:char) { // a = BP+9, b = BP+5, h = BP+4 </span>
 <span class="dots">·  ·  |  ·  |  </span>"<span class="value">a</span>"  
 <span class="dots">·  ·  |  ·  |  </span><span class="value">Tipoint</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">41:10  41:10 </span><span class="sourceText">j(a:int, </span><span class="posText">b</span><span class="sourceText">:float):float {</span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">9</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">34:10  34:10 </span><span class="sourceText">f(a:int, </span><span class="posText">b</span><span class="sourceText">:float, h:char) { // a = BP+9, b = BP+5, h = BP+4 </span>
 <span class="dots">·  ·  |  ·  |  </span>"<span class="value">b</span>"  
 <span class="dots">·  ·  |  ·  |  </span><span class="value">Tiporeal</span> &rarr;                                   <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  </span><span class="value">Tiporeal</span> &rarr;                                         <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  </span>atributo  <span class="type">List&lt;Atributo&gt;</span> = 
-<span class="dots">·  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>InvocarSentencia &rarr;                              <span class="pos">42:5  42:7   </span><span class="sourceText"></span><span class="posText">h(2</span><span class="sourceText">);    // Numero de argumentos incorrecto</span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">5</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Parametro &rarr;                                     <span class="pos">34:19  34:19 </span><span class="sourceText">f(a:int, b:float, </span><span class="posText">h</span><span class="sourceText">:char) { // a = BP+9, b = BP+5, h = BP+4 </span>
 <span class="dots">·  ·  |  ·  |  </span>"<span class="value">h</span>"  
-<span class="dots">·  ·  |  ·  |  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">42:7  42:7   </span><span class="sourceText">h(</span><span class="posText">2</span><span class="sourceText">);    // Numero de argumentos incorrecto</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Return &rarr;                                        <span class="pos">43:11  43:11 </span><span class="sourceText">return</span><span class="posText">;</span><span class="sourceText"> // Debe haber un valor de retorno</span>
-<span class="dots">·  ·  |  ·  |  </span><span class="null">null</span>  expresion:<span class="type">Expresion</span>
-<span class="dots">·  ·  </span>Funcion &rarr;                                             <span class="pos">46:1  102:21 </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">print juan.nombre</span><span class="sourceText">; // Campo no definido</span>
-<span class="dots">·  ·  |  </span>"<span class="value">main</span>"  
-<span class="dots">·  ·  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
+<span class="dots">·  ·  |  ·  |  </span><span class="value">Tipochar</span> &rarr;                                   <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  </span><span class="value">4</span>  <span class="type">int</span>
 <span class="dots">·  ·  |  </span><span class="value">Tipovoid</span> &rarr;                                         <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
 <span class="dots">·  ·  |  </span>atributo  <span class="type">List&lt;Atributo&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">47:9  47:9   </span><span class="sourceText">var </span><span class="posText">i</span><span class="sourceText">:int;</span>
-<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">47:9  47:9   </span><span class="sourceText">var </span><span class="posText">i</span><span class="sourceText">:int;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">i</span>"  
+<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">35:9  35:9   </span><span class="sourceText">var </span><span class="posText">c</span><span class="sourceText">:char;    // BP-1 </span>
+<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">35:9  35:9   </span><span class="sourceText">var </span><span class="posText">c</span><span class="sourceText">:char;    // BP-1 </span>
+<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">c</span>"  
+<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tipochar</span> &rarr;                                <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">-1</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">36:9  36:9   </span><span class="sourceText">var </span><span class="posText">d</span><span class="sourceText">:int;    // BP-3 </span>
+<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">36:9  36:9   </span><span class="sourceText">var </span><span class="posText">d</span><span class="sourceText">:int;    // BP-3 </span>
+<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">d</span>"  
 <span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tipoint</span> &rarr;                                 <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">48:9  48:9   </span><span class="sourceText">var </span><span class="posText">f</span><span class="sourceText">:float;</span>
-<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">48:9  48:9   </span><span class="sourceText">var </span><span class="posText">f</span><span class="sourceText">:float;</span>
+<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">-3</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">37:9  37:20  </span><span class="sourceText">var </span><span class="posText">e:[2]Persona</span><span class="sourceText">; // BP-63 </span>
+<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">37:9  37:20  </span><span class="sourceText">var </span><span class="posText">e:[2]Persona</span><span class="sourceText">; // BP-63 </span>
+<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">e</span>"  
+<span class="dots">·  ·  |  ·  |  ·  </span>Array &rarr;                                   <span class="pos">37:14  37:20 </span><span class="sourceText">var e:[2]</span><span class="posText">Persona</span><span class="sourceText">; // BP-63 </span>
+<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">2</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  |  ·  |  </span>"Persona"  <span class="type">Tipoident.tipo</span>              <span class="pos">37:14  37:20 </span><span class="sourceText">var e:[2]</span><span class="posText">Persona</span><span class="sourceText">; // BP-63 </span>
+<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">-63</span>  <span class="type">int</span>
+<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">38:9  38:9   </span><span class="sourceText">var </span><span class="posText">f</span><span class="sourceText">:float;     // BP-67 </span>
+<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">38:9  38:9   </span><span class="sourceText">var </span><span class="posText">f</span><span class="sourceText">:float;     // BP-67 </span>
 <span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">f</span>"  
 <span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tiporeal</span> &rarr;                                <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  </span>Atributo &rarr;                                      <span class="pos">49:9  49:9   </span><span class="sourceText">var </span><span class="posText">v</span><span class="sourceText">:[10]int;</span>
-<span class="dots">·  ·  |  ·  |  </span>Definicion &rarr;                                 <span class="pos">49:9  49:9   </span><span class="sourceText">var </span><span class="posText">v</span><span class="sourceText">:[10]int;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">v</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>Array &rarr;                                   <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">10</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">Tipoint</span> &rarr;                              <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">-67</span>  <span class="type">int</span>
 <span class="dots">·  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>If &rarr;                                            <span class="pos">51:8  51:10  </span><span class="sourceText">if(</span><span class="posText">2.5</span><span class="sourceText">) { }    // La condicion debe ser de tipo entero</span>
-<span class="dots">·  ·  |  ·  |  </span>"2.5"  <span class="type">Litreal.valor</span>                         <span class="pos">51:8  51:10  </span><span class="sourceText">if(</span><span class="posText">2.5</span><span class="sourceText">) { }    // La condicion debe ser de tipo entero</span>
-<span class="dots">·  ·  |  ·  |  </span>verdadero  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  </span>falso  <span class="type">List&lt;Sentencia&gt;</span> =  <span class="null">null</span>
-<span class="dots">·  ·  |  ·  </span>If &rarr;                                            <span class="pos">52:9  52:9   </span><span class="sourceText">if (</span><span class="posText">i</span><span class="sourceText">) { }</span>
-<span class="dots">·  ·  |  ·  |  </span>"i"  <span class="type">Var.nombre</span>                              <span class="pos">52:9  52:9   </span><span class="sourceText">if (</span><span class="posText">i</span><span class="sourceText">) { }</span>
-<span class="dots">·  ·  |  ·  |  </span>verdadero  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  </span>falso  <span class="type">List&lt;Sentencia&gt;</span> =  <span class="null">null</span>
-<span class="dots">·  ·  |  ·  </span>While &rarr;                                         <span class="pos">54:11  54:14 </span><span class="sourceText">while(</span><span class="posText">juan</span><span class="sourceText">) { }    // La condicion debe ser de tipo entero</span>
-<span class="dots">·  ·  |  ·  |  </span>"juan"  <span class="type">Var.nombre</span>                           <span class="pos">54:11  54:14 </span><span class="sourceText">while(</span><span class="posText">juan</span><span class="sourceText">) { }    // La condicion debe ser de tipo entero</span>
-<span class="dots">·  ·  |  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>While &rarr;                                         <span class="pos">55:12  55:12 </span><span class="sourceText">while (</span><span class="posText">i</span><span class="sourceText">) {}</span>
-<span class="dots">·  ·  |  ·  |  </span>"i"  <span class="type">Var.nombre</span>                              <span class="pos">55:12  55:12 </span><span class="sourceText">while (</span><span class="posText">i</span><span class="sourceText">) {}</span>
-<span class="dots">·  ·  |  ·  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>ExpresionBinaria &rarr;                              <span class="pos">57:5  57:9   </span><span class="sourceText"></span><span class="posText">5 = 6</span><span class="sourceText">; // Valor de la izquierda no modificable</span>
-<span class="dots">·  ·  |  ·  |  </span>Litent &rarr;                                     <span class="pos">57:5  57:5   </span><span class="sourceText"></span><span class="posText">5</span><span class="sourceText"> = 6; // Valor de la izquierda no modificable</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">5</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">=</span>"  
-<span class="dots">·  ·  |  ·  |  </span>Litent &rarr;                                     <span class="pos">57:9  57:9   </span><span class="sourceText">5 = </span><span class="posText">6</span><span class="sourceText">; // Valor de la izquierda no modificable</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">6</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>ExpresionBinaria &rarr;                              <span class="pos">58:5  58:9   </span><span class="sourceText"></span><span class="posText">i = f</span><span class="sourceText">; // Valores de distinto tipo</span>
-<span class="dots">·  ·  |  ·  |  </span>"i"  <span class="type">Var.nombre</span>                              <span class="pos">58:5  58:5   </span><span class="sourceText"></span><span class="posText">i</span><span class="sourceText"> = f; // Valores de distinto tipo</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">=</span>"  
-<span class="dots">·  ·  |  ·  |  </span>"f"  <span class="type">Var.nombre</span>                              <span class="pos">58:9  58:9   </span><span class="sourceText">i = </span><span class="posText">f</span><span class="sourceText">; // Valores de distinto tipo</span>
-<span class="dots">·  ·  |  ·  </span>ExpresionBinaria &rarr;                              <span class="pos">59:5  59:16  </span><span class="sourceText"></span><span class="posText">juan = anton</span><span class="sourceText">; // Valor de la izquierda debe ser simple</span>
-<span class="dots">·  ·  |  ·  |  </span>"juan"  <span class="type">Var.nombre</span>                           <span class="pos">59:5  59:8   </span><span class="sourceText"></span><span class="posText">juan</span><span class="sourceText"> = anton; // Valor de la izquierda debe ser simple</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">=</span>"  
-<span class="dots">·  ·  |  ·  |  </span>"anton"  <span class="type">Var.nombre</span>                          <span class="pos">59:12  59:16 </span><span class="sourceText">juan = </span><span class="posText">anton</span><span class="sourceText">; // Valor de la izquierda debe ser simple</span>
-<span class="dots">·  ·  |  ·  </span>Read &rarr;                                          <span class="pos">61:10  61:13 </span><span class="sourceText">read </span><span class="posText">juan</span><span class="sourceText">;    // Debe ser un tipo simple</span>
-<span class="dots">·  ·  |  ·  |  </span>"juan"  <span class="type">Var.nombre</span>                           <span class="pos">61:10  61:13 </span><span class="sourceText">read </span><span class="posText">juan</span><span class="sourceText">;    // Debe ser un tipo simple</span>
-<span class="dots">·  ·  |  ·  </span>Read &rarr;                                          <span class="pos">62:10  62:11 </span><span class="sourceText">read </span><span class="posText">35</span><span class="sourceText">;    // Debe ser modificable</span>
-<span class="dots">·  ·  |  ·  |  </span>Litent &rarr;                                     <span class="pos">62:10  62:11 </span><span class="sourceText">read </span><span class="posText">35</span><span class="sourceText">;    // Debe ser modificable</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">35</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Read &rarr;                                          <span class="pos">63:10  63:10 </span><span class="sourceText">read </span><span class="posText">i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>"i"  <span class="type">Var.nombre</span>                              <span class="pos">63:10  63:10 </span><span class="sourceText">read </span><span class="posText">i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">65:11  65:14 </span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText">; // Debe ser tipo simple</span>
-<span class="dots">·  ·  |  ·  |  </span>"juan"  <span class="type">Var.nombre</span>                           <span class="pos">65:11  65:14 </span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText">; // Debe ser tipo simple</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">66:11  66:17 </span><span class="sourceText">print </span><span class="posText">f / 2.5</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">66:11  66:17 </span><span class="sourceText">print </span><span class="posText">f / 2.5</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"f"  <span class="type">Var.nombre</span>                           <span class="pos">66:11  66:11 </span><span class="sourceText">print </span><span class="posText">f</span><span class="sourceText"> / 2.5;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">/</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>"2.5"  <span class="type">Litreal.valor</span>                      <span class="pos">66:15  66:17 </span><span class="sourceText">print f / </span><span class="posText">2.5</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  </span>InvocarSentencia &rarr;                              <span class="pos">68:5  68:14  </span><span class="sourceText"></span><span class="posText">j(12, 12.5</span><span class="sourceText">);</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">68:7  68:8   </span><span class="sourceText">j(</span><span class="posText">12</span><span class="sourceText">, 12.5);</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"12.5"  <span class="type">Litreal.valor</span>                     <span class="pos">68:11  68:14 </span><span class="sourceText">j(12, </span><span class="posText">12.5</span><span class="sourceText">);</span>
-<span class="dots">·  ·  |  ·  </span>InvocarSentencia &rarr;                              <span class="pos">69:5  69:12  </span><span class="sourceText"></span><span class="posText">j(12, 12</span><span class="sourceText">); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">69:7  69:8   </span><span class="sourceText">j(</span><span class="posText">12</span><span class="sourceText">, 12); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">69:11  69:12 </span><span class="sourceText">j(12, </span><span class="posText">12</span><span class="sourceText">); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>InvocarSentencia &rarr;                              <span class="pos">70:5  70:8   </span><span class="sourceText"></span><span class="posText">j(12</span><span class="sourceText">);        // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">70:7  70:8   </span><span class="sourceText">j(</span><span class="posText">12</span><span class="sourceText">);        // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>InvocarSentencia &rarr;                              <span class="pos">71:5  71:17  </span><span class="sourceText"></span><span class="posText">j(12, 12.5, 4</span><span class="sourceText">); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">71:7  71:8   </span><span class="sourceText">j(</span><span class="posText">12</span><span class="sourceText">, 12.5, 4); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"12.5"  <span class="type">Litreal.valor</span>                     <span class="pos">71:11  71:14 </span><span class="sourceText">j(12, </span><span class="posText">12.5</span><span class="sourceText">, 4); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">71:17  71:17 </span><span class="sourceText">j(12, 12.5, </span><span class="posText">4</span><span class="sourceText">); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">4</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">73:11  73:14 </span><span class="sourceText">print </span><span class="posText">main</span><span class="sourceText">();    // No tiene tipo de retorno</span>
-<span class="dots">·  ·  |  ·  |  </span>InvocarFuncion &rarr;                             <span class="pos">73:11  73:14 </span><span class="sourceText">print </span><span class="posText">main</span><span class="sourceText">();    // No tiene tipo de retorno</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">main</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">74:11  74:20 </span><span class="sourceText">print </span><span class="posText">j(12, 12.5</span><span class="sourceText">);</span>
-<span class="dots">·  ·  |  ·  |  </span>InvocarFuncion &rarr;                             <span class="pos">74:11  74:20 </span><span class="sourceText">print </span><span class="posText">j(12, 12.5</span><span class="sourceText">);</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">74:13  74:14 </span><span class="sourceText">print j(</span><span class="posText">12</span><span class="sourceText">, 12.5);</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>"12.5"  <span class="type">Litreal.valor</span>                  <span class="pos">74:17  74:20 </span><span class="sourceText">print j(12, </span><span class="posText">12.5</span><span class="sourceText">);</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">75:11  75:18 </span><span class="sourceText">print </span><span class="posText">j(12, 12</span><span class="sourceText">); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>InvocarFuncion &rarr;                             <span class="pos">75:11  75:18 </span><span class="sourceText">print </span><span class="posText">j(12, 12</span><span class="sourceText">); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">75:13  75:14 </span><span class="sourceText">print j(</span><span class="posText">12</span><span class="sourceText">, 12); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">75:17  75:18 </span><span class="sourceText">print j(12, </span><span class="posText">12</span><span class="sourceText">); // Tipo de los parámetros no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">76:11  76:14 </span><span class="sourceText">print </span><span class="posText">j(12</span><span class="sourceText">);        // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>InvocarFuncion &rarr;                             <span class="pos">76:11  76:14 </span><span class="sourceText">print </span><span class="posText">j(12</span><span class="sourceText">);        // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">76:13  76:14 </span><span class="sourceText">print j(</span><span class="posText">12</span><span class="sourceText">);        // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">77:11  77:23 </span><span class="sourceText">print </span><span class="posText">j(12, 12.5, 4</span><span class="sourceText">); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  </span>InvocarFuncion &rarr;                             <span class="pos">77:11  77:23 </span><span class="sourceText">print </span><span class="posText">j(12, 12.5, 4</span><span class="sourceText">); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">j</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>expresion  <span class="type">List&lt;Expresion&gt;</span> = 
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">77:13  77:14 </span><span class="sourceText">print j(</span><span class="posText">12</span><span class="sourceText">, 12.5, 4); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">12</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>"12.5"  <span class="type">Litreal.valor</span>                  <span class="pos">77:17  77:20 </span><span class="sourceText">print j(12, </span><span class="posText">12.5</span><span class="sourceText">, 4); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">77:23  77:23 </span><span class="sourceText">print j(12, 12.5, </span><span class="posText">4</span><span class="sourceText">); // Número de argumentos no coincide</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">4</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">79:11  79:22 </span><span class="sourceText">print </span><span class="posText">juan + anton</span><span class="sourceText">;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">79:11  79:22 </span><span class="sourceText">print </span><span class="posText">juan + anton</span><span class="sourceText">;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"juan"  <span class="type">Var.nombre</span>                        <span class="pos">79:11  79:14 </span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText"> + anton;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">+</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>"anton"  <span class="type">Var.nombre</span>                       <span class="pos">79:18  79:22 </span><span class="sourceText">print juan + </span><span class="posText">anton</span><span class="sourceText">;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">80:11  80:17 </span><span class="sourceText">print </span><span class="posText">2.5 * 2</span><span class="sourceText">;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">80:11  80:17 </span><span class="sourceText">print </span><span class="posText">2.5 * 2</span><span class="sourceText">;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"2.5"  <span class="type">Litreal.valor</span>                      <span class="pos">80:11  80:13 </span><span class="sourceText">print </span><span class="posText">2.5</span><span class="sourceText"> * 2;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">*</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">80:17  80:17 </span><span class="sourceText">print 2.5 * </span><span class="posText">2</span><span class="sourceText">;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">81:11  81:15 </span><span class="sourceText">print </span><span class="posText">i - 2</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">81:11  81:15 </span><span class="sourceText">print </span><span class="posText">i - 2</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"i"  <span class="type">Var.nombre</span>                           <span class="pos">81:11  81:11 </span><span class="sourceText">print </span><span class="posText">i</span><span class="sourceText"> - 2;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">-</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">81:15  81:15 </span><span class="sourceText">print i - </span><span class="posText">2</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">83:11  83:18 </span><span class="sourceText">print </span><span class="posText">2.5 && f</span><span class="sourceText">;    // Deben ser tipo entero</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionLogica &rarr;                            <span class="pos">83:11  83:18 </span><span class="sourceText">print </span><span class="posText">2.5 && f</span><span class="sourceText">;    // Deben ser tipo entero</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"2.5"  <span class="type">Litreal.valor</span>                      <span class="pos">83:11  83:13 </span><span class="sourceText">print </span><span class="posText">2.5</span><span class="sourceText"> && f;    // Deben ser tipo entero</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">&&</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>"f"  <span class="type">Var.nombre</span>                           <span class="pos">83:18  83:18 </span><span class="sourceText">print 2.5 && </span><span class="posText">f</span><span class="sourceText">;    // Deben ser tipo entero</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">84:11  84:16 </span><span class="sourceText">print </span><span class="posText">2 || i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionLogica &rarr;                            <span class="pos">84:11  84:16 </span><span class="sourceText">print </span><span class="posText">2 || i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">84:11  84:11 </span><span class="sourceText">print </span><span class="posText">2</span><span class="sourceText"> || i;</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">||</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>"i"  <span class="type">Var.nombre</span>                           <span class="pos">84:16  84:16 </span><span class="sourceText">print 2 || </span><span class="posText">i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">86:11  86:22 </span><span class="sourceText">print </span><span class="posText">juan > anton</span><span class="sourceText">;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">86:11  86:22 </span><span class="sourceText">print </span><span class="posText">juan > anton</span><span class="sourceText">;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"juan"  <span class="type">Var.nombre</span>                        <span class="pos">86:11  86:14 </span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText"> > anton;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">></span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>"anton"  <span class="type">Var.nombre</span>                       <span class="pos">86:18  86:22 </span><span class="sourceText">print juan > </span><span class="posText">anton</span><span class="sourceText">;    // Deben ser tipos simples</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">87:11  87:17 </span><span class="sourceText">print </span><span class="posText">2.5 < 2</span><span class="sourceText">;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">87:11  87:17 </span><span class="sourceText">print </span><span class="posText">2.5 < 2</span><span class="sourceText">;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"2.5"  <span class="type">Litreal.valor</span>                      <span class="pos">87:11  87:13 </span><span class="sourceText">print </span><span class="posText">2.5</span><span class="sourceText"> < 2;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value"><</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">87:17  87:17 </span><span class="sourceText">print 2.5 < </span><span class="posText">2</span><span class="sourceText">;        // Deben ser del mismo tipo</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">88:11  88:16 </span><span class="sourceText">print </span><span class="posText">i == 2</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">88:11  88:16 </span><span class="sourceText">print </span><span class="posText">i == 2</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"i"  <span class="type">Var.nombre</span>                           <span class="pos">88:11  88:11 </span><span class="sourceText">print </span><span class="posText">i</span><span class="sourceText"> == 2;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">==</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">88:16  88:16 </span><span class="sourceText">print i == </span><span class="posText">2</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">90:21  90:28 </span><span class="sourceText">print cast<int>(</span><span class="posText">2.5) + i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>ExpresionBinaria &rarr;                           <span class="pos">90:21  90:28 </span><span class="sourceText">print cast<int>(</span><span class="posText">2.5) + i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Cast &rarr;                                    <span class="pos">90:21  90:23 </span><span class="sourceText">print cast<int>(</span><span class="posText">2.5</span><span class="sourceText">) + i;</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">Tipoint</span> &rarr;                              <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>"2.5"  <span class="type">Litreal.valor</span>                   <span class="pos">90:21  90:23 </span><span class="sourceText">print cast<int>(</span><span class="posText">2.5</span><span class="sourceText">) + i;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">+</span>"  
-<span class="dots">·  ·  |  ·  |  ·  </span>"i"  <span class="type">Var.nombre</span>                           <span class="pos">90:28  90:28 </span><span class="sourceText">print cast<int>(2.5) + </span><span class="posText">i</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">91:16  91:27 </span><span class="sourceText">print cast<</span><span class="posText">Persona>(2.5</span><span class="sourceText">);    // Tipos simples</span>
-<span class="dots">·  ·  |  ·  |  </span>Cast &rarr;                                       <span class="pos">91:16  91:27 </span><span class="sourceText">print cast<</span><span class="posText">Persona>(2.5</span><span class="sourceText">);    // Tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"Persona"  <span class="type">Tipoident.tipo</span>                 <span class="pos">91:16  91:22 </span><span class="sourceText">print cast<</span><span class="posText">Persona</span><span class="sourceText">>(2.5);    // Tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"2.5"  <span class="type">Litreal.valor</span>                      <span class="pos">91:25  91:27 </span><span class="sourceText">print cast<Persona>(</span><span class="posText">2.5</span><span class="sourceText">);    // Tipos simples</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">92:21  92:24 </span><span class="sourceText">print cast<int>(</span><span class="posText">juan</span><span class="sourceText">);        // Expresiones de tipos simples</span>
-<span class="dots">·  ·  |  ·  |  </span>Cast &rarr;                                       <span class="pos">92:21  92:24 </span><span class="sourceText">print cast<int>(</span><span class="posText">juan</span><span class="sourceText">);        // Expresiones de tipos simples</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tipoint</span> &rarr;                                 <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"juan"  <span class="type">Var.nombre</span>                        <span class="pos">92:21  92:24 </span><span class="sourceText">print cast<int>(</span><span class="posText">juan</span><span class="sourceText">);        // Expresiones de tipos simples</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">93:23  93:25 </span><span class="sourceText">print cast<float>(</span><span class="posText">2.5</span><span class="sourceText">);        // Deben ser distintos tipos</span>
-<span class="dots">·  ·  |  ·  |  </span>Cast &rarr;                                       <span class="pos">93:23  93:25 </span><span class="sourceText">print cast<float>(</span><span class="posText">2.5</span><span class="sourceText">);        // Deben ser distintos tipos</span>
-<span class="dots">·  ·  |  ·  |  ·  </span><span class="value">Tiporeal</span> &rarr;                                <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"2.5"  <span class="type">Litreal.valor</span>                      <span class="pos">93:23  93:25 </span><span class="sourceText">print cast<float>(</span><span class="posText">2.5</span><span class="sourceText">);        // Deben ser distintos tipos</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">95:11  95:16 </span><span class="sourceText">print </span><span class="posText">juan[5</span><span class="sourceText">];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoArray &rarr;                                <span class="pos">95:11  95:16 </span><span class="sourceText">print </span><span class="posText">juan[5</span><span class="sourceText">];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"juan"  <span class="type">Var.nombre</span>                        <span class="pos">95:11  95:14 </span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText">[5];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">95:16  95:16 </span><span class="sourceText">print juan[</span><span class="posText">5</span><span class="sourceText">];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">5</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">96:11  96:13 </span><span class="sourceText">print </span><span class="posText">2[5</span><span class="sourceText">];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoArray &rarr;                                <span class="pos">96:11  96:13 </span><span class="sourceText">print </span><span class="posText">2[5</span><span class="sourceText">];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">96:11  96:11 </span><span class="sourceText">print </span><span class="posText">2</span><span class="sourceText">[5];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">96:13  96:13 </span><span class="sourceText">print 2[</span><span class="posText">5</span><span class="sourceText">];    // Debe ser tipo array</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">5</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">97:11  97:15 </span><span class="sourceText">print </span><span class="posText">v[5.0</span><span class="sourceText">];    // Debe ser indice entero</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoArray &rarr;                                <span class="pos">97:11  97:15 </span><span class="sourceText">print </span><span class="posText">v[5.0</span><span class="sourceText">];    // Debe ser indice entero</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"v"  <span class="type">Var.nombre</span>                           <span class="pos">97:11  97:11 </span><span class="sourceText">print </span><span class="posText">v</span><span class="sourceText">[5.0];    // Debe ser indice entero</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"5.0"  <span class="type">Litreal.valor</span>                      <span class="pos">97:13  97:15 </span><span class="sourceText">print v[</span><span class="posText">5.0</span><span class="sourceText">];    // Debe ser indice entero</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">98:11  98:15 </span><span class="sourceText">print </span><span class="posText">v[i+2</span><span class="sourceText">];</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoArray &rarr;                                <span class="pos">98:11  98:15 </span><span class="sourceText">print </span><span class="posText">v[i+2</span><span class="sourceText">];</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"v"  <span class="type">Var.nombre</span>                           <span class="pos">98:11  98:11 </span><span class="sourceText">print </span><span class="posText">v</span><span class="sourceText">[i+2];</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>ExpresionBinaria &rarr;                        <span class="pos">98:13  98:15 </span><span class="sourceText">print v[</span><span class="posText">i+2</span><span class="sourceText">];</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>"i"  <span class="type">Var.nombre</span>                        <span class="pos">98:13  98:13 </span><span class="sourceText">print v[</span><span class="posText">i</span><span class="sourceText">+2];</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span>"<span class="value">+</span>"  
-<span class="dots">·  ·  |  ·  |  ·  |  </span>Litent &rarr;                               <span class="pos">98:15  98:15 </span><span class="sourceText">print v[i+</span><span class="posText">2</span><span class="sourceText">];</span>
-<span class="dots">·  ·  |  ·  |  ·  |  ·  </span><span class="value">2</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">100:11  100:19</span><span class="sourceText">print </span><span class="posText">juan.edad</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoStruct &rarr;                               <span class="pos">100:11  100:19</span><span class="sourceText">print </span><span class="posText">juan.edad</span><span class="sourceText">;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"juan"  <span class="type">Var.nombre</span>                        <span class="pos">100:11  100:14</span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText">.edad;</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">edad</span>"  
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">101:11  101:16</span><span class="sourceText">print </span><span class="posText">5.edad</span><span class="sourceText">;    // Se requiere tipo struct</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoStruct &rarr;                               <span class="pos">101:11  101:16</span><span class="sourceText">print </span><span class="posText">5.edad</span><span class="sourceText">;    // Se requiere tipo struct</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>Litent &rarr;                                  <span class="pos">101:11  101:11</span><span class="sourceText">print </span><span class="posText">5</span><span class="sourceText">.edad;    // Se requiere tipo struct</span>
-<span class="dots">·  ·  |  ·  |  ·  |  </span><span class="value">5</span>  <span class="type">int</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">edad</span>"  
-<span class="dots">·  ·  |  ·  </span>Print &rarr;                                         <span class="pos">102:11  102:21</span><span class="sourceText">print </span><span class="posText">juan.nombre</span><span class="sourceText">; // Campo no definido</span>
-<span class="dots">·  ·  |  ·  |  </span>AccesoStruct &rarr;                               <span class="pos">102:11  102:21</span><span class="sourceText">print </span><span class="posText">juan.nombre</span><span class="sourceText">; // Campo no definido</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"juan"  <span class="type">Var.nombre</span>                        <span class="pos">102:11  102:14</span><span class="sourceText">print </span><span class="posText">juan</span><span class="sourceText">.nombre; // Campo no definido</span>
-<span class="dots">·  ·  |  ·  |  ·  </span>"<span class="value">nombre</span>"  
 
 [ASTPrinter] --------------------------------
 </pre>

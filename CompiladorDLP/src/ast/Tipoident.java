@@ -39,6 +39,16 @@ public class Tipoident extends AbstractTipo {
 	}
 	
 	Struct definicion;
+
+	@Override
+	public int getSize() {
+		int size = 0;
+		for(Definicion def:definicion.getDefinicion()){
+			size+=def.getTipo().getSize();
+		}
+		
+		return size;
+	}
 	
 	
 }

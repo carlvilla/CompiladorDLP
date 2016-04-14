@@ -41,5 +41,15 @@ public class Definicion extends AbstractTraceable implements AST {
 
 	private String nombre;
 	private Tipo tipo;
+	private int direccion;
+	
+	public int getDireccion() {
+		return direccion;
+	}
+	
+	public void setDireccion(int dir){
+		this.direccion = dir;
+	}
+	
 }
 

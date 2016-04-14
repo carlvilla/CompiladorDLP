@@ -147,6 +147,7 @@ public class ASTPrinter extends DefaultVisitor {
 
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
+		print(indent + 1, "direccion", "int", node.getDireccion());
 		return null;
 	}
 
@@ -158,6 +159,7 @@ public class ASTPrinter extends DefaultVisitor {
 
 		print(indent + 1, "string", "String", node.getString());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
+		print(indent + 1, "direccion", "int", node.getDireccion());
 		return null;
 	}
 

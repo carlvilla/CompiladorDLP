@@ -31,5 +31,7 @@ public class Atributo extends AbstractElemento {
 	}
 
 	private Definicion definicion;
+
+	
 }
 
