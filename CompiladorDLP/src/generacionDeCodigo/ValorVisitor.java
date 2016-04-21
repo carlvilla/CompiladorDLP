@@ -42,7 +42,7 @@ public class ValorVisitor extends DefaultVisitor{
 	
 	// Método auxiliar recomendado -------------
 		private void genera(String instruccion) {
-			writer.println(instruccion);
+	//		writer.println(instruccion);
 		}
 
 		private void genera(String instruccion, Tipo tipo) {

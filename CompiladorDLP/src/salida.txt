@@ -1,0 +1,12 @@
+#source "GeneracionCodigoBasico.txt"
+#line 31
+outi
+#line 32
+outf
+#line 33
+outi
+#line 35
+outi
+#line 36
+outi
+halt

@@ -306,10 +306,10 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			predicado((node.getLeft().getTipo() instanceof Tipoint || node.getLeft().getTipo() instanceof Tiporeal)
 					&& node.getLeft().getTipo().getClass().isInstance(node.getRight().getTipo()),
 					"Expresion Binaria: Las expresiones a la derecha e izquierda del operador"
-							+ " deben de ser tipoint o tiporeal en una operación aritmética",
+							+ " deben de ser tipoint o tiporeal",
 					node.getStart());
+			
 		}
-
 		else {
 
 			predicado(node.getLeft().getModificable(),
@@ -332,7 +332,17 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		}
 
-		node.setTipo(node.getLeft().getTipo());
+		String operador = node.getString();
+		
+		//Se asigna el tipo al nodo. Si es una operación aritmetica, el valor es decidido por los operando.
+		//Si es una operación lógica, el valor es siempre entero
+		if(operador.equals("+") || operador.equals("-") || operador.equals("/") || operador.equals("*")
+				|| operador.equals("="))
+			node.setTipo(node.getLeft().getTipo());
+		
+		else
+			node.setTipo(new Tipoint());
+		
 		node.setModificable(false);
 
 		return null;
@@ -408,7 +418,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	// class ExpresionLogica { Expresion left; String string; Expresion right; }
 	public Object visit(ExpresionLogica node, Object param) {
 
-		// super.visit(node, param);
 
 		if (node.getLeft() != null)
 			node.getLeft().accept(this, param);
@@ -416,23 +425,17 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
-		if(node.getString().equals("&&") || node.getString().equals("||"))
-			predicado(node.getLeft().getTipo() instanceof Tipoint,
-				"Expresion lógica:El tipo de los operandos debe ser Tipoint", node.getStart());
-		
-		else{
-			predicado(node.getLeft().getTipo() instanceof Tipoint ||
-						node.getLeft().getTipo() instanceof Tiporeal,
-					"Expresion lógica:El tipo de los operandos debe ser Tipoint o Tiporeal", node.getStart());
-		}
-		
 		predicado(node.getLeft().getTipo().getClass().isInstance(node.getRight().getTipo()),
 				"Expresion lógica:El tipo de los dos operandos debe ser igual", node.getStart());
+
+		predicado(node.getLeft().getTipo() instanceof Tipoint,
+				"Expresion lógica:El tipo de los operandos debe ser Tipoint", node.getStart());
 
 		node.setTipo(new Tipoint());
 		node.setModificable(false);
 
 		return null;
+		
 	}
 
 	// class AccesoArray { Expresion contenedor; Expresion posicion; }
