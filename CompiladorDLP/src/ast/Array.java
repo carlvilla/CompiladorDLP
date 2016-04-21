@@ -45,5 +45,15 @@ public class Array extends AbstractTipo {
 
 	private Litent litent; //Tamaño del array
 	private Tipo tipo;
+	@Override
+	public char getSufijo() {
+		return tipo.getSufijo();
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

@@ -15,5 +15,15 @@ public class Tipoint extends AbstractTipo {
 		return 2;
 	}
 
+	@Override
+	public char getSufijo() {
+		return 'i';
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return "int";
+	}
+
 }
 

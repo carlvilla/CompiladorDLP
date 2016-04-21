@@ -49,6 +49,19 @@ public class Tipoident extends AbstractTipo {
 		
 		return size;
 	}
+
+	@Override
+	public char getSufijo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return null;
+	}
+
+
 	
 	
 }

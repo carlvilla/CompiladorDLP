@@ -15,5 +15,16 @@ public class Tipovoid extends AbstractTipo {
 		return 0;
 	}
 
+	@Override
+	public char getSufijo() {
+		return 0;
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 

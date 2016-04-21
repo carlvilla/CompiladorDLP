@@ -416,11 +416,18 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
+		if(node.getString().equals("&&") || node.getString().equals("||"))
+			predicado(node.getLeft().getTipo() instanceof Tipoint,
+				"Expresion lógica:El tipo de los operandos debe ser Tipoint", node.getStart());
+		
+		else{
+			predicado(node.getLeft().getTipo() instanceof Tipoint ||
+						node.getLeft().getTipo() instanceof Tiporeal,
+					"Expresion lógica:El tipo de los operandos debe ser Tipoint o Tiporeal", node.getStart());
+		}
+		
 		predicado(node.getLeft().getTipo().getClass().isInstance(node.getRight().getTipo()),
 				"Expresion lógica:El tipo de los dos operandos debe ser igual", node.getStart());
-
-		predicado(node.getLeft().getTipo() instanceof Tipoint,
-				"Expresion lógica:El tipo de los operandos debe ser Tipoint", node.getStart());
 
 		node.setTipo(new Tipoint());
 		node.setModificable(false);
@@ -447,7 +454,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getContenedor().getTipo() instanceof Array)
 			node.setTipo(((Array) node.getContenedor().getTipo()).getTipo());
 
-		node.setModificable(false);
+		node.setModificable(true);
 
 		return null;
 	}
@@ -476,7 +483,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			
 		}
 		
-		node.setModificable(false);
+		node.setModificable(true);
 
 		return null;
 	}
