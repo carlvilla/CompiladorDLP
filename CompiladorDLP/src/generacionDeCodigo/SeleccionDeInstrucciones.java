@@ -1,18 +1,42 @@
 package generacionDeCodigo;
 
-import java.io.*;
-import java.util.*;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
-import ast.*;
-import visitor.*;
+import ast.ExpresionBinaria;
+import ast.Print;
+import ast.Programa;
+import ast.Tipo;
+import visitor.DefaultVisitor;
 
 public class SeleccionDeInstrucciones extends DefaultVisitor {
 
-	private ValorVisitor valorVisitor = new ValorVisitor();
+	private ValorVisitor valorVisitor;
+	private DireccionVisitor direccionVisitor;
+	
+	private Map<String, String> instruccion = new HashMap<String, String>();
 	
 	public SeleccionDeInstrucciones(Writer writer, String sourceFile) {
 		this.writer = new PrintWriter(writer);
 		this.sourceFile = sourceFile;
+		definirInstrucciones();
+		valorVisitor = new ValorVisitor(writer,sourceFile,instruccion);
+		direccionVisitor = new DireccionVisitor(writer, sourceFile);
+	}
+
+	private void definirInstrucciones() {
+		instruccion.put("+", "add");
+		instruccion.put("-", "sub");
+		instruccion.put("*", "mul");
+		instruccion.put("/", "div");
+		instruccion.put("==", "eq");
+		instruccion.put("!=", "ne");
+		instruccion.put(">", "gt");
+		instruccion.put(">=", "ge");
+		instruccion.put("<", "lt");
+		instruccion.put("<=", "le");
 	}
 
 	/*
@@ -63,15 +87,20 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
+		if(node.getString()!="="){
+			node.getLeft().accept(valorVisitor, param);
+			node.getRight().accept(valorVisitor, param);
+			genera(instruccion.get(node.getString()),node.getTipo());
+		}else{
+			node.getLeft().accept(direccionVisitor, param);
+			node.getRight().accept(valorVisitor, param);
+			genera("store",node.getTipo());
+		}
+		
 		return null;
 	}
 	
-	
-	
-	
 
-
-	
 	
 	// Método auxiliar recomendado -------------
 		private void genera(String instruccion) {
