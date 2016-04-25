@@ -50,8 +50,8 @@ gti
 pusha 2
 Loadf
 pushf 3333.3
-lti
-AND
+ltf
+and
 outi
 #line 36
 pusha 2

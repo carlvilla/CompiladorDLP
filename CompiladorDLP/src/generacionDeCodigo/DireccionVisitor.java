@@ -9,20 +9,16 @@ import ast.AccesoStruct;
 import ast.Array;
 import ast.Definicion;
 import ast.Litent;
-import ast.Tipo;
 import ast.Tipoident;
-import ast.Tipoint;
 import ast.Var;
 import visitor.DefaultVisitor;
 
 public class DireccionVisitor extends DefaultVisitor {
 	
 	private PrintWriter writer;
-	private String sourceFile;
 
 	public DireccionVisitor(Writer writer, String sourceFile) {
 		this.writer = new PrintWriter(writer);
-		this.sourceFile = sourceFile;
 	}
 	
 	
@@ -74,9 +70,10 @@ public class DireccionVisitor extends DefaultVisitor {
 	private void genera(String instruccion) {
 		writer.println(instruccion);
 	}
-
+/*
 	private void genera(String instruccion, Tipo tipo) {
 		genera(instruccion + tipo.getSufijo());
 	}
+	*/
 	
 }

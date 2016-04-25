@@ -5,7 +5,6 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-import ast.Cast;
 import ast.ExpresionBinaria;
 import ast.Print;
 import ast.Programa;
@@ -16,100 +15,84 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 
 	private ValorVisitor valorVisitor;
 	private DireccionVisitor direccionVisitor;
-	
-	private Map<String, String> instruccion = new HashMap<String, String>();
-	
+
+	private Map<String, String> instrucciones = new HashMap<String, String>();
+
 	public SeleccionDeInstrucciones(Writer writer, String sourceFile) {
 		this.writer = new PrintWriter(writer);
 		this.sourceFile = sourceFile;
 		definirInstrucciones();
-		valorVisitor = new ValorVisitor(writer,sourceFile,instruccion);
+		valorVisitor = new ValorVisitor(writer, sourceFile, instrucciones);
 		direccionVisitor = new DireccionVisitor(writer, sourceFile);
 	}
 
 	private void definirInstrucciones() {
-		instruccion.put("+", "add");
-		instruccion.put("-", "sub");
-		instruccion.put("*", "mul");
-		instruccion.put("/", "div");
-		instruccion.put("==", "eq");
-		instruccion.put("!=", "ne");
-		instruccion.put(">", "gt");
-		instruccion.put(">=", "ge");
-		instruccion.put("<", "lt");
-		instruccion.put("<=", "le");
-		instruccion.put("&&", "AND");
-		instruccion.put("||", "OR");
-		instruccion.put("!", "NOT");
-	
-		
+		instrucciones.put("+", "add");
+		instrucciones.put("-", "sub");
+		instrucciones.put("*", "mul");
+		instrucciones.put("/", "div");
+		instrucciones.put("==", "eq");
+		instrucciones.put("!=", "ne");
+		instrucciones.put(">", "gt");
+		instrucciones.put(">=", "ge");
+		instrucciones.put("<", "lt");
+		instrucciones.put("<=", "le");
+
 	}
 
 	/*
-	 * Poner aquí los visit necesarios.
-	 * Si se ha usado VGen solo hay que copiarlos de la clase 'visitor/_PlantillaParaVisitors.txt'.
+	 * Poner aquí los visit necesarios. Si se ha usado VGen solo hay que
+	 * copiarlos de la clase 'visitor/_PlantillaParaVisitors.txt'.
 	 */
 
-	//	Ejemplo:
+	// Ejemplo:
 	//
-	//	public Object visit(Programa node, Object param) {
-	//		genera("#source \"" + sourceFile + "\"");
-	//		genera("call main");
-	//		genera("halt");
-	//		super.visit(node, param);	// Recorrer los hijos
-	//		return null;
-	//	}
+	// public Object visit(Programa node, Object param) {
+	// genera("#source \"" + sourceFile + "\"");
+	// genera("call main");
+	// genera("halt");
+	// super.visit(node, param); // Recorrer los hijos
+	// return null;
+	// }
 
-	
-//	class Programa { List<Elemento> elemento; }
+	// class Programa { List<Elemento> elemento; }
 	public Object visit(Programa node, Object param) {
 		genera("#source \"" + sourceFile + "\"");
 		visitChildren(node.getElemento(), param);
 		genera("halt");
 		return null;
 	}
-	
-	
-//	class Print { Expresion expresion; }
+
+	// class Print { Expresion expresion; }
 	public Object visit(Print node, Object param) {
 		genera("#line " + node.getEnd().getLine());
 		node.getExpresion().accept(valorVisitor, param);
-		genera("out",node.getExpresion().getTipo());
-		
+		genera("out", node.getExpresion().getTipo());
+
 		return null;
 	}
-	
 
-//	class ExpresionBinaria { Expresion left;  String string;  Expresion right; }
+	// class ExpresionBinaria { Expresion left; String string; Expresion right;
+	// }
 	public Object visit(ExpresionBinaria node, Object param) {
 
+		genera("#line " + node.getEnd().getLine());
+		node.getLeft().accept(direccionVisitor, param);
+		node.getRight().accept(valorVisitor, param);
+		genera("store", node.getTipo());
 
-		if(node.getString()!="="){
-			node.getLeft().accept(valorVisitor, param);
-			node.getRight().accept(valorVisitor, param);
-			genera(instruccion.get(node.getString()),node.getTipo());
-		}else{
-			genera("#line " + node.getEnd().getLine());
-			node.getLeft().accept(direccionVisitor, param);
-			node.getRight().accept(valorVisitor, param);
-			genera("store",node.getTipo());
-		}
-		
 		return null;
 	}
-	
 
-
-	
 	// Método auxiliar recomendado -------------
-		private void genera(String instruccion) {
-			writer.println(instruccion);
-		}
+	private void genera(String instruccion) {
+		writer.println(instruccion);
+	}
 
-		private void genera(String instruccion, Tipo tipo) {
-			genera(instruccion + tipo.getSufijo());
-		}
+	private void genera(String instruccion, Tipo tipo) {
+		genera(instruccion + tipo.getSufijo());
+	}
 
-		private PrintWriter writer;
-		private String sourceFile;
+	private PrintWriter writer;
+	private String sourceFile;
 }

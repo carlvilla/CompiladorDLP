@@ -11,15 +11,15 @@ import ast.AccesoStruct;
 import ast.Array;
 import ast.Cast;
 import ast.Definicion;
+import ast.EntreParentesis;
 import ast.ExpresionBinaria;
 import ast.ExpresionLogica;
+import ast.ExpresionUnaria;
 import ast.Litchar;
 import ast.Litent;
 import ast.Litreal;
-import ast.Struct;
 import ast.Tipo;
 import ast.Tipoident;
-import ast.Tipoint;
 import ast.Var;
 import visitor.DefaultVisitor;
 import visitor.Visitor;
@@ -31,7 +31,6 @@ public class ValorVisitor extends DefaultVisitor{
 	
 	public ValorVisitor(Writer writer, String sourceFile,Map<String,String> instrucciones) {
 		this.writer = new PrintWriter(writer);
-		this.sourceFile = sourceFile;
 		this.instrucciones = instrucciones;
 		this.direccionVisitor = new DireccionVisitor(writer, sourceFile);
 	}
@@ -65,14 +64,21 @@ public class ValorVisitor extends DefaultVisitor{
 	
 //	class ExpresionBinaria { Expresion left;  String string;  Expresion right; }
 	public Object visit(ExpresionBinaria node, Object param) {
-
-
-		if(node.getString()!="="){
+		
 			node.getLeft().accept(this, param);
 			node.getRight().accept(this, param);
-			genera(instrucciones.get(node.getString()),node.getTipo());
-		}
+			genera(instrucciones.get(node.getString()),node.getLeft().getTipo());
 		
+		
+		return null;
+	}
+	
+	//	class ExpresionUnaria { Expresion expresion; }
+	public Object visit(ExpresionUnaria node, Object param) {
+
+		node.getExpresion().accept(this, param);
+		genera("not");
+
 		return null;
 	}
 	
@@ -131,10 +137,21 @@ public class ValorVisitor extends DefaultVisitor{
 
 		node.getLeft().accept(this, param);
 		node.getRight().accept(this, param);
-		genera(instrucciones.get(node.getString()));
+		if(node.getString().equals("&&"))
+			genera("and");
+		else if(node.getString().equals("||"))
+			genera("or");
+		
 		return null;
 	}
 	
+	//	class EntreParentesis { Expresion contenido; }
+	public Object visit(EntreParentesis node, Object param) {
+
+		node.getContenido().accept(this, param);
+		return null;
+	}
+
 	
 	
 	
@@ -148,7 +165,7 @@ public class ValorVisitor extends DefaultVisitor{
 		}
 
 		private PrintWriter writer;// = new PrintWriter(System.out);;
-		private String sourceFile;
+		
 
 
 
