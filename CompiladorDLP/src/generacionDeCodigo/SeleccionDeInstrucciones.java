@@ -5,6 +5,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
+import ast.Cast;
 import ast.ExpresionBinaria;
 import ast.Print;
 import ast.Programa;
@@ -37,6 +38,11 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		instruccion.put(">=", "ge");
 		instruccion.put("<", "lt");
 		instruccion.put("<=", "le");
+		instruccion.put("&&", "AND");
+		instruccion.put("||", "OR");
+		instruccion.put("!", "NOT");
+	
+		
 	}
 
 	/*
@@ -73,25 +79,17 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		return null;
 	}
 	
-	
-	
-	
+
 //	class ExpresionBinaria { Expresion left;  String string;  Expresion right; }
 	public Object visit(ExpresionBinaria node, Object param) {
 
-		// super.visit(node, param);
-
-		if (node.getLeft() != null)
-			node.getLeft().accept(this, param);
-
-		if (node.getRight() != null)
-			node.getRight().accept(this, param);
 
 		if(node.getString()!="="){
 			node.getLeft().accept(valorVisitor, param);
 			node.getRight().accept(valorVisitor, param);
 			genera(instruccion.get(node.getString()),node.getTipo());
 		}else{
+			genera("#line " + node.getEnd().getLine());
 			node.getLeft().accept(direccionVisitor, param);
 			node.getRight().accept(valorVisitor, param);
 			genera("store",node.getTipo());
@@ -100,6 +98,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		return null;
 	}
 	
+
 
 	
 	// Método auxiliar recomendado -------------
