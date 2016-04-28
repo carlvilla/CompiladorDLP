@@ -30,9 +30,15 @@ public class Identificacion extends DefaultVisitor {
 		predicado(definicion == null, "Funcion ya definida: " + funcion.getString(), funcion.getStart());
 		funciones.put(funcion.getString(),funcion);
 		
+		visitChildren(funcion.getParametro(), param);
 		
-		super.visit(funcion, param);
-		 
+		if (funcion.getTipo() != null)
+			funcion.getTipo().accept(this, param);
+		
+		visitChildren(funcion.getAtributo(), param);
+		
+		visitChildren(funcion.getSentencia(), param);
+		
 		variables.reset();
 		
 		return null;
@@ -111,7 +117,6 @@ public class Identificacion extends DefaultVisitor {
 	 
 	 
 	 //Variables
-	 
 		public Object visit(Definicion node, Object param) {
 			Definicion definicion = (Definicion) variables.getFromTop(node.getNombre());
 			predicado(definicion == null, "Variable ya definida: " + node.getNombre(), node.getStart());
@@ -134,8 +139,11 @@ public class Identificacion extends DefaultVisitor {
 		
 		//	class Parametro { String string;  Tipo tipo; }
 		public Object visit(Parametro node, Object param) {
+			
+			//PROBLEMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 			Definicion definicionPar = new Definicion(node.getString(),node.getTipo());
+			definicionPar.setDireccion(node.getDireccion());
 			Definicion definicion = (Definicion) variables.getFromTop(node.getString());
 			
 			predicado(definicion==null,"Parámetro ya definido: "+ node.getString(), node.getStart());

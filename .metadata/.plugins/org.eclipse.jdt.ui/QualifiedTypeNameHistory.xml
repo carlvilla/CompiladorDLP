@@ -22,4 +22,14 @@
 <fullyQualifiedTypeName name="ast.ExpresionLogica"/>
 <fullyQualifiedTypeName name="ast.ExpresionUnaria"/>
 <fullyQualifiedTypeName name="ast.EntreParentesis"/>
+<fullyQualifiedTypeName name="ast.While"/>
+<fullyQualifiedTypeName name="ast.Sentencia"/>
+<fullyQualifiedTypeName name="ast.InvocarSentencia"/>
+<fullyQualifiedTypeName name="ast.If"/>
+<fullyQualifiedTypeName name="ast.Funcion"/>
+<fullyQualifiedTypeName name="ast.Atributo"/>
+<fullyQualifiedTypeName name="ast.Parametro"/>
+<fullyQualifiedTypeName name="ast.Return"/>
+<fullyQualifiedTypeName name="ast.InvocarFuncion"/>
+<fullyQualifiedTypeName name="ast.Expresion"/>
 </qualifiedTypeNameHistroy>

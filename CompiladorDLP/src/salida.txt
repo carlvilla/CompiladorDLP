@@ -1,0 +1,48 @@
+#source "Test Generación de Código 1.txt"
+call main
+halt
+#line 25
+doble :
+enter 0
+#line 25
+pusha 0
+Loadi
+push 2
+muli
+ret 2,0,2
+#line 40
+main :
+enter 2
+#line 31
+pusha 0
+pushf 1.0
+storef
+#line 32
+pusha BP
+push -2
+add
+push 2
+storei
+#line 37
+pusha 0
+Loadf
+pushf 2.0
+ltf
+jz else1
+#line 35
+push 1
+outi
+jmp fin_if1
+else1 :
+#line 37
+pusha BP
+push -2
+add
+Loadi
+outi
+fin_if1 :
+#line 40
+push 2
+call doble
+outi
+ret 0,2,0
