@@ -3,10 +3,23 @@
 <fullyQualifiedTypeName name="visitor.PrintVisitor"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="javax.swing.tree.AbstractLayoutCache.NodeDimensions"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="visitor.DefaultVisitor"/>
 <fullyQualifiedTypeName name="generacionDeCodigo.DireccionVisitor"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="ast.AccesoArray"/>
+<fullyQualifiedTypeName name="ast.AccesoStruct"/>
+<fullyQualifiedTypeName name="ast.Struct"/>
+<fullyQualifiedTypeName name="ast.Tipoident"/>
+<fullyQualifiedTypeName name="ast.Definicion"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="ast.Array"/>
+<fullyQualifiedTypeName name="ast.Tipoint"/>
+<fullyQualifiedTypeName name="visitor.Visitor"/>
+<fullyQualifiedTypeName name="ast.Litent"/>
+<fullyQualifiedTypeName name="ast.Cast"/>
+<fullyQualifiedTypeName name="ast.ExpresionLogica"/>
+<fullyQualifiedTypeName name="ast.ExpresionUnaria"/>
+<fullyQualifiedTypeName name="ast.EntreParentesis"/>
 </qualifiedTypeNameHistroy>
