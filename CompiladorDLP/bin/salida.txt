@@ -1,61 +1,48 @@
-#source "GeneracionCodigoBasico.txt"
-#line 26
+#source "Test Generación de Código 1.txt"
+call main
+halt
+#line 25
+doble :
+enter 0
+#line 25
 pusha 0
-push 1111
-storei
-#line 27
-pusha 2
-pushf 2222.2
-storef
-#line 28
-pusha 6
-push 3
+Loadi
 push 2
-mul
-add
-push 3333
-storei
-#line 29
-pusha 16
-push 4
-add
-pushf 4444.4
-storef
+muli
+ret 2,0,2
+#line 40
+main :
+enter 2
 #line 31
 pusha 0
-Loadi
-outi
+pushf 1.0
+storef
 #line 32
-pusha 2
-Loadf
-pusha 16
-push 4
+pusha BP
+push -2
 add
-loadf
-addf
-outf
-#line 33
-pusha 6
-push 3
 push 2
-mul
+storei
+#line 37
+pusha 0
+Loadf
+pushf 2.0
+ltf
+jz else1
+#line 35
+push 1
+outi
+jmp fin_if1
+else1 :
+#line 37
+pusha BP
+push -2
 add
 Loadi
 outi
-#line 35
-pusha 0
-Loadi
-push 0
-gti
-pusha 2
-Loadf
-pushf 3333.3
-ltf
-and
+fin_if1 :
+#line 40
+push 2
+call doble
 outi
-#line 36
-pusha 2
-Loadf
-f2i
-outi
-halt
+ret 0,2,0

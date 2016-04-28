@@ -12,9 +12,11 @@ import ast.Array;
 import ast.Cast;
 import ast.Definicion;
 import ast.EntreParentesis;
+import ast.Expresion;
 import ast.ExpresionBinaria;
 import ast.ExpresionLogica;
 import ast.ExpresionUnaria;
+import ast.InvocarFuncion;
 import ast.Litchar;
 import ast.Litent;
 import ast.Litreal;
@@ -56,7 +58,7 @@ public class ValorVisitor extends DefaultVisitor{
 
 	//	class Var { String nombre; }
 	public Object visit(Var node, Object param) {
-		genera("pusha " + node.getDefinicion().getDireccion());
+		node.accept(direccionVisitor, param);
 		genera("Load",node.getTipo());
 		
 		return null;
@@ -151,9 +153,18 @@ public class ValorVisitor extends DefaultVisitor{
 		node.getContenido().accept(this, param);
 		return null;
 	}
+	
+//	class InvocarFuncion { String string;  List<Expresion> expresion; }
+	public Object visit(InvocarFuncion node, Object param) {
 
-	
-	
+		for(Expresion expr:node.getExpresion()){
+			expr.accept(this, param);
+		}
+		
+		genera("call "+node.getString());
+		
+		return null;
+	}
 	
 	// Método auxiliar recomendado -------------
 		private void genera(String instruccion) {
