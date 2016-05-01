@@ -8,7 +8,6 @@ public interface Visitor {
 	public Object visit(Struct node, Object param);
 	public Object visit(Atributo node, Object param);
 	public Object visit(Definicion node, Object param);
-	public Object visit(Parametro node, Object param);
 	public Object visit(If node, Object param);
 	public Object visit(Read node, Object param);
 	public Object visit(Return node, Object param);

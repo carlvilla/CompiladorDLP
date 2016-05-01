@@ -141,18 +141,6 @@ public class PrintVisitor extends DefaultVisitor {
 		return null;
 	}
 
-	// class Parametro { String string; Tipo tipo; }
-	public Object visit(Parametro node, Object param) {
-
-		// super.visit(node, param);
-		System.out.print(node.getString() + ":");
-
-		if (node.getTipo() != null)
-			node.getTipo().accept(this, param);
-
-		return null;
-	}
-
 	// class If { Expresion condic; List<Sentencia> verdadero; List<Sentencia>
 	// falso; }
 	public Object visit(If node, Object param) {

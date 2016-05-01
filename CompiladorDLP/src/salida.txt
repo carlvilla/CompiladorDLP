@@ -1,48 +1,187 @@
-#source "Test Generación de Código 1.txt"
+#source "Hipoteca.txt"
 call main
 halt
 #line 25
-doble :
-enter 0
-#line 25
-pusha 0
+potencia :
+enter 4
+#line 21
+pusha BP
+push 4
+add
 Loadi
-push 2
-muli
-ret 2,0,2
-#line 40
-main :
-enter 2
-#line 31
-pusha 0
+push 0
+eqi
+jz else1
+#line 13
+pusha BP
+push -4
+add
 pushf 1.0
 storef
-#line 32
-pusha BP
-push -2
-add
-push 2
-storei
-#line 37
-pusha 0
-Loadf
-pushf 2.0
-ltf
-jz else1
-#line 35
-push 1
-outi
 jmp fin_if1
 else1 :
-#line 37
+#line 21
 pusha BP
-push -2
+push 4
 add
 Loadi
-outi
+push 0
+lti
+jz else2
+#line 16
+pusha BP
+push -4
+add
+pushf 1.0
+pusha BP
+push 6
+add
+Loadf
+push 0
+pusha BP
+push 4
+add
+Loadi
+subi
+call potencia
+divf
+storef
+jmp fin_if2
+else2 :
+#line 18
+pusha BP
+push -4
+add
+pusha BP
+push 6
+add
+Loadf
+storef
+#line 21
+inicio_while1 :
+pusha BP
+push 4
+add
+Loadi
+push 1
+gti
+jz fin_while1
+#line 20
+pusha BP
+push -4
+add
+pusha BP
+push -4
+add
+Loadf
+pusha BP
+push 6
+add
+Loadf
+mulf
+storef
+#line 21
+pusha BP
+push 4
+add
+pusha BP
+push 4
+add
+Loadi
+push 1
+subi
+storei
+jmp inicio_while1
+fin_while1 :
+fin_if2 :
 fin_if1 :
-#line 40
-push 2
-call doble
-outi
-ret 0,2,0
+#line 25
+pusha BP
+push -4
+add
+Loadf
+ret 4,4,6
+#line 33
+letraHipoteca :
+enter 4
+#line 32
+pusha BP
+push -4
+add
+pusha BP
+push 4
+add
+Loadf
+pushf 12.0
+divf
+storef
+#line 33
+pusha BP
+push 10
+add
+Loadf
+pusha BP
+push -4
+add
+Loadf
+mulf
+pushf 100.0
+pushf 1.0
+pushf 1.0
+pusha BP
+push -4
+add
+Loadf
+pushf 100.0
+divf
+addf
+push 0
+pusha BP
+push 8
+add
+Loadi
+push 12
+muli
+subi
+call potencia
+subf
+mulf
+divf
+ret 4,4,10
+#line 51
+main :
+enter 10
+#line 47
+pusha BP
+push -4
+add
+pushf 200000.0
+storef
+#line 48
+pusha BP
+push -6
+add
+push 30
+storei
+#line 49
+pusha BP
+push -10
+add
+pushf 2.04
+storef
+#line 51
+pusha BP
+push -4
+add
+Loadf
+pusha BP
+push -6
+add
+Loadi
+pusha BP
+push -10
+add
+Loadf
+call letraHipoteca
+outf
+ret 0,10,0

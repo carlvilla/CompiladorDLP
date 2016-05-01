@@ -6,3 +6,5 @@
 /main/
 /sintactico/
 /semantico/
+/ast/
+/visitor/

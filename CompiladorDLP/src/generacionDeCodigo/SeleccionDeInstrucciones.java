@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ast.Atributo;
+import ast.Definicion;
 import ast.Expresion;
 import ast.ExpresionBinaria;
 import ast.Funcion;
 import ast.If;
 import ast.InvocarSentencia;
-import ast.Parametro;
 import ast.Print;
 import ast.Programa;
 import ast.Return;
@@ -164,7 +164,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		}
 		
 		int sizeParametros = 0;
-		for(Parametro parametro:node.getParametro()){
+		for(Definicion parametro:node.getParametro()){
 			sizeParametros+=parametro.getTipo().getSize();
 		}
 		
@@ -190,7 +190,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		}
 		
 		int sizeParametros = 0;
-		for(Parametro parametro:node.getMiFuncion().getParametro()){
+		for(Definicion parametro:node.getMiFuncion().getParametro()){
 			sizeParametros+=parametro.getTipo().getSize();
 		}
 			

@@ -38,7 +38,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		// super.visit(node, param);
 
 		if (node.getParametro() != null)
-			for (Parametro parametro : node.getParametro()) {
+			for (Definicion parametro : node.getParametro()) {
 				predicado(simple(parametro.getTipo()), "Función:Los parámetros deben de ser de tipo simple",
 						node.getStart());
 			}
@@ -47,7 +47,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 				"Función:El tipo de retorno de la función debe ser simple o void", node.getStart());
 
 		if (node.getParametro() != null)
-			for (Parametro child : node.getParametro())
+			for (Definicion child : node.getParametro())
 				child.accept(this, param);
 
 		if (node.getTipo() != null)
@@ -99,7 +99,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		return null;
 	}
-
+/*
 	// class Parametro { String string; Tipo tipo; }
 	public Object visit(Parametro node, Object param) {
 
@@ -109,7 +109,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			node.getTipo().accept(this, param);
 
 		return null;
-	}
+	}*/
 
 	// class If { Expresion condic; List<Sentencia> verdadero; List<Sentencia>
 	// falso; }

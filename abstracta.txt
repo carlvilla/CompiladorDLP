@@ -4,12 +4,10 @@ elemento, sentencia, expresion, tipo
 NODES
 programa -> elemento*;
 
-funcion:elemento -> string parametro* tipo atributo* sentencia*;
 struct:elemento -> string definicion*;
 atributo:elemento -> definicion;
 
 definicion -> nombre:string tipo:tipo;
-parametro -> string tipo;
 
 if:sentencia -> condic:expresion verdadero:sentencia* falso:sentencia*;
 read:sentencia -> expresion;

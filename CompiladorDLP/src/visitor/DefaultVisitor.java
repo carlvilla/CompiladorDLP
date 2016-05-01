@@ -46,13 +46,6 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Parametro { String string;  Tipo tipo; }
-	public Object visit(Parametro node, Object param) {
-		if (node.getTipo() != null)
-			node.getTipo().accept(this, param);
-		return null;
-	}
-
 	//	class If { Expresion condic;  List<Sentencia> verdadero;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
 		if (node.getCondic() != null)

@@ -24,9 +24,9 @@ public class DireccionVisitor extends DefaultVisitor {
 	
 	//	class Var { String nombre; }
 	public Object visit(Var node, Object param) {
-		int direccion = node.getDefinicion().getDireccion();
+		Definicion def = node.getDefinicion();
 		
-		if(direccion < 0 || String.valueOf(direccion).contains("+")){
+		if(def.getDireccion() < 0 || def.esParametro()){
 			genera("pusha BP");
 			genera("push " + node.getDefinicion().getDireccion());
 			genera("add");

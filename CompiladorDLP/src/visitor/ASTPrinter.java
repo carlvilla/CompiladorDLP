@@ -151,18 +151,6 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Parametro { String string;  Tipo tipo; }
-	public Object visit(Parametro node, Object param) {
-		int indent = ((Integer)param).intValue();
-
-		printName(indent, "Parametro", node, false);
-
-		print(indent + 1, "string", "String", node.getString());
-		visit(indent + 1, "tipo", "Tipo",node.getTipo());
-		print(indent + 1, "direccion", "int", node.getDireccion());
-		return null;
-	}
-
 	//	class If { Expresion condic;  List<Sentencia> verdadero;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
 		int indent = ((Integer)param).intValue();
@@ -417,6 +405,7 @@ public class ASTPrinter extends DefaultVisitor {
 
 	private void print(int indent, String name, String type, Object value) {
 		write(indent, formatValue(value) + "  " + typeTag(type));
+		
 	}
 
 	private void print(int indent, String attName, String type, List<? extends Object> children) {

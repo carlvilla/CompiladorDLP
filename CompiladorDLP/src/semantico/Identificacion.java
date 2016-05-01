@@ -118,9 +118,26 @@ public class Identificacion extends DefaultVisitor {
 	 
 	 //Variables
 		public Object visit(Definicion node, Object param) {
+			
+			//Si la definición es de un parámetro
+			if(node.esParametro()){	
+				node.setDireccion(node.getDireccion());
+				Definicion definicion = (Definicion) variables.getFromTop(node.getNombre());
+				
+				predicado(definicion==null,"Parámetro ya definido: "+ node.getNombre(), node.getStart());
+				variables.put(node.getNombre(), node);
+				
+				
+			}
+			
+			//Si la definición es de una variable
+			else{
+			
 			Definicion definicion = (Definicion) variables.getFromTop(node.getNombre());
 			predicado(definicion == null, "Variable ya definida: " + node.getNombre(), node.getStart());
-			variables.put(node.getNombre(), node);
+			variables.put(node.getNombre(), node);		
+			
+			}
 			
 			super.visit(node, param);
 			
@@ -135,27 +152,6 @@ public class Identificacion extends DefaultVisitor {
 			return null;
 		}
 		
-	//Parametros
-		
-		//	class Parametro { String string;  Tipo tipo; }
-		public Object visit(Parametro node, Object param) {
-			
-			//PROBLEMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-			Definicion definicionPar = new Definicion(node.getString(),node.getTipo());
-			definicionPar.setDireccion(node.getDireccion());
-			Definicion definicion = (Definicion) variables.getFromTop(node.getString());
-			
-			predicado(definicion==null,"Parámetro ya definido: "+ node.getString(), node.getStart());
-			variables.put(node.getString(), definicionPar);
-			
-			super.visit(node, param);
-			
-			return null;
-		}
-
-	
-	
 	
 	/**
 	 * Método auxiliar opcional para ayudar a implementar los predicados de la Gramática Atribuida.

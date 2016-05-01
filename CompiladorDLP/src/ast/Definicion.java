@@ -43,6 +43,16 @@ public class Definicion extends AbstractTraceable implements AST {
 	private Tipo tipo;
 	private int direccion;
 	
+	private boolean esParametro;
+	
+	public boolean esParametro(){
+		return esParametro;
+	}
+	
+	public void setEsParametro(boolean esParametro){
+		this.esParametro = esParametro;
+	}
+	
 	public int getDireccion() {
 		return direccion;
 	}

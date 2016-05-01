@@ -39,7 +39,6 @@ public class GestionDeMemoria extends DefaultVisitor {
 			
 			if (node.getParametro() != null){
 				for(int i=node.getParametro().size()-1;i>-1;i--){
-					//Parametro parametro = node.getParametro().get(i);
 					node.getParametro().get(i).setDireccion(sumaTamañoVariablesParametros);
 					sumaTamañoVariablesParametros+=node.getParametro().get(i).getTipo().getSize();					
 				}						
