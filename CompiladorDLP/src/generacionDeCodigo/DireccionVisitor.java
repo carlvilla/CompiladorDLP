@@ -8,17 +8,21 @@ import ast.AccesoArray;
 import ast.AccesoStruct;
 import ast.Array;
 import ast.Definicion;
-import ast.Litent;
+import ast.Tipo;
 import ast.Tipoident;
 import ast.Var;
 import visitor.DefaultVisitor;
+import visitor.Visitor;
 
 public class DireccionVisitor extends DefaultVisitor {
 	
 	private PrintWriter writer;
+	private ValorVisitor valorVisitor;
+	private TipoVisitor sizeVisitor;
 
 	public DireccionVisitor(Writer writer, String sourceFile) {
 		this.writer = new PrintWriter(writer);
+		sizeVisitor = new TipoVisitor(writer,sourceFile);
 	}
 	
 	
@@ -41,11 +45,33 @@ public class DireccionVisitor extends DefaultVisitor {
 //	class AccesoArray { Expresion contenedor;  Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
 
-		Array array = ((Array)((Var)node.getContenedor()).getDefinicion().getTipo());
+		//Array array = ((Array)((Var)node.getContenedor()).getDefinicion().getTipo());
+				
+		node.getContenedor().accept(this, param);
+		//genera("pusha "+((Var)node.getContenedor()).getDefinicion().getDireccion());
 		
-		genera("pusha "+((Var)node.getContenedor()).getDefinicion().getDireccion());
-		genera("push "+((Litent)node.getPosicion()).getValor());
-		genera("push "+ array.getTipo().getSize());
+		node.getPosicion().accept(valorVisitor, param);
+	//	genera("push "+((Litent)node.getPosicion()).getValor());
+		
+		Tipo tipo = (Tipo) node.getContenedor().accept(sizeVisitor, null);
+		
+		
+		genera("push "+ tipo.getSize());
+		
+		/*
+		if(node.getContenedor().getTipo() instanceof Array){
+		
+		genera("push "+ ((Array)node.getContenedor().getTipo()).getTipo().getSize());
+		
+		}
+		
+		else if(node.getContenedor().getTipo() instanceof Tipoident){
+			
+			genera("push "+ ((AccesoStruct)node.getContenedor().getTipo()).getTipo().getSize());
+					
+		}
+		*/
+		
 		genera("mul");
 		genera("add");
 		
@@ -57,7 +83,10 @@ public class DireccionVisitor extends DefaultVisitor {
 //	class AccesoStruct { Expresion contenedor;  String atributo; }
 	public Object visit(AccesoStruct node, Object param) {
 
-		genera("pusha "+((Var)node.getContenedor()).getDefinicion().getDireccion());
+		//Direccion contenedor
+		node.getContenedor().accept(this, param);
+		
+	//	genera("pusha "+((Var)node.getContenedor()).getDefinicion().getDireccion());
 		
 		List<Definicion> atributosStruct = ((Tipoident)(node.getContenedor())
 				.getTipo()).getDefinicion().getDefinicion();
@@ -85,5 +114,11 @@ public class DireccionVisitor extends DefaultVisitor {
 		genera(instruccion + tipo.getSufijo());
 	}
 	*/
+
+
+	public void setValorVisitor(ValorVisitor valorVisitor) {
+		this.valorVisitor = valorVisitor;
+		
+	}
 	
 }

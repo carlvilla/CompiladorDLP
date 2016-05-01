@@ -107,6 +107,7 @@ public class PrintVisitor extends DefaultVisitor {
 		if (node.getDefinicion() != null)
 			for (Definicion child : node.getDefinicion()) {
 				child.accept(this, param);
+				System.out.println(";");
 			}
 
 		System.out.println("};");
@@ -123,6 +124,8 @@ public class PrintVisitor extends DefaultVisitor {
 		if (node.getDefinicion() != null)
 			node.getDefinicion().accept(this, param);
 
+		System.out.println(";");
+		
 		return null;
 	}
 
@@ -135,8 +138,6 @@ public class PrintVisitor extends DefaultVisitor {
 
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
-
-		System.out.println(";");
 
 		return null;
 	}
@@ -242,8 +243,6 @@ public class PrintVisitor extends DefaultVisitor {
 	// class InvocarFuncion { String string; List<Expresion> expresion; }
 	public Object visit(InvocarFuncion node, Object param) {
 
-		// super.visit(node, param);
-		System.out.println(node.getString());
 
 		System.out.print(node.getString() + "(");
 
@@ -259,8 +258,6 @@ public class PrintVisitor extends DefaultVisitor {
 	// class InvocarSentencia { Invocar invocar; }
 	public Object visit(InvocarSentencia node, Object param) {
 
-		// super.visit(node, param);
-		System.out.println(node.getString());
 
 		System.out.print(node.getString() + "(");
 

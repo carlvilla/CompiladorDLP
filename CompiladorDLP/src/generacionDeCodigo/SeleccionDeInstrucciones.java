@@ -14,6 +14,7 @@ import ast.If;
 import ast.InvocarSentencia;
 import ast.Print;
 import ast.Programa;
+import ast.Read;
 import ast.Return;
 import ast.Sentencia;
 import ast.Tipo;
@@ -36,6 +37,8 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		definirInstrucciones();
 		valorVisitor = new ValorVisitor(writer, sourceFile, instrucciones);
 		direccionVisitor = new DireccionVisitor(writer, sourceFile);
+		valorVisitor.setDireccionVisitor(direccionVisitor);
+		direccionVisitor.setValorVisitor(valorVisitor);
 	}
 
 	private void definirInstrucciones() {
@@ -135,9 +138,10 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 	    genera("jmp fin_if"+contadorLocal);
 	    genera("else"+contadorLocal+" :");
 	    
-	    for(Sentencia sent: node.getFalso()){
-			sent.accept(this, param);
-		}
+	    if(node.getFalso()!=null)
+	    	for(Sentencia sent: node.getFalso()){
+	    		sent.accept(this, param);
+	    	}
 	    
 	    genera("fin_if"+contadorLocal+" :");
 	   
@@ -182,7 +186,9 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		
 		
 		genera("#line " + node.getEnd().getLine());
-		node.getExpresion().accept(valorVisitor, param);
+		
+		if(node.getExpresion() != null)
+			node.getExpresion().accept(valorVisitor, param);
 		
 		int sizeAtributos = 0;
 		for(Atributo atributo:node.getMiFuncion().getAtributo()){
@@ -198,6 +204,15 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		return null;
 	}
 
+
+	//	class Read { Expresion expresion; }
+	public Object visit(Read node, Object param) {
+		genera("#line " + node.getEnd().getLine());
+		node.getExpresion().accept(direccionVisitor, param);
+		genera("in",node.getExpresion().getTipo());
+		genera("store",node.getExpresion().getTipo());
+		return null;
+	}
 	
 	
 	
@@ -209,8 +224,13 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 
 		if (node.getExpresion() != null)
 			for (Expresion child : node.getExpresion())
-				child.accept(this, param);
+				child.accept(valorVisitor, param);
 
+		genera("call "+node.getString());
+		
+		if(!(((Funcion)node.getDefinicion()).getTipo() instanceof Tipovoid))
+			genera("pop",((Funcion)node.getDefinicion()).getTipo());
+		
 		return null;
 	}
 
