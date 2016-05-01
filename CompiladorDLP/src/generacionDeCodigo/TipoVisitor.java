@@ -4,9 +4,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
 
-import ast.AccesoArray;
 import ast.AccesoStruct;
-import ast.Array;
 import ast.Definicion;
 import ast.Tipoident;
 import ast.Var;
@@ -49,9 +47,5 @@ public class TipoVisitor extends DefaultVisitor {
 		return node.getTipo();
 	}
 	
-	
-	// Método auxiliar recomendado -------------
-	private void genera(String instruccion) {
-		writer.println(instruccion);
-	}
+
 }

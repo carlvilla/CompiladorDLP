@@ -1,8 +1,6 @@
 package ast;
 
-import java.util.List;
-
-import visitor.*;
+import visitor.Visitor;
 
 //	var:expresion -> nombre:String ;
 

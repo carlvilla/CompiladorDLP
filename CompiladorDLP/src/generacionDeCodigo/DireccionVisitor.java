@@ -6,13 +6,11 @@ import java.util.List;
 
 import ast.AccesoArray;
 import ast.AccesoStruct;
-import ast.Array;
 import ast.Definicion;
 import ast.Tipo;
 import ast.Tipoident;
 import ast.Var;
 import visitor.DefaultVisitor;
-import visitor.Visitor;
 
 public class DireccionVisitor extends DefaultVisitor {
 	
@@ -44,33 +42,12 @@ public class DireccionVisitor extends DefaultVisitor {
 	
 //	class AccesoArray { Expresion contenedor;  Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
-
-		//Array array = ((Array)((Var)node.getContenedor()).getDefinicion().getTipo());
-				
-		node.getContenedor().accept(this, param);
-		//genera("pusha "+((Var)node.getContenedor()).getDefinicion().getDireccion());
-		
-		node.getPosicion().accept(valorVisitor, param);
-	//	genera("push "+((Litent)node.getPosicion()).getValor());
-		
-		Tipo tipo = (Tipo) node.getContenedor().accept(sizeVisitor, null);
-		
-		
-		genera("push "+ tipo.getSize());
-		
-		/*
-		if(node.getContenedor().getTipo() instanceof Array){
-		
-		genera("push "+ ((Array)node.getContenedor().getTipo()).getTipo().getSize());
-		
-		}
-		
-		else if(node.getContenedor().getTipo() instanceof Tipoident){
 			
-			genera("push "+ ((AccesoStruct)node.getContenedor().getTipo()).getTipo().getSize());
-					
-		}
-		*/
+		node.getContenedor().accept(this, param);
+		node.getPosicion().accept(valorVisitor, param);
+		Tipo tipo = (Tipo) node.getContenedor().accept(sizeVisitor, null);
+	
+		genera("push "+ tipo.getSize());
 		
 		genera("mul");
 		genera("add");

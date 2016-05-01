@@ -8,7 +8,6 @@ import java.util.Map;
 
 import ast.AccesoArray;
 import ast.AccesoStruct;
-import ast.Array;
 import ast.Cast;
 import ast.Definicion;
 import ast.EntreParentesis;
