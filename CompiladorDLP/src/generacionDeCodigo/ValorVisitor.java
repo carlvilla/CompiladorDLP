@@ -30,11 +30,12 @@ public class ValorVisitor extends DefaultVisitor{
 	
 	private Map<String, String> instrucciones = new HashMap<String, String>();
 	Visitor direccionVisitor;
+	Visitor tipoVisitor;
 	
 	public ValorVisitor(Writer writer, String sourceFile,Map<String,String> instrucciones) {
 		this.writer = new PrintWriter(writer);
 		this.instrucciones = instrucciones;
-		this.direccionVisitor = new DireccionVisitor(writer, sourceFile);
+		this.tipoVisitor = new TipoVisitor(writer,sourceFile);
 	}
 
 	
@@ -45,8 +46,8 @@ public class ValorVisitor extends DefaultVisitor{
 	}
 
 	//	class Litchar { String valor; }
-	public Object visit(Litchar node, Object param) {
-		genera("pushb " + node.getValor());
+	public Object visit(Litchar node, Object param) {		
+		genera("pushb " + node.getValor().codePointAt(1));
 		return null;
 	}
 
@@ -88,13 +89,13 @@ public class ValorVisitor extends DefaultVisitor{
 //	class AccesoArray { Expresion contenedor;  Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
 
-		Array array = ((Array)((Var)node.getContenedor()).getDefinicion().getTipo());
+		Tipo tipo = (Tipo) node.getContenedor().accept(tipoVisitor, true);
 		
 		//Obtenemos dirección en array
 		node.accept(direccionVisitor, param);
 		
 		//Cargamos el valor que se encuentra en la posición obtenida
-		genera("Load",array.getTipo());
+		genera("Load", tipo);
 	
 		return null;
 	}
@@ -176,6 +177,10 @@ public class ValorVisitor extends DefaultVisitor{
 		}
 
 		private PrintWriter writer;// = new PrintWriter(System.out);;
+
+		public void setDireccionVisitor(DireccionVisitor direccionVisitor) {
+			this.direccionVisitor = direccionVisitor;
+		}
 		
 
 

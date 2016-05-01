@@ -4,6 +4,7 @@ elemento, sentencia, expresion, tipo
 NODES
 programa -> elemento*;
 
+funcion:elemento -> string parametros:definicion* tipo atributo* sentencia*;
 struct:elemento -> string definicion*;
 atributo:elemento -> definicion;
 

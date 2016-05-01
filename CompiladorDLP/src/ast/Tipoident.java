@@ -52,7 +52,6 @@ public class Tipoident extends AbstractTipo {
 
 	@Override
 	public char getSufijo() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

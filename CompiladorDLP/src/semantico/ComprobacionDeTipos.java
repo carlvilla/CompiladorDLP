@@ -163,7 +163,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		if (node.getMiFuncion().getTipo() instanceof Tipovoid) {
 
-			predicado(node.getExpresion().getTipo() instanceof Tipovoid, "return:El tipo de retorno de la función "
+			predicado(node.getExpresion() == null, "return:El tipo de retorno de la función "
 					+ "es void por lo que el return no debe devolver ningún objeto", node.getStart());
 
 		}

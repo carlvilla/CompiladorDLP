@@ -1,10 +1,7 @@
-/Test Generacion de Código 3.txt
-/Test Generación de Código 1.txt
-/Test Generación de Código 2.txt
-/Test Generación de Código 4.txt
+/ast/
 /generacionDeCodigo/
 /main/
-/sintactico/
 /semantico/
-/ast/
+/sintactico/
 /visitor/
+/Test Generación de Código 3.txt

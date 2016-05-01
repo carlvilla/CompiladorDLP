@@ -41,11 +41,11 @@ atributos:	{$$ = new ArrayList<Atributo>();}
 		;
 
 parametrosOpt: parametros {$$ = $1;}
-			|  {$$=new ArrayList<Parametro>();}
+			|  {$$=new ArrayList<Definicion>();}
 			;
 	
-parametros: 'IDENT' ':' tipo {List<Parametro> lista = new ArrayList<Parametro>();lista.add(new Parametro($1,$3));$$ = lista;}
-		 | parametros ',' 'IDENT' ':' tipo {$$ = $1; ((List<Parametro>)$1).add(new Parametro($3,$5));}
+parametros: definicion {List<Definicion> lista = new ArrayList<Definicion>();((Definicion)$1).setEsParametro(true);lista.add((Definicion)$1);$$ = lista;}
+		 | parametros ',' definicion {$$ = $1;((Definicion)$3).setEsParametro(true);((List<Definicion>)$1).add((Definicion)$3);}
 
 tipo: 'IDENT' {$$ = new Tipoident($1);}
 	|'INT'	{$$ = new Tipoint();}
@@ -58,14 +58,14 @@ tipo: 'IDENT' {$$ = new Tipoident($1);}
 struct: 'STRUCT' 'IDENT' '{' definiciones '}' ';' {$$=new Struct($2,$4);}
 	  ;
 
-atributo: 'VAR' definicion {$$=new Atributo($2);}
+atributo: 'VAR' definicion ';' {$$=new Atributo($2);}
 			;
 
-definiciones:  {$$ = new ArrayList();}
-			| definiciones  definicion {$$ = $1; ((List)$1).add($2);}
+definiciones:  {$$ = new ArrayList<Definicion>();}
+			| definiciones  definicion ';' {$$ = $1; ((List<Definicion>)$1).add((Definicion)$2);}
 			;
 			
-definicion: 'IDENT' ':' tipo ';' {$$ = new Definicion($1,$3);}
+definicion: 'IDENT' ':' tipo {$$ = new Definicion($1,$3);}
 			;
 			
 sentencias: sentencias sentencia {$$ = $1; ((List)$1).add($2);}
