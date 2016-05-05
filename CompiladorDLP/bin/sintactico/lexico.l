@@ -62,7 +62,7 @@ else	{ return Parser.ELSE;}
 "&&" 								{return Parser.AND;}
 "||" 								{return Parser.OR;}
 
-'[a-zA-Z0-9_Ò—]' | '\\n' 	{return Parser.LITERALCHAR;}
+'[a-zA-Z0-9_Ò—()+\- =]' | '\\n' 	{return Parser.LITERALCHAR;}
 [a-zA-ZÒ—][a-zA-Z0-9_Ò—]*	{ return Parser.IDENT; }
 [0-9]+						{ return Parser.LITERALINT; }
 [0-9]+"."[0-9]+				{ return Parser.LITERALREAL; }

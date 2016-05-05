@@ -8,6 +8,7 @@ import java.util.Map;
 
 import ast.AccesoArray;
 import ast.AccesoStruct;
+import ast.Array;
 import ast.Cast;
 import ast.Definicion;
 import ast.EntreParentesis;
@@ -29,12 +30,10 @@ public class ValorVisitor extends DefaultVisitor{
 	
 	private Map<String, String> instrucciones = new HashMap<String, String>();
 	Visitor direccionVisitor;
-	Visitor tipoVisitor;
 	
 	public ValorVisitor(Writer writer, String sourceFile,Map<String,String> instrucciones) {
 		this.writer = new PrintWriter(writer);
 		this.instrucciones = instrucciones;
-		this.tipoVisitor = new TipoVisitor(writer,sourceFile);
 	}
 
 	
@@ -45,8 +44,15 @@ public class ValorVisitor extends DefaultVisitor{
 	}
 
 	//	class Litchar { String valor; }
-	public Object visit(Litchar node, Object param) {		
-		genera("pushb " + node.getValor().codePointAt(1));
+	public Object visit(Litchar node, Object param) {
+		System.out.println(node.getValor());
+		if(!node.getValor().equals("'\\n'"))
+			genera("pushb " + node.getValor().codePointAt(1));
+		else{
+			//Si es un salto de linea
+			genera("pushb 10");
+		}
+
 		return null;
 	}
 
@@ -88,7 +94,7 @@ public class ValorVisitor extends DefaultVisitor{
 //	class AccesoArray { Expresion contenedor;  Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
 
-		Tipo tipo = (Tipo) node.getContenedor().accept(tipoVisitor, true);
+		Tipo tipo = ((Array)node.getContenedor().getTipo()).getTipo();
 		
 		//Obtenemos dirección en array
 		node.accept(direccionVisitor, param);

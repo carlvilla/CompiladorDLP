@@ -6,6 +6,7 @@ import java.util.List;
 
 import ast.AccesoArray;
 import ast.AccesoStruct;
+import ast.Array;
 import ast.Definicion;
 import ast.Tipo;
 import ast.Tipoident;
@@ -16,11 +17,9 @@ public class DireccionVisitor extends DefaultVisitor {
 	
 	private PrintWriter writer;
 	private ValorVisitor valorVisitor;
-	private TipoVisitor sizeVisitor;
 
 	public DireccionVisitor(Writer writer, String sourceFile) {
 		this.writer = new PrintWriter(writer);
-		sizeVisitor = new TipoVisitor(writer,sourceFile);
 	}
 	
 	
@@ -45,9 +44,9 @@ public class DireccionVisitor extends DefaultVisitor {
 			
 		node.getContenedor().accept(this, param);
 		node.getPosicion().accept(valorVisitor, param);
-		Tipo tipo = (Tipo) node.getContenedor().accept(sizeVisitor, null);
+		//Tipo tipo = (Tipo) node.getContenedor().accept(sizeVisitor, null);
 	
-		genera("push "+ tipo.getSize());
+		genera("push "+ ((Array)node.getContenedor().getTipo()).getTipo().getSize());
 		
 		genera("mul");
 		genera("add");

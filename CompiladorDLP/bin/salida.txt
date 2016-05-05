@@ -1,7 +1,590 @@
-#source "Test Gestion de Memoria.txt"
+#source "prueba.txt"
 call main
 halt
-#line 38
+#line 22
+p :
+enter 0
+ret 0,0,0
+#line 39
 f :
-enter 67
-ret 0,67,7
+enter 7
+#line 30
+pusha BP
+push -4
+add
+pusha BP
+push 6
+add
+Loadf
+pushf 10.0
+mulf
+storef
+#line 31
+pusha BP
+push -5
+add
+pushb 48
+storeb
+#line 37
+pusha BP
+push 4
+add
+Loadi
+push 256
+lti
+jz else1
+#line 33
+pusha BP
+push -5
+add
+pusha BP
+push 4
+add
+Loadi
+i2b
+storeb
+#line 34
+pusha BP
+push -7
+add
+pusha BP
+push -5
+add
+Loadb
+b2i
+storei
+jmp fin_if1
+else1 :
+#line 37
+pusha BP
+push -7
+add
+pusha BP
+push -4
+add
+Loadf
+f2i
+storei
+fin_if1 :
+#line 39
+pusha BP
+push -7
+add
+Loadi
+ret 2,7,6
+#line 54
+inicializa :
+enter 2
+#line 46
+pusha 11
+push 0
+push 6
+mul
+add
+push 0
+push 2
+mul
+add
+push 0
+storei
+#line 47
+pusha 11
+push 0
+push 6
+mul
+add
+push 1
+push 2
+mul
+add
+push 1
+storei
+#line 48
+pusha 11
+push 0
+push 6
+mul
+add
+push 2
+push 2
+mul
+add
+push 1
+storei
+#line 49
+pusha BP
+push -2
+add
+push 1
+storei
+#line 54
+inicio_while1 :
+pusha BP
+push -2
+add
+Loadi
+push 8
+lti
+jz fin_while1
+#line 51
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 0
+push 2
+mul
+add
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 1
+subi
+push 6
+mul
+add
+push 1
+push 2
+mul
+add
+Loadi
+storei
+#line 52
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 1
+push 2
+mul
+add
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 1
+subi
+push 6
+mul
+add
+push 2
+push 2
+mul
+add
+Loadi
+storei
+#line 53
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 2
+push 2
+mul
+add
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 0
+push 2
+mul
+add
+Loadi
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 1
+push 2
+mul
+add
+Loadi
+addi
+storei
+#line 54
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+Loadi
+push 1
+addi
+storei
+jmp inicio_while1
+fin_while1 :
+ret 0,2,0
+#line 113
+main :
+enter 4
+#line 64
+call p
+#line 66
+pusha BP
+push -2
+add
+push 0
+storei
+#line 67
+pusha 0
+push 2
+add
+pushb 48
+storeb
+#line 68
+pusha 0
+push 0
+add
+pushb 48
+b2i
+storei
+#line 70
+pusha BP
+push -2
+add
+Loadi
+i2f
+pusha 0
+push 2
+add
+loadb
+b2i
+call f
+outi
+#line 71
+pushb 10
+outb
+#line 72
+pushf 1.3
+push 2
+call f
+popi
+#line 74
+call inicializa
+#line 75
+pusha BP
+push -2
+add
+push 0
+storei
+#line 87
+inicio_while2 :
+pusha BP
+push -2
+add
+Loadi
+push 8
+lti
+jz fin_while2
+#line 77
+pushb 40
+outb
+#line 78
+pusha BP
+push -2
+add
+Loadi
+push 1
+addi
+outi
+#line 79
+pushb 41
+outb
+#line 80
+pushb 32
+outb
+#line 81
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 0
+push 2
+mul
+add
+Loadi
+outi
+#line 82
+pushb 43
+outb
+#line 83
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 1
+push 2
+mul
+add
+Loadi
+outi
+#line 84
+pushb 61
+outb
+#line 85
+pusha 11
+pusha BP
+push -2
+add
+Loadi
+push 6
+mul
+add
+push 2
+push 2
+mul
+add
+Loadi
+outi
+#line 86
+pushb 10
+outb
+#line 87
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+Loadi
+push 1
+addi
+storei
+jmp inicio_while2
+fin_while2 :
+#line 90
+pusha 3
+push 1
+push 4
+mul
+add
+push 0
+add
+push 1
+push 2
+mul
+add
+push 0
+add
+push 56
+storei
+#line 91
+pusha 3
+push 1
+push 4
+mul
+add
+push 0
+add
+push 1
+push 2
+mul
+add
+push 0
+add
+loadi
+outi
+#line 92
+pushb 10
+outb
+#line 94
+pusha BP
+push -2
+add
+push 0
+storei
+#line 101
+inicio_while3 :
+pusha BP
+push -2
+add
+Loadi
+push 2
+lti
+jz fin_while3
+#line 96
+pusha BP
+push -4
+add
+push 0
+storei
+#line 99
+inicio_while4 :
+pusha BP
+push -4
+add
+Loadi
+push 2
+lti
+jz fin_while4
+#line 98
+pusha 3
+pusha BP
+push -2
+add
+Loadi
+push 4
+mul
+add
+push 0
+add
+pusha BP
+push -4
+add
+Loadi
+push 2
+mul
+add
+push 0
+add
+pusha BP
+push -2
+add
+Loadi
+pusha BP
+push -4
+add
+Loadi
+addi
+storei
+#line 99
+pusha BP
+push -4
+add
+pusha BP
+push -4
+add
+Loadi
+push 1
+addi
+storei
+jmp inicio_while4
+fin_while4 :
+#line 101
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+Loadi
+push 1
+addi
+storei
+jmp inicio_while3
+fin_while3 :
+#line 105
+pusha BP
+push -2
+add
+push 0
+storei
+#line 113
+inicio_while5 :
+pusha BP
+push -2
+add
+Loadi
+push 2
+lti
+jz fin_while5
+#line 107
+pusha BP
+push -4
+add
+push 0
+storei
+#line 111
+inicio_while6 :
+pusha BP
+push -4
+add
+Loadi
+push 2
+lti
+jz fin_while6
+#line 109
+pusha 3
+pusha BP
+push -2
+add
+Loadi
+push 4
+mul
+add
+push 0
+add
+pusha BP
+push -4
+add
+Loadi
+push 2
+mul
+add
+push 0
+add
+loadi
+outi
+#line 110
+pushb 32
+outb
+#line 111
+pusha BP
+push -4
+add
+pusha BP
+push -4
+add
+Loadi
+push 1
+addi
+storei
+jmp inicio_while6
+fin_while6 :
+#line 113
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+Loadi
+push 1
+addi
+storei
+jmp inicio_while5
+fin_while5 :
+ret 0,4,0

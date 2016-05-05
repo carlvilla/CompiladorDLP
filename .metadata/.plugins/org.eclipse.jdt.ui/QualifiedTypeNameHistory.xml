@@ -4,14 +4,12 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="javax.swing.tree.AbstractLayoutCache.NodeDimensions"/>
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
-<fullyQualifiedTypeName name="visitor.DefaultVisitor"/>
 <fullyQualifiedTypeName name="generacionDeCodigo.DireccionVisitor"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="ast.AccesoArray"/>
 <fullyQualifiedTypeName name="ast.AccesoStruct"/>
 <fullyQualifiedTypeName name="ast.Struct"/>
-<fullyQualifiedTypeName name="ast.Tipoident"/>
 <fullyQualifiedTypeName name="ast.Definicion"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="ast.Array"/>
@@ -32,4 +30,8 @@
 <fullyQualifiedTypeName name="ast.Return"/>
 <fullyQualifiedTypeName name="ast.InvocarFuncion"/>
 <fullyQualifiedTypeName name="ast.Expresion"/>
+<fullyQualifiedTypeName name="ast.Tipoident"/>
+<fullyQualifiedTypeName name="visitor.DefaultVisitor"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="ast.Tipo"/>
 </qualifiedTypeNameHistroy>
