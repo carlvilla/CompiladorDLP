@@ -92,7 +92,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		contadorWhile++;
 		int contadorLocal = contadorWhile;
 		
-		genera("#line " + node.getEnd().getLine());
+		genera("#line " + node.getStart().getLine());
 		genera("inicio_while"+contadorLocal +" :");
 		node.getExpresion().accept(valorVisitor, param);
 		genera("jz fin_while"+contadorLocal);
@@ -137,7 +137,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 	//	class Funcion { String string;  List<Parametro> parametro;  Tipo tipo;  List<Atributo> atributo;  List<Sentencia> sentencia; }
 	public Object visit(Funcion node, Object param) {
 
-		genera("#line " + node.getEnd().getLine());
+		genera("#line " + node.getStart().getLine());
 		genera(node.getString()+" :");
 		
 		int sizeAtributos = 0;

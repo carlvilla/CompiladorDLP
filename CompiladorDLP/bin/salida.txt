@@ -5,7 +5,7 @@ halt
 p :
 enter 0
 ret 0,0,0
-#line 39
+#line 25
 f :
 enter 7
 #line 30
@@ -72,7 +72,7 @@ push -7
 add
 Loadi
 ret 2,7,6
-#line 54
+#line 43
 inicializa :
 enter 2
 #line 46
@@ -117,7 +117,7 @@ push -2
 add
 push 1
 storei
-#line 54
+#line 50
 inicio_while1 :
 pusha BP
 push -2
@@ -239,7 +239,7 @@ storei
 jmp inicio_while1
 fin_while1 :
 ret 0,2,0
-#line 113
+#line 60
 main :
 enter 4
 #line 64
@@ -292,7 +292,7 @@ push -2
 add
 push 0
 storei
-#line 87
+#line 76
 inicio_while2 :
 pusha BP
 push -2
@@ -426,7 +426,7 @@ push -2
 add
 push 0
 storei
-#line 101
+#line 95
 inicio_while3 :
 pusha BP
 push -2
@@ -441,7 +441,7 @@ push -4
 add
 push 0
 storei
-#line 99
+#line 97
 inicio_while4 :
 pusha BP
 push -4
@@ -512,7 +512,7 @@ push -2
 add
 push 0
 storei
-#line 113
+#line 106
 inicio_while5 :
 pusha BP
 push -2
@@ -527,7 +527,7 @@ push -4
 add
 push 0
 storei
-#line 111
+#line 108
 inicio_while6 :
 pusha BP
 push -4

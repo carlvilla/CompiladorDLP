@@ -27,6 +27,7 @@ public class DireccionVisitor extends DefaultVisitor {
 	public Object visit(Var node, Object param) {
 		Definicion def = node.getDefinicion();
 		
+		//Si es una variable local o un parámetro
 		if(def.getDireccion() < 0 || def.esParametro()){
 			genera("pusha BP");
 			genera("push " + node.getDefinicion().getDireccion());
@@ -44,7 +45,6 @@ public class DireccionVisitor extends DefaultVisitor {
 			
 		node.getContenedor().accept(this, param);
 		node.getPosicion().accept(valorVisitor, param);
-		//Tipo tipo = (Tipo) node.getContenedor().accept(sizeVisitor, null);
 	
 		genera("push "+ ((Array)node.getContenedor().getTipo()).getTipo().getSize());
 		
@@ -61,9 +61,7 @@ public class DireccionVisitor extends DefaultVisitor {
 
 		//Direccion contenedor
 		node.getContenedor().accept(this, param);
-		
-	//	genera("pusha "+((Var)node.getContenedor()).getDefinicion().getDireccion());
-		
+				
 		List<Definicion> atributosStruct = ((Tipoident)(node.getContenedor())
 				.getTipo()).getDefinicion().getDefinicion();
 		
