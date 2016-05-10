@@ -45,7 +45,6 @@ public class ValorVisitor extends DefaultVisitor{
 
 	//	class Litchar { String valor; }
 	public Object visit(Litchar node, Object param) {
-		System.out.println(node.getValor());
 		if(!node.getValor().equals("'\\n'"))
 			genera("pushb " + node.getValor().codePointAt(1));
 		else{

@@ -235,6 +235,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		return null;
 	}
 
+	// class InvocarFuncion { String string; List<Expresion> expresion; }
 	public Object visit(InvocarFuncion node, Object param) {
 
 		// super.visit(node, param);
@@ -249,6 +250,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 						+ "coincide con el número de parámetros que tiene definidos la función",
 				node.getStart());
 
+		//Comparar que se pasa el mismo número de parámetros que el definido en la definición
+		//de la función
 		if (node.getExpresion().size() == node.getDefinicion().getParametro().size())
 			for (int i = 0; i < node.getExpresion().size(); i++) {
 
@@ -260,6 +263,10 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 								+ "la función no coinciden con los definidos en la función",
 						node.getStart());
 			}
+		
+		predicado(!((node.getDefinicion().getTipo()) instanceof Tipovoid)
+				,"La función invocada tiene tipo de retorno VOID",node.getStart());
+		
 		// }
 		/*
 		 * else{ predicado(node.getExpresion().size() == 0,
