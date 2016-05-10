@@ -1,0 +1,37 @@
+[+\-*/;\()=&|!\-:{}\[\].,<>]	{ return yytext().charAt(0); }
+
+print	{ return Parser.PRINT; }
+read	{ return Parser.READ; }
+int	{ return Parser.INT; }
+void	{ return Parser.VOID; }
+float	{ return Parser.REAL; }
+char	{ return Parser.CHAR; }
+return	{ return Parser.RETURN; }
+struct	{ return Parser.STRUCT; }
+while	{ return Parser.WHILE; }
+var	{ return Parser.VAR; }
+cast	{ return Parser.CAST; }
+if	{ return Parser.IF;}
+else	{ return Parser.ELSE;} 
+
+"<=" 	{return Parser.MENORIGUAL;}
+">=" 	{return Parser.MAYORIGUAL;}
+"==" 	{return Parser.IGUAL;}
+"!=" 	{return Parser.DISTINTO;}
+"&&" 	{return Parser.AND;}
+"||" 	{return Parser.OR;}
+
+'[a-zA-Z0-9_Ò—()+\- =]' | '\\n' 	{return Parser.LITERALCHAR;}
+[a-zA-ZÒ—][a-zA-Z0-9_Ò—]*		{ return Parser.IDENT; }
+[0-9]+					{ return Parser.LITERALINT; }
+[0-9]+"."[0-9]+				{ return Parser.LITERALREAL; }
+
+"/*"([^*]|\*+[^*/])*\*+"/"		{ }		/* Comentario de varias lineas como este */
+"//".*					{ }		// Comentario de una linea como este
+
+[ \n\r]		{ }
+"\t"		{ yycolumn += 3; } 
+
+.		{ gestor.error("LÈxico", "Cadena \"" + yytext() +"\" no reconocida.", new Position(line(), column())); }
+
+
