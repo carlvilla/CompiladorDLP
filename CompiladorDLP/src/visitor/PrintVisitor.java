@@ -1,5 +1,7 @@
 package visitor;
 
+import java.util.List;
+
 import ast.*;
 
 /*
@@ -246,9 +248,15 @@ public class PrintVisitor extends DefaultVisitor {
 
 		System.out.print(node.getString() + "(");
 
-		if (node.getExpresion() != null)
-			for (Expresion child : node.getExpresion())
-				child.accept(this, param);
+		if (node.getExpresion() != null){
+			List<Expresion> expresiones = node.getExpresion();
+			for(int i=0;i<expresiones.size();i++){
+				node.getExpresion().get(i).accept(this, param);
+				if((i==0 && expresiones.size()>1) || (i>0 && i<expresiones.size()-1)){
+					System.out.print(", ");
+				}
+			}
+		}
 
 		System.out.print(")");
 
@@ -261,9 +269,15 @@ public class PrintVisitor extends DefaultVisitor {
 
 		System.out.print(node.getString() + "(");
 
-		if (node.getExpresion() != null)
-			for (Expresion child : node.getExpresion())
-				child.accept(this, param);
+		if (node.getExpresion() != null){
+			List<Expresion> expresiones = node.getExpresion();
+			for(int i=0;i<expresiones.size();i++){
+				node.getExpresion().get(i).accept(this, param);
+				if((i==0 && expresiones.size()>1) || (i>0 && i<expresiones.size()-1)){
+					System.out.print(", ");
+				}
+			}
+		}
 
 		System.out.print(")");
 
