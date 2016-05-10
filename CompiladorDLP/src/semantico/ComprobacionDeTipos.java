@@ -283,7 +283,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	// }
 	public Object visit(ExpresionBinaria node, Object param) {
 
-		// super.visit(node, param);
 
 		if (node.getLeft() != null)	
 			node.getLeft().accept(this, param);
@@ -291,13 +290,7 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
-		/*
-		 * predicado(comprobarTipos(node.getLeft().getTipo(),node.getRight().
-		 * getTipo()),
-		 * "Expresion Binaria:Los tipos de las expresión a la izquierda y derecha del operador"
-		 * + " no coinciden", node.getStart());
-		 */
-
+		//Si no es una asignación
 		if (!node.getString().equals("=")) {
 			predicado((node.getLeft().getTipo() instanceof Tipoint || node.getLeft().getTipo() instanceof Tiporeal)
 					&& node.getLeft().getTipo().getClass().isInstance(node.getRight().getTipo()),
@@ -307,7 +300,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			
 		}
 		else {
-
+			//Si es una asignación
+			
 			predicado(node.getLeft().getModificable(),
 					"Expresion Binaria: En una asignación se tiene que poder modificar "
 							+ "el valor de la expresión de la izquierda",
@@ -331,11 +325,11 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		String operador = node.getString();
 		
 		//Se asigna el tipo al nodo. Si es una operación aritmetica, el valor es decidido por los operando.
-		//Si es una operación lógica, el valor es siempre entero
 		if(operador.equals("+") || operador.equals("-") || operador.equals("/") || operador.equals("*")
 				|| operador.equals("="))
 			node.setTipo(node.getLeft().getTipo());
 		
+		//Si es una operación lógica, el valor es siempre entero
 		else
 			node.setTipo(new Tipoint());
 		
@@ -374,8 +368,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 	// class Cast { Tipo tipo; Expresion expresion; }
 	public Object visit(Cast node, Object param) {
-
-		// super.visit(node, param);
 
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
@@ -437,19 +429,20 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	// class AccesoArray { Expresion contenedor; Expresion posicion; }
 	public Object visit(AccesoArray node, Object param) {
 
-		// super.visit(node, param);
-
 		if (node.getContenedor() != null)
 			node.getContenedor().accept(this, param);
 
 		if (node.getPosicion() != null)
 			node.getPosicion().accept(this, param);
 
-		predicado(node.getContenedor().getTipo() instanceof Array, "Acceso Array:El tipo del objeto debe ser Array",
+		predicado(node.getContenedor().getTipo() instanceof Array
+				, "Acceso Array:El tipo del objeto debe ser Array",
 				node.getStart());
 
-		predicado(node.getPosicion().getTipo() instanceof Tipoint, "Acceso Array:El tipo de la posición debe ser Tipoint",
+		predicado(node.getPosicion().getTipo() instanceof Tipoint
+				, "Acceso Array:El tipo de la posición debe ser Tipoint",
 				node.getStart());
+		
 		if (node.getContenedor().getTipo() instanceof Array)
 			node.setTipo(((Array) node.getContenedor().getTipo()).getTipo());
 
@@ -461,8 +454,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 	// class AccesoStruct { Expresion contenedor; String atributo; }
 	public Object visit(AccesoStruct node, Object param) {
 
-		// super.visit(node, param);
-
 		if (node.getContenedor() != null)
 			node.getContenedor().accept(this, param);
 
@@ -470,7 +461,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 				"Acceso Struct:El tipo del contenedor debe ser Tipoident", node.getStart());
  
 		if (node.getContenedor().getTipo() instanceof Tipoident) {
-			List<Definicion> definiciones = ((Tipoident)(node.getContenedor().getTipo())).getDefinicion().getDefinicion();
+			List<Definicion> definiciones = ((Tipoident)(node.getContenedor().getTipo()))
+					.getDefinicion().getDefinicion();
 
 			for (Definicion def : definiciones) {
 				if (def.getNombre().equals(node.getAtributo())) {
@@ -489,8 +481,6 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 	// class EntreParentesis { Expresion contenido; }
 	public Object visit(EntreParentesis node, Object param) {
-
-		// super.visit(node, param);
 
 		if (node.getContenido() != null)
 			node.getContenido().accept(this, param);
