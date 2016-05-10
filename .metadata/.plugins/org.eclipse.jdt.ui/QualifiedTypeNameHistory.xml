@@ -11,7 +11,6 @@
 <fullyQualifiedTypeName name="ast.AccesoStruct"/>
 <fullyQualifiedTypeName name="ast.Struct"/>
 <fullyQualifiedTypeName name="ast.Definicion"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="ast.Tipoint"/>
 <fullyQualifiedTypeName name="visitor.Visitor"/>
 <fullyQualifiedTypeName name="ast.Litent"/>
@@ -34,4 +33,5 @@
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="ast.Tipo"/>
 <fullyQualifiedTypeName name="ast.Array"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
