@@ -30,7 +30,7 @@ public class Identificacion extends DefaultVisitor {
 		predicado(definicion == null, "Funcion ya definida: " + funcion.getString(), funcion.getStart());
 		funciones.put(funcion.getString(),funcion);
 		
-		visitChildren(funcion.getParametro(), param);
+		visitChildren(funcion.getParametros(), param);
 		
 		if (funcion.getTipo() != null)
 			funcion.getTipo().accept(this, param);

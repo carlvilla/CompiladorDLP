@@ -65,10 +65,10 @@ public class PrintVisitor extends DefaultVisitor {
 
 		System.out.print(node.getString() + "(");
 
-		if (node.getParametro() != null) {
-			int size = node.getParametro().size();
+		if (node.getParametros() != null) {
+			int size = node.getParametros().size();
 			for (int i = 0; i < size; i++) {
-				node.getParametro().get(i).accept(this, param);
+				node.getParametros().get(i).accept(this, param);
 				if (size > 1 && i < size - 1) {
 					System.out.print(",");
 				}

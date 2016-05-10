@@ -152,7 +152,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		}
 		
 		int sizeParametros = 0;
-		for(Definicion parametro:node.getParametro()){
+		for(Definicion parametro:node.getParametros()){
 			sizeParametros+=parametro.getTipo().getSize();
 		}
 		
@@ -179,7 +179,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		}
 		
 		int sizeParametros = 0;
-		for(Definicion parametro:node.getMiFuncion().getParametro()){
+		for(Definicion parametro:node.getMiFuncion().getParametros()){
 			sizeParametros+=parametro.getTipo().getSize();
 		}
 			

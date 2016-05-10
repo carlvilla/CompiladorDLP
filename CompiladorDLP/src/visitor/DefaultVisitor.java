@@ -18,7 +18,7 @@ public class DefaultVisitor implements Visitor {
 
 	//	class Funcion { String string;  List<Parametro> parametro;  Tipo tipo;  List<Atributo> atributo;  List<Sentencia> sentencia; }
 	public Object visit(Funcion node, Object param) {
-		visitChildren(node.getParametro(), param);
+		visitChildren(node.getParametros(), param);
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
 		visitChildren(node.getAtributo(), param);

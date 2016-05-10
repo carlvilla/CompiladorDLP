@@ -111,7 +111,7 @@ public class ASTPrinter extends DefaultVisitor {
 		printName(indent, "Funcion", node, false);
 
 		print(indent + 1, "string", "String", node.getString());
-		visit(indent + 1, "parametro", "List<Parametro>",node.getParametro());
+		visit(indent + 1, "parametro", "List<Parametro>",node.getParametros());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		visit(indent + 1, "atributo", "List<Atributo>",node.getAtributo());
 		visit(indent + 1, "sentencia", "List<Sentencia>",node.getSentencia());

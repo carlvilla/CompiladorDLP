@@ -37,10 +37,10 @@ public class GestionDeMemoria extends DefaultVisitor {
 			int sumaTamañoVariablesLocales = 0;
 			int sumaTamañoVariablesParametros = 4;
 			
-			if (node.getParametro() != null){
-				for(int i=node.getParametro().size()-1;i>-1;i--){
-					node.getParametro().get(i).setDireccion(sumaTamañoVariablesParametros);
-					sumaTamañoVariablesParametros+=node.getParametro().get(i).getTipo().getSize();					
+			if (node.getParametros() != null){
+				for(int i=node.getParametros().size()-1;i>-1;i--){
+					node.getParametros().get(i).setDireccion(sumaTamañoVariablesParametros);
+					sumaTamañoVariablesParametros+=node.getParametros().get(i).getTipo().getSize();					
 				}						
 			}
 

@@ -37,8 +37,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 
 		// super.visit(node, param);
 
-		if (node.getParametro() != null)
-			for (Definicion parametro : node.getParametro()) {
+		if (node.getParametros() != null)
+			for (Definicion parametro : node.getParametros()) {
 				predicado(simple(parametro.getTipo()), "Función:Los parámetros deben de ser de tipo simple",
 						node.getStart());
 			}
@@ -46,8 +46,8 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 		predicado(simple(node.getTipo()) || node.getTipo() instanceof Tipovoid,
 				"Función:El tipo de retorno de la función debe ser simple o void", node.getStart());
 
-		if (node.getParametro() != null)
-			for (Definicion child : node.getParametro())
+		if (node.getParametros() != null)
+			for (Definicion child : node.getParametros())
 				child.accept(this, param);
 
 		if (node.getTipo() != null)
@@ -213,16 +213,16 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 			for (Expresion child : node.getExpresion())
 				child.accept(this, param);
 
-		predicado(node.getExpresion().size() == node.getDefinicion().getParametro().size(),
+		predicado(node.getExpresion().size() == node.getDefinicion().getParametros().size(),
 				"Invocar Sentencia:El número de parámetros pasados a la función no "
 						+ "coincide con el número de parámetros que tiene definidos la función",
 				node.getStart());
 
-		if (node.getExpresion().size() == node.getDefinicion().getParametro().size())
+		if (node.getExpresion().size() == node.getDefinicion().getParametros().size())
 			for (int i = 0; i < node.getExpresion().size(); i++) {
 
 				Tipo invocacion = node.getExpresion().get(i).getTipo();
-				Tipo funcion = node.getDefinicion().getParametro().get(i).getTipo();
+				Tipo funcion = node.getDefinicion().getParametros().get(i).getTipo();
 
 				predicado(invocacion.getClass().isInstance(funcion),
 						"Invocar Sentencia: Los tipos de los parámetros definidos en la invocación de "
@@ -245,18 +245,18 @@ public class ComprobacionDeTipos extends DefaultVisitor {
 				child.accept(this, param);
 
 		// if(node.getDefinicion().getParametro()!=null){
-		predicado(node.getExpresion().size() == node.getDefinicion().getParametro().size(),
+		predicado(node.getExpresion().size() == node.getDefinicion().getParametros().size(),
 				"Invocar Funcion:El número de parámetros pasados a la función no "
 						+ "coincide con el número de parámetros que tiene definidos la función",
 				node.getStart());
 
 		//Comparar que se pasa el mismo número de parámetros que el definido en la definición
 		//de la función
-		if (node.getExpresion().size() == node.getDefinicion().getParametro().size())
+		if (node.getExpresion().size() == node.getDefinicion().getParametros().size())
 			for (int i = 0; i < node.getExpresion().size(); i++) {
 
 				Tipo invocacion = node.getExpresion().get(i).getTipo();
-				Tipo funcion = node.getDefinicion().getParametro().get(i).getTipo();
+				Tipo funcion = node.getDefinicion().getParametros().get(i).getTipo();
 
 				predicado(invocacion.getClass().isInstance(funcion),
 						"Invocar Sentencia: Los tipos de los parámetros definidos en la invocación de "

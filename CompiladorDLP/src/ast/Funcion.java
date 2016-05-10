@@ -7,20 +7,20 @@ import visitor.*;
 
 public class Funcion extends AbstractElemento {
 
-	public Funcion(String string, List<Definicion> parametro, Tipo tipo, List<Atributo> atributo, List<Sentencia> sentencia) {
+	public Funcion(String string, List<Definicion> parametros, Tipo tipo, List<Atributo> atributo, List<Sentencia> sentencia) {
 		this.string = string;
-		this.parametro = parametro;
+		this.parametros = parametros;
 		this.tipo = tipo;
 		this.atributo = atributo;
 		this.sentencia = sentencia;
 
-		searchForPositions(parametro, tipo, atributo, sentencia);	// Obtener linea/columna a partir de los hijos
+		searchForPositions(parametros, tipo, atributo, sentencia);	// Obtener linea/columna a partir de los hijos
 	}
 
 	@SuppressWarnings("unchecked")
 	public Funcion(Object string, Object parametro, Object tipo, Object atributo, Object sentencia) {
 		this.string = (string instanceof Token) ? ((Token)string).getLexeme() : (String) string;
-		this.parametro = (List<Definicion>) parametro;
+		this.parametros = (List<Definicion>) parametro;
 		this.tipo = (Tipo) tipo;
 		this.atributo = (List<Atributo>) atributo;
 		this.sentencia = (List<Sentencia>) sentencia;
@@ -35,11 +35,11 @@ public class Funcion extends AbstractElemento {
 		this.string = string;
 	}
 
-	public List<Definicion> getParametro() {
-		return parametro;
+	public List<Definicion> getParametros() {
+		return parametros;
 	}
-	public void setParametro(List<Definicion> parametro) {
-		this.parametro = parametro;
+	public void setParametros(List<Definicion> parametro) {
+		this.parametros = parametro;
 	}
 
 	public Tipo getTipo() {
@@ -69,7 +69,7 @@ public class Funcion extends AbstractElemento {
 	}
 
 	private String string;
-	private List<Definicion> parametro;
+	private List<Definicion> parametros;
 	private Tipo tipo;
 	private List<Atributo> atributo;
 	private List<Sentencia> sentencia;
