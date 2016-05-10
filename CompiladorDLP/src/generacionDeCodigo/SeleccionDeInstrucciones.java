@@ -55,21 +55,6 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 
 	}
 
-	/*
-	 * Poner aquí los visit necesarios. Si se ha usado VGen solo hay que
-	 * copiarlos de la clase 'visitor/_PlantillaParaVisitors.txt'.
-	 */
-
-	// Ejemplo:
-	//
-	// public Object visit(Programa node, Object param) {
-	// genera("#source \"" + sourceFile + "\"");
-	// genera("call main");
-	// genera("halt");
-	// super.visit(node, param); // Recorrer los hijos
-	// return null;
-	// }
-
 	// class Programa { List<Elemento> elemento; }
 	public Object visit(Programa node, Object param) {
 		genera("#source \"" + sourceFile + "\"");
@@ -89,14 +74,13 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		return null;
 	}
 
-	// class ExpresionBinaria { Expresion left; String string; Expresion right;
-	// }
+	// class ExpresionBinaria { Expresion left; String string; Expresion right;}
 	public Object visit(ExpresionBinaria node, Object param) {
 
 		genera("#line " + node.getEnd().getLine());
 		node.getLeft().accept(direccionVisitor, param);
 		node.getRight().accept(valorVisitor, param);
-		genera("store", node.getTipo());
+		genera("store", node.getLeft().getTipo());
 
 		return null;
 	}
@@ -124,7 +108,6 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 //	class If { Expresion condic;  List<Sentencia> verdadero;  List<Sentencia> falso; }
 	public Object visit(If node, Object param) {
 
-		
 	    contadorIf++;
 	    int contadorLocal = contadorIf;
 	    
@@ -163,6 +146,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		}
 		
 		genera("enter "+sizeAtributos);
+		
 		for(Sentencia sent:node.getSentencia()){
 			sent.accept(this, param);
 		}
@@ -183,7 +167,6 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 
 	//	class Return { Expresion expresion; }
 	public Object visit(Return node, Object param) {
-		
 		
 		genera("#line " + node.getEnd().getLine());
 		
