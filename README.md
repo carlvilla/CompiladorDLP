@@ -1,4 +1,4 @@
-# CompiladorDLP
+# Compilador
 
 Compilador realizado para la asignatura DLP de la Universidad de Oviedo para el curso 2015/16.
 
