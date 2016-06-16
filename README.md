@@ -1,6 +1,6 @@
 # Compilador
 
-Compilador realizado para la asignatura DLP de la Universidad de Oviedo para el curso 2015/16.
+Compilador realizado para la asignatura DLP de la Universidad de Oviedo para el curso 2015/16. Las características del lenguaje están descritas en el fichero "Enunciado.pdf".
 
 Este repositorio incluye:
 * Expresiones regulares utilizadas en el analizador léxico
